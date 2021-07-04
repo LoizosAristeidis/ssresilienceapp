@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "566375635238",
+    "project_id": "ssresilience",
+    "storage_bucket": "ssresilience.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566375635238:android:6b4d680bcfef26e4a689e7",
+        "android_client_info": {
+          "package_name": "com.example.ssresilience"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566375635238-14bb7gebcf79rhjg8s7nj3n0ghqcbnjr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD51HTv47HwkNYasQjyTECpd-rvV3S9eXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566375635238-14bb7gebcf79rhjg8s7nj3n0ghqcbnjr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
