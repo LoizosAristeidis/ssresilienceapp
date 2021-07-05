@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class RegisterUserActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText registerEmail, registerAge, registerFullName, registerPassword;
@@ -107,12 +109,12 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         }
 
         progressBar.setVisibility(View.VISIBLE);
+        User user = new User(fullName, age, email);
+
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(task -> {
 
                 if(task.isSuccessful()) {
-                    User user = new User(fullName, age, email);
-
                     // Write a message to the database
 
                     FirebaseDatabase.getInstance().getReference("Users")
