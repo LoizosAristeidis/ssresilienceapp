@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -80,7 +81,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if(task.isSuccessful()) {
                 //redirect to userprofile or wherever we want to redirect.. (main page / goal page)
-                startActivity(new Intent(this, ProfileActivity.class));
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                if(user.isEmailVerified()) {
+                    startActivity(new Intent(this, ProfileActivity.class));
+                } else {
+                    user.sendEmailVerification();
+                    Toast.makeText(MainActivity.this, "Check your email address in order to verify your account", Toast.LENGTH_LONG);
+                    progressBar.setVisibility(View.GONE);
+                }
             } else {
                 Toast.makeText(MainActivity.this, "FAILED TO LOGIN! PLEASE CHECK YOUR CREDENTIALS", Toast.LENGTH_LONG).show();
             }

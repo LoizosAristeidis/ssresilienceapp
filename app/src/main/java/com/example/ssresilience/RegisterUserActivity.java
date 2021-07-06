@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -123,10 +124,12 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
                                 Toast.makeText(RegisterUserActivity.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                                 //redirect to login layout (main activity) after signup
+                                FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
+                                authUser.sendEmailVerification();
                                 startActivity(new Intent(this, MainActivity.class));
                             } else {
                                 Toast.makeText(RegisterUserActivity.this, "Failed to register! Try again", Toast.LENGTH_LONG).show();
-                                progressBar.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
                             }
                         });
                 }
