@@ -76,7 +76,7 @@
             android:max="100"
             android:indeterminate="true"
             android:progress="1"
-            android:id="@+id/lohin_progressBar"
+            android:id="@+id/login_progressBar"
             tools:ignore="MissingConstraints"
             android:visibility="invisible"
             app:layout_constraintTop_toTopOf="parent"
