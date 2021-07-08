@@ -10,4 +10,6 @@
     <string name="forgot_password">FORGOT PASSWORD</string>
     <string name="back_to_login">BACK TO LOGIN</string>
     <string name="profile_logout">Log Out</string>
+    <string name="full_name">Full Name</string>
+    <string name="profile_image">Profile Image</string>
 </resources>
