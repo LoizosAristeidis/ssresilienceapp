@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button register, login_btn;
     private EditText login_email, login_password;
     private ProgressBar progressBar;
-
+    private String test;
     private FirebaseAuth mAuth;
 
     @Override
