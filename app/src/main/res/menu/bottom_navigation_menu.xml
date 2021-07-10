@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_goals"
+        android:icon="@drawable/goals"
+        android:title="Goals" />
+    <item
+        android:id="@+id/navigation_measure"
+        android:icon="@drawable/measure"
+        android:title="Measure" />
+    <item
+        android:id="@+id/navigation_progress"
+        android:icon="@drawable/progress"
+        android:title="Progress" />
+
+    <item
+        android:id="@+id/navigation_social"
+        android:icon="@drawable/social"
+        android:title="Social" />
+
+    <item
+        android:id="@+id/navigation_reflect"
+        android:icon="@drawable/reflect"
+        android:title="Reflect" />
+</menu>
