@@ -70,6 +70,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        startActivity(new Intent(ProfileActivity.this, HomePageActivity.class));
+
         //initialize the logout button
         profile_logout = (Button) findViewById(R.id.profile_logout);
 
