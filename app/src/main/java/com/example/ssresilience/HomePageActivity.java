@@ -47,29 +47,19 @@ public class HomePageActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.info_goals:
-                if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("You can set a different goal each day");
-                }
                 break;
             case R.id.info_measure_monitor:
-                if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("Use your device's sensors or the stress test to self-report your emotions");
-                }
                 break;
             case R.id.info_progress_rewards:
-                if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("These are based on your progress within the app");
-                }
                 break;
             case R.id.info_share:
-                if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("Compete or Collaborate with other users");
-                }
                 break;
             case R.id.info_reflect:
-                if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("Be your own judge at the end of each day");
-                }
                 break;
             default:
                 break;
