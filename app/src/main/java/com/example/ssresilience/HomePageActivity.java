@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,7 @@ import static com.example.ssresilience.R.color.buttoncolor_text;
 @SuppressWarnings("deprecation")
 public class HomePageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
-    private Button info_goals, info_measure_monitor, info_progress_rewards, info_share, info_reflect;
+    private Button info_goals, info_measure_monitor, info_progress_rewards, info_share, info_reflect, button_back, button_menu;
     private TextView info_placeholder;
 
     @Override
@@ -61,12 +62,19 @@ public class HomePageActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         ColorDrawable colorDrawable
                 = new ColorDrawable(Color.parseColor("#FFFFFF"));
-
         actionBar.setBackgroundDrawable(colorDrawable);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
+        // Back button functionality
+        button_back = findViewById(R.id.back_button);
+        button_back.setOnClickListener(v -> {
+            this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
+            this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
+        });
+
+        button_menu = findViewById(R.id.menu_button);
     }
 
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
@@ -137,6 +145,9 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor));
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                 break;
+//            case R.id.back_button:
+//                    finish();
+//                break;
             default:
                 break;
         }
