@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -74,7 +77,32 @@ public class HomePageActivity extends AppCompatActivity {
             this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
         });
 
-        button_menu = findViewById(R.id.menu_button);
+//        button_menu = findViewById(R.id.menu_button);
+
+        // drawer layout instance to toggle the menu icon to open
+        // drawer and back button to close drawer
+        DrawerLayout drawerLayout = findViewById(R.id.my_drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
+
+        // pass the Open and Close toggle for the drawer layout listener
+        // to toggle the button
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+        // to make the Navigation drawer icon always appear on the action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    @SuppressLint("WrongConstant")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        DrawerLayout drawerLayout = findViewById(R.id.my_drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
@@ -145,9 +173,6 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor));
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                 break;
-//            case R.id.back_button:
-//                    finish();
-//                break;
             default:
                 break;
         }

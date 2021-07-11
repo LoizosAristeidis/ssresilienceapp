@@ -12,6 +12,9 @@
     <string name="profile_logout">Log Out</string>
     <string name="full_name">Full Name</string>
     <string name="profile_image">Profile Image</string>
+    <string name="app_name1">Navigation Drawer</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
