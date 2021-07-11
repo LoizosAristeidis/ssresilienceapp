@@ -128,7 +128,6 @@
             app:cornerRadius="8dp"
             app:strokeColor="#FFFFFF" />
 
-
         <Button
             android:id="@+id/info_reflect"
             style="@android:style/Widget.DeviceDefault.Button"

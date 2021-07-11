@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">SSResilience</string>
-    <string name="login">LOGIN</string>
-    <string name="login_name">Name</string>
+    <string name="login">Sign In</string>
+    <string name="login_name">Username</string>
     <string name="password">Password</string>
-    <string name="register_text">REGISTER</string>
-    <string name="email">E-mail</string>
+    <string name="register_text">Create Account</string>
+    <string name="email">Email Address</string>
     <string name="age">Age</string>
-    <string name="fullname">Full Name</string>
-    <string name="forgot_password">FORGOT PASSWORD</string>
+    <string name="fullname">Username</string>
+    <string name="forgot_password">Forgot Password</string>
     <string name="back_to_login">BACK TO LOGIN</string>
     <string name="profile_logout">Log Out</string>
     <string name="full_name">Full Name</string>

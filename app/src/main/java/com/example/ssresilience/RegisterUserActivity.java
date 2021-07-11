@@ -51,7 +51,8 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-
+        // Hide the Action Bar for this Activity
+        getSupportActionBar().hide();
     }
 
     @SuppressLint("NonConstantResourceId")

@@ -2,6 +2,7 @@ package com.example.ssresilience;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,12 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import static com.example.ssresilience.R.color.buttoncolor_text;
 
@@ -30,10 +33,13 @@ public class HomePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        // Initialize the Navigation Menu
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 //        openFragment(GoalsFragment.newInstance("", ""));
 
+        // Initialize the Homepage buttons
         info_goals = findViewById(R.id.info_goals);
         info_goals.setOnClickListener(this::onClick);
         info_measure_monitor = findViewById(R.id.info_measure_monitor);
@@ -45,6 +51,22 @@ public class HomePageActivity extends AppCompatActivity {
         info_reflect = findViewById(R.id.info_reflect);
         info_reflect.setOnClickListener(this::onClick);
         info_placeholder = findViewById(R.id.info_placeholder);
+
+        // Set all the labels of the navigation menu as visible
+        bottomNavigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
+
+        // Action Bar Styling
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#FFFFFF"));
+
+        actionBar.setBackgroundDrawable(colorDrawable);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_layout);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+
     }
 
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
@@ -129,6 +151,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @SuppressLint("NonConstantResourceId")
                 @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.navigation_goals:
