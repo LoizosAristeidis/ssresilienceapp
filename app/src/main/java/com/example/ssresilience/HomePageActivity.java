@@ -32,62 +32,48 @@ public class HomePageActivity extends AppCompatActivity {
 //        openFragment(GoalsFragment.newInstance("", ""));
 
         info_goals = findViewById(R.id.info_goals);
+        info_goals.setOnClickListener(this::onClick);
         info_measure_monitor = findViewById(R.id.info_measure_monitor);
+        info_measure_monitor.setOnClickListener(this::onClick);
         info_progress_rewards = findViewById(R.id.info_progress_rewards);
+        info_progress_rewards.setOnClickListener(this::onClick);
         info_share = findViewById(R.id.info_share);
+        info_share.setOnClickListener(this::onClick);
         info_reflect = findViewById(R.id.info_reflect);
+        info_reflect.setOnClickListener(this::onClick);
         info_placeholder = findViewById(R.id.info_placeholder);
+    }
 
-        info_goals.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.info_goals:
                 if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("You can set a different goal each day");
                 }
-
-            }
-        });
-
-        info_measure_monitor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
+                break;
+            case R.id.info_measure_monitor:
                 if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("Use your device's sensors or the stress test to self-report your emotions");
                 }
-            }
-        });
-
-        info_progress_rewards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
+                break;
+            case R.id.info_progress_rewards:
                 if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("These are based on your progress within the app");
                 }
-            }
-        });
-
-        info_share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
+                break;
+            case R.id.info_share:
                 if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("Compete or Collaborate with other users");
                 }
-            }
-        });
-
-        info_reflect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
+                break;
+            case R.id.info_reflect:
                 if (info_placeholder.getText().toString().equals("")) {
                     info_placeholder.setText("Be your own judge at the end of each day");
                 }
-            }
-        });
+                break;
+            default:
+                break;
+        }
     }
 
     public void openFragment(Fragment fragment) {
