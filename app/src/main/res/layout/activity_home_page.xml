@@ -16,7 +16,7 @@
     android:layoutDirection="rtl"
     android:textAlignment="center"
     tools:context=".HomePageActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -186,11 +186,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+        app:theme="@style/NavigationViewStyle"
         android:layout_width="wrap_content"
+        android:paddingTop="170dp"
+        android:paddingBottom="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_menu"
+        android:background="@color/app_purple"
+        android:backgroundTint="@color/app_purple"
+        android:textAlignment="center"
+        android:textSize="32dp"
         app:itemBackground="@color/app_purple"
         app:itemTextColor="@drawable/selector_drawer_item"
-        tools:ignore="MissingConstraints" />
+        app:menu="@menu/navigation_menu"
+        tools:ignore="MissingConstraints,RtlCompat" />
 </androidx.drawerlayout.widget.DrawerLayout>
