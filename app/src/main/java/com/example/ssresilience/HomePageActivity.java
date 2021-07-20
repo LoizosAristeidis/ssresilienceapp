@@ -1,8 +1,13 @@
 package com.example.ssresilience;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Layout;
@@ -14,18 +19,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.example.ssresilience.models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+import org.xmlpull.v1.XmlPullParser;
 
 import static com.example.ssresilience.R.color.buttoncolor_text;
 
@@ -34,8 +52,14 @@ import static com.example.ssresilience.R.color.buttoncolor_text;
 @SuppressWarnings("deprecation")
 public class HomePageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
-    private Button info_goals, info_measure_monitor, info_progress_rewards, info_share, info_reflect, button_back, button_menu;
+    private Button info_goals, info_measure_monitor, info_progress_rewards, info_share, info_reflect, button_back;
     private TextView info_placeholder;
+    private FirebaseUser user;
+    private DatabaseReference dbReference;
+    private String userId;
+    private TextView fullNameTextView;
+    private ClipboardManager myClipboard;
+    private ClipData myClip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +87,32 @@ public class HomePageActivity extends AppCompatActivity {
         // Set all the labels of the navigation menu as visible
         bottomNavigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
 
+        //get the logged in user from the auth
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //users are stored in /Users endpoint of our database so we have to create the database reference
+        //to the database
+        dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        //get the user id from the already created user instance of the firebase
+        userId = user.getUid();
+        fullNameTextView = (TextView) findViewById(R.id.welcome_user);
+
+        //now we need to get the details from the realtime database by using the child method
+        dbReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                if(userProfile != null) {
+                    String fullNameValue = userProfile.fullName;
+                    fullNameTextView.setText("Welcome " + fullNameValue);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(HomePageActivity.this, "SOMETHING WRONG HAPPENED!!", Toast.LENGTH_LONG).show();
+            }
+        });
 
         // Action Bar Styling
         ActionBar actionBar;
@@ -216,4 +266,25 @@ public class HomePageActivity extends AppCompatActivity {
                     return false;
                 }
             };
+
+
+    public void showTimePickerDialog(MenuItem item) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void logout(MenuItem item) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(HomePageActivity.this, MainActivity.class));
+    }
+
+    public void contactus(MenuItem item) {
+        myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        String text = "ssresilienceapp@gmail.com";
+
+        myClip = ClipData.newPlainText("text", text);
+        myClipboard.setPrimaryClip(myClip);
+
+        Toast.makeText(getApplicationContext(), "Email Address Copied!",Toast.LENGTH_SHORT).show();
+    }
 }

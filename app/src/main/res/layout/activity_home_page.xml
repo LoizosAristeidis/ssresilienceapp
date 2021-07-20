@@ -18,6 +18,7 @@
     tools:context=".HomePageActivity"
     tools:openDrawer="end">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -51,10 +52,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:gravity="center_horizontal"
-                    android:text="Welcome *user*"
+                    android:text=""
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="34sp" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/home_info"
@@ -188,8 +189,6 @@
     <com.google.android.material.navigation.NavigationView
         app:theme="@style/NavigationViewStyle"
         android:layout_width="wrap_content"
-        android:paddingTop="170dp"
-        android:paddingBottom="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/app_purple"
