@@ -51,8 +51,7 @@ import static com.example.ssresilience.R.color.buttoncolor_text;
 
 @SuppressWarnings("deprecation")
 public class HomePageActivity extends AppCompatActivity {
-    BottomNavigationView bottomNavigation;
-    private Button info_goals, info_measure_monitor, info_progress_rewards, info_share, info_reflect, button_back;
+    private Button info_goals, info_measure_monitor, info_progress_rewards, info_share, info_reflect, button_back, button_proceed;
     private TextView info_placeholder;
     private FirebaseUser user;
     private DatabaseReference dbReference;
@@ -66,11 +65,6 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        // Initialize the Navigation Menu
-        bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-//        openFragment(GoalsFragment.newInstance("", ""));
-
         // Initialize the Homepage buttons
         info_goals = findViewById(R.id.info_goals);
         info_goals.setOnClickListener(this::onClick);
@@ -83,9 +77,6 @@ public class HomePageActivity extends AppCompatActivity {
         info_reflect = findViewById(R.id.info_reflect);
         info_reflect.setOnClickListener(this::onClick);
         info_placeholder = findViewById(R.id.info_placeholder);
-
-        // Set all the labels of the navigation menu as visible
-        bottomNavigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
 
         //get the logged in user from the auth
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -129,6 +120,12 @@ public class HomePageActivity extends AppCompatActivity {
         button_back.setOnClickListener(v -> {
             this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
             this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
+        });
+
+        // Proceed button functionality
+        button_proceed = (Button) findViewById(R.id.button_proceed);
+        button_proceed.setOnClickListener(v -> {
+            startActivity(new Intent(HomePageActivity.this, InitialScreen.class));
         });
 
         // Drawer layout instance to toggle the menu icon to open
@@ -234,38 +231,6 @@ public class HomePageActivity extends AppCompatActivity {
                 break;
         }
     }
-
-    public void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
-    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @SuppressLint("NonConstantResourceId")
-                @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.navigation_goals:
-                            openFragment(GoalsFragment.newInstance("", ""));
-                            return true;
-                        case R.id.navigation_measure:
-                            openFragment(MeasureFragment.newInstance("", ""));
-                            return true;
-                        case R.id.navigation_progress:
-                            openFragment(ProgressFragment.newInstance("", ""));
-                            return true;
-                        case R.id.navigation_social:
-                            openFragment(SocialFragment.newInstance("", ""));
-                            return true;
-                        case R.id.navigation_reflect:
-                            openFragment(ReflectFragment.newInstance("", ""));
-                            return true;
-                    }
-                    return false;
-                }
-            };
 
 
     public void showTimePickerDialog(MenuItem item) {
