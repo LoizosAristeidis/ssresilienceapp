@@ -1,5 +1,7 @@
 package com.example.ssresilience;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,10 @@ public class GoalsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Button fg_goals_socialize, fg_goals_study, fg_goals_exercise, fg_goals_setgoal;
+
+    private int check = 0;
 
     public GoalsFragment() {
         // Required empty public constructor
@@ -59,6 +67,71 @@ public class GoalsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_goals, container, false);
+        // Initialize the 3 buttons
+        View rootView = inflater.inflate((R.layout.fragment_goals), container, false);
+
+        fg_goals_socialize = (Button)rootView.findViewById(R.id.fg_goals_socialize);
+        fg_goals_socialize.setOnClickListener(this::onClick);
+        fg_goals_study = (Button)rootView.findViewById(R.id.fg_goals_study);
+        fg_goals_study.setOnClickListener(this::onClick);
+        fg_goals_exercise = (Button)rootView.findViewById(R.id.fg_goals_exercise);
+        fg_goals_exercise.setOnClickListener(this::onClick);
+        fg_goals_setgoal = (Button)rootView.findViewById(R.id.fg_goals_setgoal);
+        fg_goals_setgoal.setOnClickListener(this::onClick);
+
+        return rootView;
+    }
+
+    @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fg_goals_socialize:
+                fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
+                fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
+                fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
+                fg_goals_study.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
+                fg_goals_exercise.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
+                fg_goals_exercise.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
+                check = 1;
+                break;
+            case R.id.fg_goals_study:
+                fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
+                fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
+                fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
+                fg_goals_study.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
+                fg_goals_exercise.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
+                fg_goals_exercise.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
+                check = 2;
+                break;
+            case R.id.fg_goals_exercise:
+                fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
+                fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
+                fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
+                fg_goals_study.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
+                fg_goals_exercise.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
+                fg_goals_exercise.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
+                check = 3;
+                break;
+            case R.id.fg_goals_setgoal:
+                if(check == 0) {
+                    Toast.makeText(getActivity(), "Please select one of the 3 Goals!",
+                            Toast.LENGTH_LONG).show();
+                }
+                if(check == 1) {
+                    Intent intent = new Intent(getActivity(), SelectedSocializeGoal.class);
+                    startActivity(intent);
+                }
+                if(check == 2) {
+                    Intent intent = new Intent(getActivity(), SelectedStudyGoal.class);
+                    startActivity(intent);
+                }
+                if(check == 3) {
+                    Intent intent = new Intent(getActivity(), SelectedExerciseGoal.class);
+                    startActivity(intent);
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

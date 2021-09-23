@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SSResilience">
-        <activity android:name=".InitialScreen"></activity>
+        <activity android:name=".SelectedExerciseGoal"></activity>
+        <activity android:name=".SelectedStudyGoal" />
+        <activity android:name=".SelectedSocializeGoal" />
+        <activity android:name=".InitialScreen" />
         <activity
             android:name=".GoalsFragment"
             android:configChanges="orientation|keyboardHidden"
