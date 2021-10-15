@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -33,6 +34,7 @@ public class SelectedExerciseGoal extends AppCompatActivity {
         exercise_bp3 = findViewById(R.id.exercise_bp_3);
         exercise_bp4 = findViewById(R.id.exercise_bp_4);
         exercise_button = findViewById(R.id.exercise_button);
+//        exercise_button.setOnClickListener(this::onClick);
 
         // Action Bar Styling
         ActionBar actionBar;
@@ -56,4 +58,9 @@ public class SelectedExerciseGoal extends AppCompatActivity {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
+
+//    public void onClick(View v) {
+//        Intent intent = new Intent(this, MeasureExercise.class);
+//        startActivity(intent);
+//    }
 }

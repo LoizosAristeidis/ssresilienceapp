@@ -22,26 +22,51 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/app_purple"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <FrameLayout
+    <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:background="@color/app_purple">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
+        <TextView
+            android:id="@+id/initial_screen_info_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="294dp"
+            android:text="First things first..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/initial_screen_info_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="294dp"
+            android:text="Please tap on the Goals tab on the bottom left of the screen to set your Goal, so you can get started!"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,9 +81,6 @@
 
         </FrameLayout>
 
-    </ScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -71,6 +93,7 @@
     android:textAlignment="center"
     android:textSize="32dp"
     app:itemBackground="@color/app_purple"
+    app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
     app:itemTextColor="@drawable/selector_drawer_item"
     app:menu="@menu/navigation_menu"
     tools:ignore="MissingConstraints,RtlCompat" />

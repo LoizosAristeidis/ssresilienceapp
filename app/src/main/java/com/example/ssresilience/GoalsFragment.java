@@ -12,7 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-/**
+ import com.example.ssresilience.R;
+ import com.example.ssresilience.SelectedExerciseGoal;
+ import com.example.ssresilience.SelectedSocializeGoal;
+ import com.example.ssresilience.SelectedStudyGoal;
+
+ /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GoalsFragment#newInstance} factory method to
  * create an instance of this fragment.

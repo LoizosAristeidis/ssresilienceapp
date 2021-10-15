@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,67 +10,59 @@
     android:textAllCaps="false"
     tools:context=".ProgressFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layoutDirection="ltr">
-
         <TextView
             android:id="@+id/fg_progress_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="100dp"
             android:text="Your Progress"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/fg_progress_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/fg_progress_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="32dp"
-                    android:text="Current Goal: "
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fg_progress_title" />
+        <TextView
+            android:id="@+id/fg_progress_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="32dp"
+            android:text="Current Goal: "
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_progress_title" />
 
-                <TextView
-                    android:id="@+id/fg_progress_header2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="50dp"
-                    android:text=""
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fg_progress_title" />
-
-                <TextView
-                    android:id="@+id/fg_progress_goalprogress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginEnd="239dp"
-                    android:text="Goal Progress:"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fg_progress_header" />
+        <EditText
+            android:id="@+id/fg_progress_header2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="50dp"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fg_progress_header"
+            app:layout_constraintTop_toBottomOf="@+id/fg_progress_title" />
 
         <TextView
+            android:id="@+id/fg_progress_goalprogress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="50dp"
+            android:text="Goal Progress:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_progress_header" />
+
+        <EditText
             android:id="@+id/fg_progress_points"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -106,22 +98,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_progress_points" />
 
-                <TextView
-                    android:id="@+id/fg_progress_awardstitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginEnd="210dp"
-                    android:text="Awards Unlocked:"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fg_progress_bar" />
-
         <TextView
+            android:id="@+id/fg_progress_awardstitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="50dp"
+            android:text="Awards Unlocked:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_progress_bar" />
+
+        <EditText
             android:id="@+id/fg_progress_award1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -134,22 +123,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_progress_awardstitle" />
 
-                <TextView
-                    android:id="@+id/fg_progress_badgestitle"
-                    android:layout_width="167dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginEnd="213dp"
-                    android:text="Badges Obtained:"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fg_progress_award1" />
-
         <TextView
+            android:id="@+id/fg_progress_badgestitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="50dp"
+            android:text="Badges Obtained:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_progress_award1" />
+
+        <EditText
             android:id="@+id/fg_progress_badge1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -169,7 +155,6 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
             android:text="The World Health Organization Recommends:"
-            android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -321,23 +306,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader5" />
 
-                <TextView
-                    android:id="@+id/fg_progress_fblink"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="32dp"
-                    android:text="(https://www.facebook.com/coronavirus_info/core_tips)"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent5" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/fg_progress_fblink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="(https://www.facebook.com/coronavirus_info/core_tips)"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent5" />
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

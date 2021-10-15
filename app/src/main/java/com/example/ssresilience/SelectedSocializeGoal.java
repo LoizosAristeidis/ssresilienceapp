@@ -43,6 +43,7 @@ public class SelectedSocializeGoal extends AppCompatActivity {
         socialize_bp3 = findViewById(R.id.socialize_bp_3);
         socialize_bp4 = findViewById(R.id.socialize_bp_4);
         socialize_button = findViewById(R.id.socialize_button);
+//        socialize_button.setOnClickListener(this::onClick);
 
         // Action Bar Styling
         ActionBar actionBar;
@@ -66,4 +67,9 @@ public class SelectedSocializeGoal extends AppCompatActivity {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
+
+//    public void onClick(View v) {
+//        Intent intent = new Intent(this, MeasureSocialize.class);
+//        startActivity(intent);
+//    }
 }
