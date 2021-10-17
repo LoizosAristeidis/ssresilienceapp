@@ -1,424 +1,431 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fg_social_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_purple"
-    android:fillViewport="true"
-    android:layoutDirection="ltr"
     tools:context=".SocialFragment">
 
-    <TextView
-        android:id="@+id/fg_social_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
-        android:text="Share your progression"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/fg_social_facebookimage"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/facebook"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
-
-    <ImageView
-        android:id="@+id/fg_social_messengerimage"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/messenger"
-        app:layout_constraintStart_toEndOf="@+id/fg_social_facebookimage"
-        app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
-
-    <ImageView
-        android:id="@+id/fg_social_twitterimage"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/twitter"
-        app:layout_constraintStart_toEndOf="@+id/fg_social_messengerimage"
-        app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
-
-    <ImageView
-        android:id="@+id/fg_social_whatsappimage"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="50dp"
-        android:src="@drawable/whatsapp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fg_social_twitterimage"
-        app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
-
-    <TextView
-        android:id="@+id/fg_social_leaderboard_header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="32dp"
-        android:text="Leaderboard"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_social_messengerimage" />
-
-    <TableLayout
-        android:id="@+id/fg_social_leaderboard"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="420dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="23dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_social_leaderboard_header">
+        android:layout_height="match_parent"
+        android:background="@color/app_purple"
+        android:fillViewport="true"
+        android:layoutDirection="ltr">
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row1"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/fg_social_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:text="Share your progression"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/fg_social_facebookimage"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/facebook"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp"
-                android:text="Country"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/fg_social_messengerimage"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/messenger"
+            app:layout_constraintStart_toEndOf="@+id/fg_social_facebookimage"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp"
-                android:text="Points"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/fg_social_twitterimage"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/twitter"
+            app:layout_constraintStart_toEndOf="@+id/fg_social_messengerimage"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
-        </TableRow>
+        <ImageView
+            android:id="@+id/fg_social_whatsappimage"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="50dp"
+            android:src="@drawable/whatsapp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fg_social_twitterimage"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_emptyrow"
+        <TextView
+            android:id="@+id/fg_social_leaderboard_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="32dp"
+            android:text="Leaderboard"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_messengerimage" />
+
+        <TableLayout
+            android:id="@+id/fg_social_leaderboard"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:paddingTop="22dp" />
+            android:layout_height="420dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_leaderboard_header">
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row1"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry1"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry1"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Country"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry1"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Points"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
-        </TableRow>
+            </TableRow>
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_emptyrow"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingTop="22dp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry2"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry2"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry1"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry2"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry1"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry1"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry3"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry3"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry2"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry3"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry2"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry2"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row6"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry4"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry4"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry3"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry4"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry3"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry3"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row7"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry5"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry5"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry4"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry5"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry4"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry4"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row8"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry6"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry6"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry5"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry6"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry5"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry5"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row9"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry7"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry7"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry6"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry7"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry6"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry6"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        <TableRow
-            android:id="@+id/fg_social_leaderboard_row10"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_rank_entry8"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_country_entry8"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry7"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/fg_social_leaderboard_points_entry8"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry7"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry7"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
-    </TableLayout>
+            </TableRow>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TableRow
+                android:id="@+id/fg_social_leaderboard_row10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_rank_entry8"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_country_entry8"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/fg_social_leaderboard_points_entry8"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -59,6 +59,12 @@ public class SocialFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_social, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_social, container, false);
+
+        // Get the Selected Goal data from the GoalsFragment
+        Bundle bundle = this.getArguments();
+        String selected_goal = bundle.getString("selected_goal", "");
+
+        return rootView;
     }
 }

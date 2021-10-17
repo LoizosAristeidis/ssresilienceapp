@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +60,24 @@ public class ProgressFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_progress, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_progress, container, false);
+
+        // Get the Selected Goal data from the GoalsFragment
+        Bundle bundle = this.getArguments();
+        String selected_goal = bundle.getString("selected_goal", "");
+
+        // Set the Progress Fragment Text according to the selected Goal
+        TextView fg_progress_header2 = (TextView)rootView.findViewById(R.id.fg_progress_header2);
+        if (selected_goal.equals("goal_socialize")) {
+            fg_progress_header2.setText("Socialize More");
+        }
+        else if (selected_goal.equals("goal_study")) {
+            fg_progress_header2.setText("Enhance Study Motives");
+        }
+        else if (selected_goal.equals("goal_exercise")) {
+            fg_progress_header2.setText("Physical Exercise");
+        }
+
+        return rootView;
     }
 }

@@ -1,143 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fg_reflect_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_purple"
-    android:fillViewport="true"
-    android:layoutDirection="ltr"
     tools:context=".ReflectFragment">
 
-    <TextView
-        android:id="@+id/fg_reflect_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
-        android:text="At the end of the day, did you..."
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_purple"
+        android:fillViewport="true"
+        android:layoutDirection="ltr">
 
-    <TextView
-        android:id="@+id/fg_reflect_question1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title" />
+        <TextView
+            android:id="@+id/fg_reflect_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="32dp"
+            android:text="At the end of the day, did you..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/fg_reflect_checkbox1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/buttoncolor_text_reset"
-        android:checked="false"
-        android:onClick="onCheckboxOneClicked"
-        android:text=""
-        android:textColor="@color/app_purple"
-        android:textColorHint="@color/app_purple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title"
-        tools:ignore="OnClick" />
+        <TextView
+            android:id="@+id/fg_reflect_question1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="100dp"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title" />
 
-    <TextView
-        android:id="@+id/fg_reflect_question2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1" />
+        <CheckBox
+            android:id="@+id/fg_reflect_checkbox1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/buttoncolor_text_reset"
+            android:checked="false"
+            android:onClick="onCheckboxOneClicked"
+            android:text=""
+            android:textColor="@color/app_purple"
+            android:textColorHint="@color/app_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title"
+            tools:ignore="OnClick" />
 
-    <CheckBox
-        android:id="@+id/fg_reflect_checkbox2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/buttoncolor_text_reset"
-        android:checked="false"
-        android:onClick="onCheckboxTwoClicked"
-        android:text=""
-        android:textColor="@color/app_purple"
-        android:textColorHint="@color/app_purple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1"
-        tools:ignore="OnClick" />
+        <TextView
+            android:id="@+id/fg_reflect_question2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1" />
 
-    <TextView
-        android:id="@+id/fg_reflect_question3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2" />
+        <CheckBox
+            android:id="@+id/fg_reflect_checkbox2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/buttoncolor_text_reset"
+            android:checked="false"
+            android:onClick="onCheckboxTwoClicked"
+            android:text=""
+            android:textColor="@color/app_purple"
+            android:textColorHint="@color/app_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1"
+            tools:ignore="OnClick" />
 
-    <CheckBox
-        android:id="@+id/fg_reflect_checkbox3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/buttoncolor_text_reset"
-        android:checked="false"
-        android:onClick="onCheckboxThreeClicked"
-        android:text=""
-        android:textColor="@color/app_purple"
-        android:textColorHint="@color/app_purple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2"
-        tools:ignore="OnClick" />
+        <TextView
+            android:id="@+id/fg_reflect_question3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2" />
 
-    <TextView
-        android:id="@+id/fg_reflect_question4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="117dp"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3" />
+        <CheckBox
+            android:id="@+id/fg_reflect_checkbox3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/buttoncolor_text_reset"
+            android:checked="false"
+            android:onClick="onCheckboxThreeClicked"
+            android:text=""
+            android:textColor="@color/app_purple"
+            android:textColorHint="@color/app_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2"
+            tools:ignore="OnClick" />
 
-    <CheckBox
-        android:id="@+id/fg_reflect_checkbox4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="112dp"
-        android:background="@color/buttoncolor_text_reset"
-        android:checked="false"
-        android:onClick="onCheckboxFourClicked"
-        android:text=""
-        android:textColor="@color/app_purple"
-        android:textColorHint="@color/app_purple"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3"
-        tools:ignore="OnClick" />
+        <TextView
+            android:id="@+id/fg_reflect_question4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="117dp"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <CheckBox
+            android:id="@+id/fg_reflect_checkbox4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="112dp"
+            android:background="@color/buttoncolor_text_reset"
+            android:checked="false"
+            android:onClick="onCheckboxFourClicked"
+            android:text=""
+            android:textColor="@color/app_purple"
+            android:textColorHint="@color/app_purple"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3"
+            tools:ignore="OnClick" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

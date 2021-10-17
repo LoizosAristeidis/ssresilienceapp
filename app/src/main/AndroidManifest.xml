@@ -12,9 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SSResilience">
-        <activity android:name=".SelectedExerciseGoal" />
-        <activity android:name=".SelectedStudyGoal" />
-        <activity android:name=".SelectedSocializeGoal" />
         <activity android:name=".InitialScreen" />
         <activity
             android:name=".GoalsFragment"

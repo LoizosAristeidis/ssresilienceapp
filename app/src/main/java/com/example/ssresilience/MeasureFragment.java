@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +64,28 @@ public class MeasureFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_measure, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_measure, container, false);
+
+        // Get the Selected Goal data from the GoalsFragment
+        Bundle bundle = this.getArguments();
+        String selected_goal = bundle.getString("selected_goal", "");
+
+        // Set the Measure Fragment Text according to the selected Goal
+        TextView fg_measure_title = (TextView)rootView.findViewById(R.id.fg_measure_title);
+        TextView fg_measure_text = (TextView)rootView.findViewById(R.id.fg_measure_text);
+        if (selected_goal.equals("goal_socialize")) {
+            fg_measure_title.setText("Socialize More");
+            fg_measure_text.setText("Measure the level of noise of your surrounding environment, in order to let the app know you're socializing with people.");
+        }
+        else if (selected_goal.equals("goal_study")) {
+            fg_measure_title.setText("Enhance Study Motives");
+            fg_measure_text.setText("Allow the app to calculate and determine your stress level, by taking the Stress Test. Remember, a higher stress level leads to lower study motives.");
+        }
+        else if (selected_goal.equals("goal_exercise")) {
+            fg_measure_title.setText("Physical Exercise");
+            fg_measure_text.setText("Measure the level of your current physical activity state by utilizing your device's accelerometer sensor.");
+        }
+
+        return rootView;
     }
 }
