@@ -87,25 +87,25 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String fullName = registerFullName.getText().toString().trim();
 
         if(email.isEmpty()) {
-            registerEmail.setError("E-mail IS REQUIRED");
+            registerEmail.setError("E-mail address is required");
             registerEmail.requestFocus();
             return;
         }
 
         if(fullName.isEmpty()) {
-            registerFullName.setError("Full Name IS REQUIRED");
+            registerFullName.setError("Full Name is required");
             registerFullName.requestFocus();
             return;
         }
 
         if(age.isEmpty()) {
-            registerAge.setError("Age IS REQUIRED");
+            registerAge.setError("Age is required");
             registerAge.requestFocus();
             return;
         }
 
         if(password.isEmpty()) {
-            registerPassword.setError("Password IS REQUIRED");
+            registerPassword.setError("Password is required");
             registerPassword.requestFocus();
             return;
         }

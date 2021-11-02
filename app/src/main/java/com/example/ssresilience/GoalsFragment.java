@@ -145,31 +145,19 @@ public class GoalsFragment extends Fragment {
                             Toast.LENGTH_LONG).show();
                 }
                 if(check == 1) {
-                    Bundle result = new Bundle();
-                    result.putInt("goal", 1);
-                    getParentFragmentManager().setFragmentResult("selected_goal", result);
-                    ProgressFragment fragInfo = new ProgressFragment();
-                    fragInfo.setArguments(result);
                     Toast.makeText(getActivity(), "Current Goal: Socialize More",
                             Toast.LENGTH_LONG).show();
+                    ((DataSite) getActivity().getApplication()).setGoal("socialize");
                 }
                 if(check == 2) {
-                    Bundle result = new Bundle();
-                    result.putInt("goal", 2);
-                    getParentFragmentManager().setFragmentResult("selected_goal", result);
-                    ProgressFragment fragInfo = new ProgressFragment();
-                    fragInfo.setArguments(result);
                     Toast.makeText(getActivity(), "Current Goal: Enhance Study Motives",
                             Toast.LENGTH_LONG).show();
+                    ((DataSite) getActivity().getApplication()).setGoal("study");
                 }
                 if(check == 3) {
-                    Bundle result = new Bundle();
-                    result.putInt("goal", 3);
-                    getParentFragmentManager().setFragmentResult("selected_goal", result);
-                    ProgressFragment fragInfo = new ProgressFragment();
-                    fragInfo.setArguments(result);
                     Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
                             Toast.LENGTH_LONG).show();
+                    ((DataSite) getActivity().getApplication()).setGoal("exercise");
                 }
                 break;
             default:

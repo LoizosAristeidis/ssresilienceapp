@@ -27,6 +27,7 @@ public class ProgressFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String goal;
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -65,23 +66,24 @@ public class ProgressFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_progress, container, false);
 
-        // Retrieve the selected Goal from the Goals Fragment
-        getParentFragmentManager().setFragmentResultListener("selected_goal", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                int goal = bundle.getInt("goal");
+        // Retrieve the selected Goal from the DataSite Class
+        goal = ((DataSite)getActivity().getApplication()).getGoal();
 
-                // Set the Progress Fragment Text according to the selected Goal
-                TextView fg_progress_header2 = (TextView) rootView.findViewById(R.id.fg_progress_header2);
-                if (goal == 1) {
-                    fg_progress_header2.setText("Socialize More");
-                } if (goal == 2) {
-                    fg_progress_header2.setText("Enhance Study Motives");
-                } if (goal == 3) {
-                    fg_progress_header2.setText("Physical Exercise");
-                }
+        // Initialize the Fragment's TextViews
+        TextView fg_progress_header2 = (TextView) rootView.findViewById(R.id.fg_progress_header2);
+
+        // Fill the Fragment's TextViews according to the selected Goal
+        if (goal != null) {
+            if (goal.equals("socialize")) {
+                fg_progress_header2.setText("Socialize More");
             }
-        });
+            if (goal.equals("study")) {
+                fg_progress_header2.setText("Enhance Study Motives");
+            }
+            if (goal.equals("exercise")) {
+                fg_progress_header2.setText("Physical Exercise");
+            }
+        }
 
         return rootView;
     }

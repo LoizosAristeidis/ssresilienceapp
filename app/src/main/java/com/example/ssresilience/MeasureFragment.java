@@ -31,6 +31,7 @@ public class MeasureFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String goal;
 
     public MeasureFragment() {
         // Required empty public constructor
@@ -69,29 +70,29 @@ public class MeasureFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_measure, container, false);
 
-        // Retrieve the selected Goal from the Goals Fragment
-        getParentFragmentManager().setFragmentResultListener("selected_goal2", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle2) {
-                int goal2 = bundle2.getInt("goal2");
+        // Retrieve the selected Goal from the DataSite Class
+        goal = ((DataSite)getActivity().getApplication()).getGoal();
 
-                // Set the Measure Fragment Text according to the selected Goal
-                TextView fg_measure_title = (TextView)rootView.findViewById(R.id.fg_measure_title);
-                TextView fg_measure_text = (TextView)rootView.findViewById(R.id.fg_measure_text);
-                if (goal2 == 1) {
-                    fg_measure_title.setText("Socialize More");
-                    fg_measure_text.setText("Measure the level of noise of your surrounding environment, in order to let the app know you're socializing with people.");
-                }
-                if (goal2 == 2) {
-                    fg_measure_title.setText("Enhance Study Motives");
-                    fg_measure_text.setText("Allow the app to calculate and determine your stress level, by taking the Stress Test. Remember, a higher stress level leads to lower study motives.");
-                }
-                if (goal2 == 3) {
-                    fg_measure_title.setText("Physical Exercise");
-                    fg_measure_text.setText("Measure the level of your current physical activity state by utilizing your device's accelerometer sensor.");
-                }
+        // Initialize the Fragment's TextViews
+        TextView fg_measure_title = (TextView)rootView.findViewById(R.id.fg_measure_title);
+        TextView fg_measure_text = (TextView)rootView.findViewById(R.id.fg_measure_text);
+
+
+        // Fill the Fragment's TextViews according to the selected Goal
+        if (goal != null) {
+            if (goal.equals("socialize")) {
+                fg_measure_title.setText("Socialize More");
+                fg_measure_text.setText("Measure the level of noise of your surrounding environment, in order to let the app know you're socializing with people.");
             }
-        });
+            if (goal.equals("study")) {
+                fg_measure_title.setText("Enhance Study Motives");
+                fg_measure_text.setText("Allow the app to calculate and determine your stress level, by taking the Stress Test. Remember, a higher stress level leads to lower study motives.");
+            }
+            if (goal.equals("exercise")) {
+                fg_measure_title.setText("Physical Exercise");
+                fg_measure_text.setText("Measure the level of your current physical activity state by utilizing your device's accelerometer sensor.");
+            }
+        }
 
         return rootView;
     }

@@ -23,6 +23,7 @@ public class SocialFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String goal;
 
     public SocialFragment() {
         // Required empty public constructor
@@ -60,10 +61,6 @@ public class SocialFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_social, container, false);
-
-        // Get the Selected Goal data from the GoalsFragment
-        Bundle bundle = this.getArguments();
-        String selected_goal = bundle.getString("selected_goal", "");
 
         return rootView;
     }

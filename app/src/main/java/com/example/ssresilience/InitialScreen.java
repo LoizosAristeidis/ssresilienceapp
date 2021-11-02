@@ -143,4 +143,5 @@ public class InitialScreen extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Email Address Copied!",Toast.LENGTH_SHORT).show();
     }
+
 }
