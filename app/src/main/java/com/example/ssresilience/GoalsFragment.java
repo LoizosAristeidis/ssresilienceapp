@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -30,9 +32,6 @@ public class GoalsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-//    private String socialize_goal;
-//    private String study_goal;
-//    private String exercise_goal;
 
     private Button fg_goals_socialize;
     private Button fg_goals_study;
@@ -77,7 +76,6 @@ public class GoalsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        // Initialize the 3 buttons
         View rootView = inflater.inflate((R.layout.fragment_goals), container, false);
 
         fg_goals_socialize = (Button)rootView.findViewById(R.id.fg_goals_socialize);
@@ -138,6 +136,8 @@ public class GoalsFragment extends Fragment {
             default:
                 break;
         }
+        // Check which Goal is selected, then create a Bundle to share the selected goal variable across all fragments
+        // 1 = Socialize More, 2 = Enhance Study Motives, 3 = Physical Exercise
         switch (v.getId()) {
             case R.id.fg_goals_setgoal:
                 if(check == 0) {
@@ -145,37 +145,31 @@ public class GoalsFragment extends Fragment {
                             Toast.LENGTH_LONG).show();
                 }
                 if(check == 1) {
-                    // Move between fragments
-                    Fragment fragment = new MeasureFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("selected_goal", "goal_socialize");
-                    fragment.setArguments(bundle);
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.fg_goals_container, fragment)
-                            .commit();
+                    Bundle result = new Bundle();
+                    result.putInt("goal", 1);
+                    getParentFragmentManager().setFragmentResult("selected_goal", result);
+                    ProgressFragment fragInfo = new ProgressFragment();
+                    fragInfo.setArguments(result);
+                    Toast.makeText(getActivity(), "Current Goal: Socialize More",
+                            Toast.LENGTH_LONG).show();
                 }
                 if(check == 2) {
-                    // Move between fragments
-                    Fragment fragment = new MeasureFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("selected_goal", "goal_study");
-                    fragment.setArguments(bundle);
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.fg_goals_container, fragment)
-                            .commit();
+                    Bundle result = new Bundle();
+                    result.putInt("goal", 2);
+                    getParentFragmentManager().setFragmentResult("selected_goal", result);
+                    ProgressFragment fragInfo = new ProgressFragment();
+                    fragInfo.setArguments(result);
+                    Toast.makeText(getActivity(), "Current Goal: Enhance Study Motives",
+                            Toast.LENGTH_LONG).show();
                 }
                 if(check == 3) {
-                    // Move between fragments
-                    Fragment fragment = new MeasureFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("selected_goal", "goal_exercise");
-                    fragment.setArguments(bundle);
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.fg_goals_container, fragment)
-                            .commit();
+                    Bundle result = new Bundle();
+                    result.putInt("goal", 3);
+                    getParentFragmentManager().setFragmentResult("selected_goal", result);
+                    ProgressFragment fragInfo = new ProgressFragment();
+                    fragInfo.setArguments(result);
+                    Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
+                            Toast.LENGTH_LONG).show();
                 }
                 break;
             default:

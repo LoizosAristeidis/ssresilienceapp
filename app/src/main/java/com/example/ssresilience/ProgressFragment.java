@@ -2,12 +2,15 @@ package com.example.ssresilience;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,21 +65,23 @@ public class ProgressFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_progress, container, false);
 
-        // Get the Selected Goal data from the GoalsFragment
-        Bundle bundle = this.getArguments();
-        String selected_goal = bundle.getString("selected_goal", "");
+        // Retrieve the selected Goal from the Goals Fragment
+        getParentFragmentManager().setFragmentResultListener("selected_goal", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                int goal = bundle.getInt("goal");
 
-        // Set the Progress Fragment Text according to the selected Goal
-        TextView fg_progress_header2 = (TextView)rootView.findViewById(R.id.fg_progress_header2);
-        if (selected_goal.equals("goal_socialize")) {
-            fg_progress_header2.setText("Socialize More");
-        }
-        else if (selected_goal.equals("goal_study")) {
-            fg_progress_header2.setText("Enhance Study Motives");
-        }
-        else if (selected_goal.equals("goal_exercise")) {
-            fg_progress_header2.setText("Physical Exercise");
-        }
+                // Set the Progress Fragment Text according to the selected Goal
+                TextView fg_progress_header2 = (TextView) rootView.findViewById(R.id.fg_progress_header2);
+                if (goal == 1) {
+                    fg_progress_header2.setText("Socialize More");
+                } if (goal == 2) {
+                    fg_progress_header2.setText("Enhance Study Motives");
+                } if (goal == 3) {
+                    fg_progress_header2.setText("Physical Exercise");
+                }
+            }
+        });
 
         return rootView;
     }

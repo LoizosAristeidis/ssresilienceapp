@@ -31,13 +31,15 @@
 
         <TextView
             android:id="@+id/fg_reflect_question1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="100dp"
-            android:text=""
+            android:layout_marginEnd="16dp"
+            android:text="Selected goal Reflect Question 1 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title" />
 
@@ -59,13 +61,15 @@
 
         <TextView
             android:id="@+id/fg_reflect_question2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="60dp"
-            android:text=""
+            android:layout_marginEnd="16dp"
+            android:text="Selected goal Reflect Question 2 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1" />
 
@@ -87,13 +91,15 @@
 
         <TextView
             android:id="@+id/fg_reflect_question3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="60dp"
-            android:text=""
+            android:layout_marginEnd="16dp"
+            android:text="Selected goal Reflect Question 3 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2" />
 
@@ -115,15 +121,15 @@
 
         <TextView
             android:id="@+id/fg_reflect_question4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="60dp"
-            android:layout_marginBottom="117dp"
-            android:text=""
+            android:layout_marginEnd="16dp"
+            android:text="Selected goal Reflect Question 4 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3" />
 
@@ -133,14 +139,12 @@
             android:layout_height="50dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="112dp"
             android:background="@color/buttoncolor_text_reset"
             android:checked="false"
             android:onClick="onCheckboxFourClicked"
             android:text=""
             android:textColor="@color/app_purple"
             android:textColorHint="@color/app_purple"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3"
             tools:ignore="OnClick" />

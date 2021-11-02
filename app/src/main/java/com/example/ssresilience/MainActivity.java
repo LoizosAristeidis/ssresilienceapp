@@ -51,6 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Hide the Action Bar for this Activity
         getSupportActionBar().hide();
+
+        try {
+
+            Intent intent = getIntent();
+            String goal2 = intent.getStringExtra("goal2");
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
