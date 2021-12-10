@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="70dp"
         android:autofillHints="E-mail"
         android:backgroundTint="@android:color/white"
@@ -47,8 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
-        android:backgroundTint="@android:color/white"
         android:autofillHints="E-mail"
+        android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="@string/fullname"
         android:inputType="textPersonName"
@@ -65,23 +66,19 @@
 
     <EditText
         android:id="@+id/register_age"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
         android:autofillHints="E-mail"
+        android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="@string/age"
         android:inputType="textPersonName"
-        android:backgroundTint="@android:color/white"
         android:text=""
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_fullname"
-        app:layout_constraintVertical_bias="0.068"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextFields" />
 
     <EditText
@@ -90,8 +87,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
-        android:backgroundTint="@android:color/white"
         android:autofillHints="E-mail"
+        android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -101,7 +98,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_age"
+        app:layout_constraintTop_toBottomOf="@+id/register_fullname"
         app:layout_constraintVertical_bias="0.068"
         tools:ignore="TextFields" />
 
@@ -147,12 +144,11 @@
         android:minHeight="50dp"
         android:progress="1"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/register_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953"
+        app:layout_constraintTop_toBottomOf="@+id/register_text"
         tools:ignore="MissingConstraints" />
 
     <Button

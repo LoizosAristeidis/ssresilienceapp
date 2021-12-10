@@ -51,13 +51,14 @@
             android:layout_marginEnd="32dp"
             android:background="@color/buttoncolor_text_reset"
             android:checked="false"
-            android:onClick="onCheckboxOneClicked"
             android:text=""
             android:textColor="@color/app_purple"
             android:textColorHint="@color/app_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title"
-            tools:ignore="OnClick" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title"/>
+<!--            tools:ignore="OnClick"-->
+<!--            android:onClick="onCheckboxOneClicked"-->
+
 
         <TextView
             android:id="@+id/fg_reflect_question2"
@@ -71,7 +72,8 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1"
+            />
 
         <CheckBox
             android:id="@+id/fg_reflect_checkbox2"
@@ -81,13 +83,14 @@
             android:layout_marginEnd="32dp"
             android:background="@color/buttoncolor_text_reset"
             android:checked="false"
-            android:onClick="onCheckboxTwoClicked"
             android:text=""
             android:textColor="@color/app_purple"
             android:textColorHint="@color/app_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1"
-            tools:ignore="OnClick" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1"/>
+<!--            tools:ignore="OnClick"-->
+<!--            android:onClick="onCheckboxTwoClicked"-->
+
 
         <TextView
             android:id="@+id/fg_reflect_question3"
@@ -111,13 +114,14 @@
             android:layout_marginEnd="32dp"
             android:background="@color/buttoncolor_text_reset"
             android:checked="false"
-            android:onClick="onCheckboxThreeClicked"
             android:text=""
             android:textColor="@color/app_purple"
             android:textColorHint="@color/app_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2"
-            tools:ignore="OnClick" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2"/>
+<!--            tools:ignore="OnClick"-->
+<!--            android:onClick="onCheckboxThreeClicked"-->
+
 
         <TextView
             android:id="@+id/fg_reflect_question4"
@@ -141,13 +145,14 @@
             android:layout_marginEnd="32dp"
             android:background="@color/buttoncolor_text_reset"
             android:checked="false"
-            android:onClick="onCheckboxFourClicked"
             android:text=""
             android:textColor="@color/app_purple"
             android:textColorHint="@color/app_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3"
-            tools:ignore="OnClick" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3"/>
+<!--            tools:ignore="OnClick"-->
+<!--            android:onClick="onCheckboxFourClicked"-->
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

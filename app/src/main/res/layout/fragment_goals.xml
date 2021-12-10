@@ -12,8 +12,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="false"
         android:layout_marginTop="0dp"
-        android:layoutDirection="ltr"
         android:background="@color/app_purple"
+        android:layoutDirection="ltr"
         app:layout_goneMarginTop="0dp">
 
         <TextView
@@ -36,9 +36,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
-            android:text="Tap on an option to see some tips for reaching your selected goal"
+            android:text="Depending on your selected goal, the measuring process will initiate\n\nTap on the options for more information"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="150dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/button_border_rect"
             android:capitalize="none"
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="145dp"
+            android:layout_marginTop="195dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/button_border_rect"
             android:text="Enhance Study Motives"
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="190dp"
+            android:layout_marginTop="240dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/button_border_rect"
             android:text="Physical Exercise"
@@ -117,9 +117,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="300dp"
             android:layout_marginEnd="120dp"
-            android:layout_marginBottom="136dp"
+            android:layout_marginBottom="80dp"
             android:background="@drawable/button_border"
             android:text="SET GOAL!"
             android:textAlignment="center"
@@ -127,8 +126,8 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_goals_exercise" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

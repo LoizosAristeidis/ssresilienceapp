@@ -1,5 +1,6 @@
 package com.example.ssresilience;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -32,6 +33,7 @@ public class MeasureFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String goal;
+    private Button fg_measure_button_go;
 
     public MeasureFragment() {
         // Required empty public constructor
@@ -76,6 +78,8 @@ public class MeasureFragment extends Fragment {
         // Initialize the Fragment's TextViews
         TextView fg_measure_title = (TextView)rootView.findViewById(R.id.fg_measure_title);
         TextView fg_measure_text = (TextView)rootView.findViewById(R.id.fg_measure_text);
+        Button fg_measure_button_go = (Button)rootView.findViewById(R.id.fg_measure_button_go);
+        fg_measure_button_go.setOnClickListener(this::onClick);
 
 
         // Fill the Fragment's TextViews according to the selected Goal
@@ -95,5 +99,15 @@ public class MeasureFragment extends Fragment {
         }
 
         return rootView;
+    }
+
+    @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fg_measure_button_go:
+                Toast.makeText(getActivity(), "Coming Soon!",
+                        Toast.LENGTH_LONG).show();
+                break;
+        }
     }
 }

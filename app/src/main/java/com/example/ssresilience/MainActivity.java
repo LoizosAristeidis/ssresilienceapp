@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button register, login_btn;
+    private Button register, login_btn, login_forgot_password;
     private EditText login_email, login_password;
     private ProgressBar progressBar;
     private String test;
@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         login_btn = (Button) findViewById(R.id.login_btn);
         login_btn.setOnClickListener(this);
+
+        login_forgot_password = (Button) findViewById(R.id.login_forgot_password);
+        login_forgot_password.setOnClickListener(this);
 
         login_email = (EditText) findViewById(R.id.login_email);
         login_password = (EditText) findViewById(R.id.login_password);
@@ -71,6 +74,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.login_btn:
                 userLogin();
+                break;
+            case R.id.login_forgot_password:
+                Toast.makeText(MainActivity.this,"Coming Soon!",
+                        Toast.LENGTH_LONG).show();
                 break;
         }
     }

@@ -87,6 +87,7 @@ public class GoalsFragment extends Fragment {
         fg_goals_setgoal = (Button)rootView.findViewById(R.id.fg_goals_setgoal);
         fg_goals_setgoal.setOnClickListener(this::onClick);
         fg_goals_placeholder = (TextView)rootView.findViewById(R.id.fg_goals_placeholder);
+        
 
         return rootView;
     }
@@ -145,7 +146,7 @@ public class GoalsFragment extends Fragment {
                             Toast.LENGTH_LONG).show();
                 }
                 if(check == 1) {
-                    Toast.makeText(getActivity(), "Current Goal: Socialize More",
+                    Toast.makeText(getActivity(), "Level of Noise Measurement has started!",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("socialize");
                 }
@@ -155,7 +156,7 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGoal("study");
                 }
                 if(check == 3) {
-                    Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
+                    Toast.makeText(getActivity(), "Physical Activity Measurement has started!",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("exercise");
                 }

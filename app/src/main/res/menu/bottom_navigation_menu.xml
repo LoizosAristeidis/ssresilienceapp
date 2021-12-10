@@ -4,10 +4,10 @@
         android:id="@+id/navigation_goals"
         android:icon="@drawable/goals"
         android:title="Goals" />
-    <item
-        android:id="@+id/navigation_measure"
-        android:icon="@drawable/measure"
-        android:title="Measure" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_measure"-->
+<!--        android:icon="@drawable/measure"-->
+<!--        android:title="Measure" />-->
     <item
         android:id="@+id/navigation_progress"
         android:icon="@drawable/progress"
