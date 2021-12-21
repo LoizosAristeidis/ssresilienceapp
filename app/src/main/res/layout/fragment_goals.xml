@@ -38,7 +38,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
-            android:text="Depending on your selected goal, the measuring process will initiate\n\nTap on the options for more information"
+            android:text="Select a Goal from the available ones below\n\nTap on the options for more information"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="18sp"

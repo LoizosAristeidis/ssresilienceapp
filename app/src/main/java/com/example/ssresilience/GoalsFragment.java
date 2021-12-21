@@ -2,6 +2,7 @@ package com.example.ssresilience;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaRecorder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,7 +90,6 @@ public class GoalsFragment extends Fragment {
         fg_goals_setgoal = (Button)rootView.findViewById(R.id.fg_goals_setgoal);
         fg_goals_setgoal.setOnClickListener(this::onClick);
         fg_goals_placeholder = (TextView)rootView.findViewById(R.id.fg_goals_placeholder);
-        
 
         return rootView;
     }
@@ -146,7 +148,7 @@ public class GoalsFragment extends Fragment {
                             Toast.LENGTH_LONG).show();
                 }
                 if(check == 1) {
-                    Toast.makeText(getActivity(), "Level of Noise Measurement has started!",
+                    Toast.makeText(getActivity(), "Current Goal: Socialize More",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("socialize");
                 }
@@ -156,7 +158,7 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGoal("study");
                 }
                 if(check == 3) {
-                    Toast.makeText(getActivity(), "Physical Activity Measurement has started!",
+                    Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("exercise");
                 }

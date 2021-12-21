@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fg_gad_test_info_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GadTest">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="false"
+        android:layout_marginTop="0dp"
+        android:background="@color/app_purple"
+        android:layoutDirection="ltr"
+        app:layout_goneMarginTop="0dp">
+
+        <TextView
+            android:id="@+id/gad_help_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:gravity="center"
+            android:text="Stress Test Help"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/gad_help_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="This application interprets, and automatically calculates your test score when you click 'SUBMIT'.\n\nThe Stress Test score counts towards your progress. Points range from 0 (Not at all), to 3 (Nearly every day), according to your choice in each category. The final score determines your stress level as follows:\n\n0-4: Normal Stress Level\n5-9: Mild Stress Level\n10-14: Moderate Stress Level\n
+            15-21: Severe Stress Level\n\nWe encourage you to be perfectly honest about your choices, as it is vital for the application to correctly calculate your score."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gad_help_heading"
+            app:lineHeight="24sp" />
+
+        <Button
+            android:id="@+id/gad_help_back"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/table_option"
+            android:gravity="center"
+            android:text="X"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gad_help_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -46,6 +48,13 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 import org.xmlpull.v1.XmlPullParser;
 
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+
+import static android.Manifest.*;
 import static com.example.ssresilience.R.color.buttoncolor_text;
 
 // Purple Color: #3700b3
@@ -60,6 +69,7 @@ public class HomePageActivity extends AppCompatActivity {
     private TextView fullNameTextView;
     private ClipboardManager myClipboard;
     private ClipData myClip;
+    private int amplitudeValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +88,7 @@ public class HomePageActivity extends AppCompatActivity {
         info_reflect = findViewById(R.id.info_reflect);
         info_reflect.setOnClickListener(this::onClick);
         info_placeholder = findViewById(R.id.info_placeholder);
+
 
         //get the logged in user from the auth
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -127,6 +138,10 @@ public class HomePageActivity extends AppCompatActivity {
         button_proceed = (Button) findViewById(R.id.button_proceed);
         button_proceed.setOnClickListener(v -> {
             startActivity(new Intent(HomePageActivity.this, InitialScreen.class));
+//            SoundMeter sm = new SoundMeter();
+//            sm.start();
+//            double amp = sm.getAmplitude();
+//            System.out.println(amp);
         });
 
         // Drawer layout instance to toggle the menu icon to open
@@ -147,7 +162,6 @@ public class HomePageActivity extends AppCompatActivity {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
-
 
     @SuppressLint("WrongConstant")
     @Override

@@ -108,9 +108,9 @@ public class InitialScreen extends AppCompatActivity {
                         case R.id.navigation_goals:
                             openFragment(GoalsFragment.newInstance("", ""));
                             return true;
-//                        case R.id.navigation_measure:
-//                            openFragment(MeasureFragment.newInstance("", ""));
-//                            return true;
+                        case R.id.navigation_measure:
+                            openFragment(MeasureFragment.newInstance("", ""));
+                            return true;
                         case R.id.navigation_progress:
                             openFragment(ProgressFragment.newInstance("", ""));
                             return true;

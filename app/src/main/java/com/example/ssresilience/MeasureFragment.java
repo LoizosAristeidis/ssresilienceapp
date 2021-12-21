@@ -1,12 +1,16 @@
 package com.example.ssresilience;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaRecorder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +40,7 @@ public class MeasureFragment extends Fragment {
     private String mParam2;
     private String goal;
     private Button fg_measure_button_go;
+    private MediaRecorder mRecorder = null;
 
     public MeasureFragment() {
         // Required empty public constructor
@@ -81,7 +88,6 @@ public class MeasureFragment extends Fragment {
         Button fg_measure_button_go = (Button)rootView.findViewById(R.id.fg_measure_button_go);
         fg_measure_button_go.setOnClickListener(this::onClick);
 
-
         // Fill the Fragment's TextViews according to the selected Goal
         if (goal != null) {
             if (goal.equals("socialize")) {
@@ -105,8 +111,24 @@ public class MeasureFragment extends Fragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fg_measure_button_go:
-                Toast.makeText(getActivity(), "Coming Soon!",
-                        Toast.LENGTH_LONG).show();
+                if (goal != null) {
+                    if (goal.equals("socialize")) {
+                    }
+                    if (goal.equals("study")) {
+                        Fragment fr = new GadTest();
+                        FragmentManager fm = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                        fragmentTransaction.replace(R.id.fg_measure_container, fr);
+                        fragmentTransaction.commit();
+                    }
+                    if (goal.equals("exercise")) {
+                    }
+                }
+                else {
+                    Toast.makeText(getActivity(), "Please select a goal first!",
+                            Toast.LENGTH_LONG).show();
+                }
+//                ((SoundMeter) getActivity().getApplication()).getAmplitude();
                 break;
         }
     }

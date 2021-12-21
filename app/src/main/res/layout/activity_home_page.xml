@@ -170,7 +170,6 @@
                     android:textColor="@color/white"
                     android:textSize="19sp" />
 
-
             </FrameLayout>
         </ScrollView>
 
