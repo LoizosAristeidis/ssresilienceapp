@@ -1,14 +1,15 @@
 package com.example.ssresilience;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class ProgressFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String goal;
+    private int gadpoints, gadscore;
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -68,9 +70,35 @@ public class ProgressFragment extends Fragment {
 
         // Retrieve the selected Goal from the DataSite Class
         goal = ((DataSite)getActivity().getApplication()).getGoal();
+        gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
 
         // Initialize the Fragment's TextViews
         TextView fg_progress_header2 = (TextView) rootView.findViewById(R.id.fg_progress_header2);
+        ProgressBar fg_progress_bar = (ProgressBar)rootView.findViewById(R.id.fg_progress_bar);
+        fg_progress_bar.setProgressTintList(ColorStateList.valueOf(Color.WHITE));
+        TextView fg_progress_award = (TextView) rootView.findViewById(R.id.fg_progress_award);
+        TextView fg_progress_badge = (TextView) rootView.findViewById(R.id.fg_progress_badge);
+
+        if (gadpoints < 7) {
+            gadscore = 30;
+            Toast.makeText(getActivity(), "New Award and Badge Unlocked!",
+                    Toast.LENGTH_LONG).show();
+            fg_progress_award.setText("• Low Level of Stress.");
+            fg_progress_badge.setText("• Unstressed!");
+        }
+        if ((gadpoints >= 7) && (gadpoints < 14)) {
+            gadscore = 20;
+            Toast.makeText(getActivity(), "New Award Unlocked!",
+                    Toast.LENGTH_LONG).show();
+            fg_progress_award.setText("• Medium or Mild Level of Stress.");
+        }
+        if (gadpoints >= 14) {
+            gadscore = 10;
+        }
+
+        fg_progress_bar.setProgress(gadscore);
+        TextView fg_progress_points = (TextView)rootView.findViewById(R.id.fg_progress_points);
+        fg_progress_points.setText(String.valueOf(gadscore));
 
         // Fill the Fragment's TextViews according to the selected Goal
         if (goal != null) {

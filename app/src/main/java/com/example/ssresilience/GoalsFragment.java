@@ -42,6 +42,7 @@ public class GoalsFragment extends Fragment {
     private Button fg_goals_setgoal;
     private TextView fg_goals_placeholder;
 
+    private int gadpoints;
     private int check = 0;
 
     public GoalsFragment() {

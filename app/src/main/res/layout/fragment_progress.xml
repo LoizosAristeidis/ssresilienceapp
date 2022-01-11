@@ -130,7 +130,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/fg_progress_bar" />
 
                         <TextView
-                            android:id="@+id/fg_progress_award1"
+                            android:id="@+id/fg_progress_award"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
@@ -155,10 +155,10 @@
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_award1" />
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_award" />
 
                         <TextView
-                            android:id="@+id/fg_progress_badge1"
+                            android:id="@+id/fg_progress_badge"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
@@ -183,7 +183,7 @@
                             android:textSize="20sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_badge1" />
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_badge" />
 
                         <TextView
                             android:id="@+id/fg_progress_whoheader1"

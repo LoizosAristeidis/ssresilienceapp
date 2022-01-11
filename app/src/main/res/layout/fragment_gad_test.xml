@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="160dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="150dp"
             android:stretchColumns="*"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +130,7 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row1_btn1"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -141,9 +141,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row1_btn2"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -154,9 +157,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row1_btn3"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -167,9 +173,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row1_btn4"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -180,7 +189,10 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
             </TableRow>
 
@@ -202,7 +214,7 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row2_btn1"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -213,9 +225,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row2_btn2"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -226,9 +241,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row2_btn3"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -239,9 +257,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row2_btn4"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -252,7 +273,10 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
 
             </TableRow>
@@ -275,7 +299,7 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row3_btn1"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -286,9 +310,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row3_btn2"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -299,9 +326,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row3_btn3"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -312,9 +342,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row3_btn4"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -325,7 +358,10 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
 
             </TableRow>
@@ -348,7 +384,7 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row4_btn1"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -359,9 +395,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row4_btn2"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -372,9 +411,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row4_btn3"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -385,9 +427,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row4_btn4"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -398,7 +443,10 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
 
             </TableRow>
@@ -421,7 +469,7 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row5_btn1"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -432,9 +480,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row5_btn2"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -445,9 +496,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row5_btn3"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -458,9 +512,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row5_btn4"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -471,7 +528,10 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
 
             </TableRow>
@@ -494,7 +554,7 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row6_btn1"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -505,9 +565,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row6_btn2"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -518,9 +581,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row6_btn3"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -531,9 +597,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row6_btn4"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -544,7 +613,10 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
 
             </TableRow>
@@ -567,7 +639,7 @@
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row7_btn1"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -578,9 +650,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row7_btn2"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -591,9 +666,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row7_btn3"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -604,9 +682,12 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
-                <Button
+                <ToggleButton
                     android:id="@+id/row7_btn4"
                     android:layout_width="200px"
                     android:layout_height="60dp"
@@ -617,7 +698,10 @@
                     android:paddingEnd="10px"
                     android:scaleX="0.5"
                     android:scaleY="0.65"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textOff="	"
+                    android:textOn="✓"
+                    android:textSize="28sp" />
 
             </TableRow>
         </TableLayout>
@@ -626,6 +710,7 @@
             android:id="@+id/gad_submit"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
             android:layout_marginBottom="80dp"
             android:background="@drawable/button_border"
             android:text="SUBMIT"
@@ -633,7 +718,8 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
