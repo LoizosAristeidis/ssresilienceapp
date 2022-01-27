@@ -1,13 +1,19 @@
 package com.example.ssresilience;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +31,7 @@ public class ReflectFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String goal;
+    private int reflectpoints = 0;
 
     public ReflectFragment() {
         // Required empty public constructor
@@ -72,6 +79,49 @@ public class ReflectFragment extends Fragment {
         TextView fg_reflect_question3 = (TextView)rootView.findViewById(R.id.fg_reflect_question3);
         TextView fg_reflect_question4 = (TextView)rootView.findViewById(R.id.fg_reflect_question4);
 
+        ToggleButton fg_reflect_checkbox1 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox1);
+        fg_reflect_checkbox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    reflectpoints += 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+            }
+        });
+
+        ToggleButton fg_reflect_checkbox2 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox2);
+        fg_reflect_checkbox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    reflectpoints += 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+            }
+        });
+
+        ToggleButton fg_reflect_checkbox3 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox3);
+        fg_reflect_checkbox3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    reflectpoints += 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+            }
+        });
+
+        ToggleButton fg_reflect_checkbox4 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox4);
+        fg_reflect_checkbox4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    reflectpoints += 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+            }
+        });
+
+        Button fg_reflect_submit = (Button)rootView.findViewById(R.id.fg_reflect_submit);
+        fg_reflect_submit.setOnClickListener(this::onClick);
+
         // Fill the Fragment's TextViews according to the selected Goal
         if (goal != null) {
             if (goal.equals("socialize")) {
@@ -94,5 +144,22 @@ public class ReflectFragment extends Fragment {
             }
         }
         return rootView;
+    }
+
+    @SuppressLint({"NonConstantResourceId", "UseCompatLoadingForDrawables"})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fg_reflect_submit:
+                ((DataSite) getActivity().getApplication()).getReflectPoints();
+                ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                Fragment fr2 = new ProgressFragment();
+                FragmentManager fm2 = getFragmentManager();
+                FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
+                fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
+                fragmentTransaction2.commit();
+                break;
+            default:
+                break;
+        }
     }
 }

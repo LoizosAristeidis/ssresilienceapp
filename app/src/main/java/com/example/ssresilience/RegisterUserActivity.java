@@ -31,6 +31,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
     private EditText registerEmail, registerAge, registerFullName, registerPassword;
     private ProgressBar progressBar;
     private Button registerBtn, backToLogin;
+    private int progress1 = 0;
 
     private FirebaseAuth mAuth;
 
@@ -82,9 +83,9 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
 
     private void registerUser() {
         String email = registerEmail.getText().toString().trim();
-        String age = registerAge.getText().toString().trim();
         String password = registerPassword.getText().toString().trim();
         String fullName = registerFullName.getText().toString().trim();
+        String progress = String.valueOf(progress1).trim();
 
         if(email.isEmpty()) {
             registerEmail.setError("E-mail address is required");
@@ -95,12 +96,6 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         if(fullName.isEmpty()) {
             registerFullName.setError("Full Name is required");
             registerFullName.requestFocus();
-            return;
-        }
-
-        if(age.isEmpty()) {
-            registerAge.setError("Age is required");
-            registerAge.requestFocus();
             return;
         }
 
@@ -123,11 +118,10 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        User user = new User(fullName, age, email);
+        User user = new User(fullName, email, progress);
 
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(task -> {
-
                 if(task.isSuccessful()) {
                     // Write a message to the database
                     FirebaseDatabase.getInstance().getReference("Users")
@@ -138,7 +132,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
                                 progressBar.setVisibility(View.GONE);
                                 //redirect to login layout (main activity) after signup
                                 FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
-                                authUser.sendEmailVerification();
+//                                authUser.sendEmailVerification();
                                 startActivity(new Intent(this, MainActivity.class));
                             } else {
                                 Toast.makeText(RegisterUserActivity.this, "Failed to register! Try again", Toast.LENGTH_LONG).show();

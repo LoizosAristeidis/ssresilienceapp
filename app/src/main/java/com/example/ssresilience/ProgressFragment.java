@@ -29,7 +29,7 @@ public class ProgressFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String goal;
-    private int gadpoints, gadscore;
+    private int gadpoints, gadscore, reflectpoints, progress;
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -71,6 +71,8 @@ public class ProgressFragment extends Fragment {
         // Retrieve the selected Goal from the DataSite Class
         goal = ((DataSite)getActivity().getApplication()).getGoal();
         gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
+        reflectpoints = ((DataSite) getActivity().getApplication()).getReflectPoints();
+
 
         // Initialize the Fragment's TextViews
         TextView fg_progress_header2 = (TextView) rootView.findViewById(R.id.fg_progress_header2);
@@ -96,9 +98,14 @@ public class ProgressFragment extends Fragment {
             gadscore = 10;
         }
 
-        fg_progress_bar.setProgress(gadscore);
+        fg_progress_bar.setProgress(gadscore + reflectpoints);
+        progress = fg_progress_bar.getProgress();
         TextView fg_progress_points = (TextView)rootView.findViewById(R.id.fg_progress_points);
-        fg_progress_points.setText(String.valueOf(gadscore));
+        fg_progress_points.setText(String.valueOf(gadscore + reflectpoints));
+
+//        if ((progress > 0) && (progress <= 10)) {
+            // Fill up the rest
+//        }
 
         // Fill the Fragment's TextViews according to the selected Goal
         if (goal != null) {

@@ -1,6 +1,7 @@
 package com.example.ssresilience;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,12 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +39,7 @@ public class GadTest extends Fragment {
     private String mParam2;
     private Button row1_btn1;
     private int gadpoints = 0;
+    private FirebaseAuth mAuth;
 
     public GadTest() {
         // Required empty public constructor
@@ -349,6 +357,15 @@ public class GadTest extends Fragment {
                 }
             }
         });
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
+        int gadpoints_db = gadpoints;
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = rootRef.child("Users").child(userId);
+        userRef.child("progress").setValue(gadpoints_db);
 
         Button gad_submit = (Button)rootView.findViewById(R.id.gad_submit);
         gad_submit.setOnClickListener(this::onClick);

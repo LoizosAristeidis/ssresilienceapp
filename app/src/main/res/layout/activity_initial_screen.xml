@@ -58,7 +58,7 @@
             android:layout_marginTop="270dp"
             android:layout_marginEnd="18dp"
             android:layout_marginRight="294dp"
-            android:text="Please tap on the Goals tab on the bottom left of the screen to set your Goal, so you can get started!"
+            android:text="Head over to the Goals tab on the bottom left of the screen to set your Goal, so you can get started!"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="28sp"

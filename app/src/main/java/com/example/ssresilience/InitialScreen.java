@@ -33,6 +33,7 @@ public class InitialScreen extends AppCompatActivity {
     private ClipboardManager myClipboard;
     private ClipData myClip;
     private Button button_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,5 +144,4 @@ public class InitialScreen extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Email Address Copied!",Toast.LENGTH_SHORT).show();
     }
-
 }

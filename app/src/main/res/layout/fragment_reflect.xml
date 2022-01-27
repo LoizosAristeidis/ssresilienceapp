@@ -18,13 +18,13 @@
             android:id="@+id/fg_reflect_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="8dp"
             android:text="At the end of the day, did you..."
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="34sp"
+            android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,30 +34,35 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="150dp"
             android:text="Selected goal Reflect Question 1 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title" />
 
-        <CheckBox
+        <ToggleButton
             android:id="@+id/fg_reflect_checkbox1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="32dp"
-            android:background="@color/buttoncolor_text_reset"
-            android:checked="false"
-            android:text=""
-            android:textColor="@color/app_purple"
-            android:textColorHint="@color/app_purple"
+            android:layout_width="275px"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="115dp"
+            android:background="@drawable/table_option"
+            android:gravity="center"
+            android:paddingStart="10px"
+            android:paddingEnd="10px"
+            android:scaleX="0.5"
+            android:scaleY="0.65"
+            android:textColor="@color/white"
+            android:textOff="	"
+            android:textOn="✓"
+            android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title"/>
-<!--            tools:ignore="OnClick"-->
-<!--            android:onClick="onCheckboxOneClicked"-->
+            app:layout_constraintStart_toEndOf="@+id/fg_reflect_question1"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_title" />
 
 
         <TextView
@@ -65,31 +70,35 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="150dp"
             android:text="Selected goal Reflect Question 2 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1"
-            />
-
-        <CheckBox
-            android:id="@+id/fg_reflect_checkbox2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="32dp"
-            android:background="@color/buttoncolor_text_reset"
-            android:checked="false"
-            android:text=""
-            android:textColor="@color/app_purple"
-            android:textColorHint="@color/app_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox1"/>
-<!--            tools:ignore="OnClick"-->
-<!--            android:onClick="onCheckboxTwoClicked"-->
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_question1" />
+
+        <ToggleButton
+            android:id="@+id/fg_reflect_checkbox2"
+            android:layout_width="275px"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/table_option"
+            android:gravity="center"
+            android:paddingStart="10px"
+            android:paddingEnd="10px"
+            android:scaleX="0.5"
+            android:scaleY="0.65"
+            android:textColor="@color/white"
+            android:textOff="	"
+            android:textOn="✓"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fg_reflect_question2"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_question1" />
 
 
         <TextView
@@ -98,29 +107,34 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="60dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="150dp"
             android:text="Selected goal Reflect Question 3 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2" />
-
-        <CheckBox
-            android:id="@+id/fg_reflect_checkbox3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="32dp"
-            android:background="@color/buttoncolor_text_reset"
-            android:checked="false"
-            android:text=""
-            android:textColor="@color/app_purple"
-            android:textColorHint="@color/app_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox2"/>
-<!--            tools:ignore="OnClick"-->
-<!--            android:onClick="onCheckboxThreeClicked"-->
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_question2" />
+
+        <ToggleButton
+            android:id="@+id/fg_reflect_checkbox3"
+            android:layout_width="275px"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/table_option"
+            android:gravity="center"
+            android:paddingStart="10px"
+            android:paddingEnd="10px"
+            android:scaleX="0.5"
+            android:scaleY="0.65"
+            android:textColor="@color/white"
+            android:textOff="	"
+            android:textOn="✓"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fg_reflect_question3"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_question2" />
 
 
         <TextView
@@ -129,29 +143,48 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="60dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="150dp"
             android:text="Selected goal Reflect Question 4 will appear here"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/fg_reflect_checkbox4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3" />
-
-        <CheckBox
-            android:id="@+id/fg_reflect_checkbox4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="32dp"
-            android:background="@color/buttoncolor_text_reset"
-            android:checked="false"
-            android:text=""
-            android:textColor="@color/app_purple"
-            android:textColorHint="@color/app_purple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_checkbox3"/>
-<!--            tools:ignore="OnClick"-->
-<!--            android:onClick="onCheckboxFourClicked"-->
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_question3" />
+
+        <ToggleButton
+            android:id="@+id/fg_reflect_checkbox4"
+            android:layout_width="275px"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/table_option"
+            android:gravity="center"
+            android:paddingStart="10px"
+            android:paddingEnd="10px"
+            android:scaleX="0.5"
+            android:scaleY="0.65"
+            android:textColor="@color/white"
+            android:textOff="	"
+            android:textOn="✓"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fg_reflect_question4"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_question3" />
+
+        <Button
+            android:id="@+id/fg_reflect_submit"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_border"
+            android:text="SUBMIT"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_reflect_question4" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
