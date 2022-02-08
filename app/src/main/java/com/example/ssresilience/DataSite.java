@@ -6,6 +6,8 @@ public class DataSite extends Application {
 
     private String goal;
     private int gadpoints;
+    private int reflectpoints;
+    private int check = 0;
 
     public String getGoal(){
         return goal;
@@ -24,11 +26,19 @@ public class DataSite extends Application {
     }
 
     public int getReflectPoints(){
-        return gadpoints;
+        return reflectpoints;
     }
 
-    public void setReflectPoints(int gadpoints){
-        this.gadpoints = gadpoints;
+    public void setReflectPoints(int reflectpoints){
+        this.reflectpoints = reflectpoints;
+    }
+
+    public int getCheck(){
+        return check;
+    }
+
+    public void setCheck(int check){
+        this.check = check;
     }
 
 }

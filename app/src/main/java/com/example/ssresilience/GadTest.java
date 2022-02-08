@@ -39,7 +39,9 @@ public class GadTest extends Fragment {
     private String mParam2;
     private Button row1_btn1;
     private int gadpoints = 0;
+    private int gadscore;
     private FirebaseAuth mAuth;
+    private DatabaseReference userRef;
 
     public GadTest() {
         // Required empty public constructor
@@ -362,10 +364,18 @@ public class GadTest extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userId = user.getUid();
 
-        int gadpoints_db = gadpoints;
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = rootRef.child("Users").child(userId);
-        userRef.child("progress").setValue(gadpoints_db);
+        userRef = rootRef.child("Users").child(userId);
+
+        if (gadpoints < 7) {
+            gadscore = 30;
+        }
+        if ((gadpoints >= 7) && (gadpoints < 14)) {
+            gadscore = 20;
+        }
+        if (gadpoints >= 14) {
+            gadscore = 10;
+        }
 
         Button gad_submit = (Button)rootView.findViewById(R.id.gad_submit);
         gad_submit.setOnClickListener(this::onClick);
@@ -386,6 +396,7 @@ public class GadTest extends Fragment {
             case R.id.gad_submit:
                     ((DataSite) getActivity().getApplication()).getGadPoints();
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(gadscore)));
                     Fragment fr2 = new ProgressFragment();
                     FragmentManager fm2 = getFragmentManager();
                     FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();

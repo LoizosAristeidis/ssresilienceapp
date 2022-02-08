@@ -18,6 +18,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+
 import java.io.IOException;
 
 /**
@@ -41,6 +47,8 @@ public class GoalsFragment extends Fragment {
     private Button fg_goals_exercise;
     private Button fg_goals_setgoal;
     private TextView fg_goals_placeholder;
+    private FirebaseAuth mAuth;
+    private DatabaseReference userRef;
 
     private int gadpoints;
     private int check = 0;
@@ -81,6 +89,13 @@ public class GoalsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate((R.layout.fragment_goals), container, false);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        userRef = rootRef.child("Users").child(userId);
 
         fg_goals_socialize = (Button)rootView.findViewById(R.id.fg_goals_socialize);
         fg_goals_socialize.setOnClickListener(this::onClick);
@@ -152,16 +167,28 @@ public class GoalsFragment extends Fragment {
                     Toast.makeText(getActivity(), "Current Goal: Socialize More",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("socialize");
+                    ((DataSite) getActivity().getApplication()).setCheck(0);
+                    ((DataSite) getActivity().getApplication()).setGadPoints(0);
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(0);
+                    userRef.child("progress").setValue(0);
                 }
                 if(check == 2) {
                     Toast.makeText(getActivity(), "Current Goal: Enhance Study Motives",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("study");
+                    ((DataSite) getActivity().getApplication()).setCheck(0);
+                    ((DataSite) getActivity().getApplication()).setGadPoints(0);
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(0);
+                    userRef.child("progress").setValue(0);
                 }
                 if(check == 3) {
                     Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("exercise");
+                    ((DataSite) getActivity().getApplication()).setCheck(0);
+                    ((DataSite) getActivity().getApplication()).setGadPoints(0);
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(0);
+                    userRef.child("progress").setValue(0);
                 }
                 break;
             default:

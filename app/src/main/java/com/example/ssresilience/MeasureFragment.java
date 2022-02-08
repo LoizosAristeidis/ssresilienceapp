@@ -39,6 +39,7 @@ public class MeasureFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int check;
     private String goal;
     private Button fg_measure_button_go;
     private MediaRecorder mRecorder = null;
@@ -80,6 +81,8 @@ public class MeasureFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_measure, container, false);
 
+        check = ((DataSite)getActivity().getApplication()).getCheck();
+
         // Retrieve the selected Goal from the DataSite Class
         goal = ((DataSite)getActivity().getApplication()).getGoal();
 
@@ -116,11 +119,16 @@ public class MeasureFragment extends Fragment {
                     if (goal.equals("socialize")) {
                     }
                     if (goal.equals("study")) {
-                        Fragment fr = new GadTest();
-                        FragmentManager fm = getFragmentManager();
-                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                        fragmentTransaction.replace(R.id.fg_measure_container, fr);
-                        fragmentTransaction.commit();
+                        if ((check == 1) || (check == 3)) {
+                                Toast.makeText(getActivity(), "You have already used the GAD Test.\nPlease change your selected Goal or come back again tomorrow!",
+                                        Toast.LENGTH_LONG).show();
+                        } else {
+                            Fragment fr = new GadTest();
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                            fragmentTransaction.replace(R.id.fg_measure_container, fr);
+                            fragmentTransaction.commit();
+                        }
                     }
                     if (goal.equals("exercise")) {
                     }

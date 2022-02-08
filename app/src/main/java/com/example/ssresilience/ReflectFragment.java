@@ -13,7 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,8 +37,12 @@ public class ReflectFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int check;
     private String goal;
     private int reflectpoints = 0;
+    private FirebaseAuth mAuth;
+    private DatabaseReference userRef;
+
 
     public ReflectFragment() {
         // Required empty public constructor
@@ -70,6 +81,8 @@ public class ReflectFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_reflect, container, false);
 
+        check = ((DataSite)getActivity().getApplication()).getCheck();
+
         // Retrieve the selected Goal from the DataSite Class
         goal = ((DataSite)getActivity().getApplication()).getGoal();
 
@@ -80,6 +93,11 @@ public class ReflectFragment extends Fragment {
         TextView fg_reflect_question4 = (TextView)rootView.findViewById(R.id.fg_reflect_question4);
 
         ToggleButton fg_reflect_checkbox1 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox1);
+        ToggleButton fg_reflect_checkbox2 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox2);
+        ToggleButton fg_reflect_checkbox3 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox3);
+        ToggleButton fg_reflect_checkbox4 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox4);
+
+
         fg_reflect_checkbox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -88,8 +106,6 @@ public class ReflectFragment extends Fragment {
                 }
             }
         });
-
-        ToggleButton fg_reflect_checkbox2 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox2);
         fg_reflect_checkbox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -98,8 +114,6 @@ public class ReflectFragment extends Fragment {
                 }
             }
         });
-
-        ToggleButton fg_reflect_checkbox3 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox3);
         fg_reflect_checkbox3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -108,8 +122,6 @@ public class ReflectFragment extends Fragment {
                 }
             }
         });
-
-        ToggleButton fg_reflect_checkbox4 = (ToggleButton)rootView.findViewById(R.id.fg_reflect_checkbox4);
         fg_reflect_checkbox4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -118,9 +130,6 @@ public class ReflectFragment extends Fragment {
                 }
             }
         });
-
-        Button fg_reflect_submit = (Button)rootView.findViewById(R.id.fg_reflect_submit);
-        fg_reflect_submit.setOnClickListener(this::onClick);
 
         // Fill the Fragment's TextViews according to the selected Goal
         if (goal != null) {
@@ -143,6 +152,17 @@ public class ReflectFragment extends Fragment {
                 fg_reflect_question4.setText("Track your fitness-related progress in any way?");
             }
         }
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        userRef = rootRef.child("Users").child(userId);
+
+        Button fg_reflect_submit = (Button)rootView.findViewById(R.id.fg_reflect_submit);
+        fg_reflect_submit.setOnClickListener(this::onClick);
+
         return rootView;
     }
 
@@ -152,11 +172,17 @@ public class ReflectFragment extends Fragment {
             case R.id.fg_reflect_submit:
                 ((DataSite) getActivity().getApplication()).getReflectPoints();
                 ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
-                Fragment fr2 = new ProgressFragment();
-                FragmentManager fm2 = getFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
-                fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
-                fragmentTransaction2.commit();
+                userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
+                if (check == 2) {
+                    Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal or come back again tomorrow!",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Fragment fr2 = new ProgressFragment();
+                    FragmentManager fm2 = getFragmentManager();
+                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
+                    fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
+                    fragmentTransaction2.commit();
+                }
                 break;
             default:
                 break;

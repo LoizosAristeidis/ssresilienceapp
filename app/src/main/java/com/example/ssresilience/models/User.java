@@ -2,7 +2,8 @@ package com.example.ssresilience.models;
 
 public class User {
 
-    public String fullName, age, email, progress;
+    public String fullName, age, email;
+    public Long progress;
     public User() {
 
     }
@@ -29,11 +30,11 @@ public class User {
         this.age = age;
     }
 
-    public String getProgress() {
+    public Long getProgress() {
         return progress;
     }
 
-    public void setProgress(String progress) {
+    public void setProgress(Long progress) {
         this.progress = progress;
     }
 

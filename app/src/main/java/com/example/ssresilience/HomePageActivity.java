@@ -113,7 +113,7 @@ public class HomePageActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(HomePageActivity.this, "SOMETHING WRONG HAPPENED!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(HomePageActivity.this, "Could not retrieve the username.", Toast.LENGTH_LONG).show();
             }
         });
 
