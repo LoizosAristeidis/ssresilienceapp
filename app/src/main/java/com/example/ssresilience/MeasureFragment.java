@@ -104,7 +104,7 @@ public class MeasureFragment extends Fragment {
             }
             if (goal.equals("exercise")) {
                 fg_measure_title.setText("Physical Exercise");
-                fg_measure_text.setText("Measure the level of your current physical activity state by utilizing your device's accelerometer sensor.");
+                fg_measure_text.setText("Check your current physical activity state by utilizing your device's accelerometer sensor.");
             }
         }
 
@@ -120,7 +120,7 @@ public class MeasureFragment extends Fragment {
                     }
                     if (goal.equals("study")) {
                         if ((check == 1) || (check == 3)) {
-                                Toast.makeText(getActivity(), "You have already used the GAD Test.\nPlease change your selected Goal or come back again tomorrow!",
+                                Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal or come back again tomorrow!",
                                         Toast.LENGTH_LONG).show();
                         } else {
                             Fragment fr = new GadTest();
@@ -131,13 +131,22 @@ public class MeasureFragment extends Fragment {
                         }
                     }
                     if (goal.equals("exercise")) {
+                        if (check == 4) {
+                            Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal or come back again tomorrow!",
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            Fragment fr = new PhysicalExercise();
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                            fragmentTransaction.replace(R.id.fg_measure_container, fr);
+                            fragmentTransaction.commit();
+                        }
                     }
                 }
                 else {
                     Toast.makeText(getActivity(), "Please select a goal first!",
                             Toast.LENGTH_LONG).show();
                 }
-//                ((SoundMeter) getActivity().getApplication()).getAmplitude();
                 break;
         }
     }

@@ -7,6 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.hardware.TriggerEvent;
+import android.hardware.TriggerEventListener;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
@@ -69,7 +73,6 @@ public class HomePageActivity extends AppCompatActivity {
     private TextView fullNameTextView;
     private ClipboardManager myClipboard;
     private ClipData myClip;
-    private int amplitudeValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +91,6 @@ public class HomePageActivity extends AppCompatActivity {
         info_reflect = findViewById(R.id.info_reflect);
         info_reflect.setOnClickListener(this::onClick);
         info_placeholder = findViewById(R.id.info_placeholder);
-
 
         //get the logged in user from the auth
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -162,7 +164,7 @@ public class HomePageActivity extends AppCompatActivity {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
-
+    
     @SuppressLint("WrongConstant")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

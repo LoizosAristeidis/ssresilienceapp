@@ -46,7 +46,7 @@ public class ProgressFragment extends Fragment {
     private DatabaseReference dbReference;
     private String userId;
     private Long progressValue;
-    private int gadpoints, gadscore, reflectpoints, progress;
+    private int gadpoints, gadscore, reflectpoints, progress, exerisepoints;
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -89,6 +89,7 @@ public class ProgressFragment extends Fragment {
         goal = ((DataSite)getActivity().getApplication()).getGoal();
         gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
         reflectpoints = ((DataSite) getActivity().getApplication()).getReflectPoints();
+        exerisepoints = ((DataSite) getActivity().getApplication()).getExercisePoints();
 
         if ((gadpoints != 0) && (reflectpoints == 0)) {
             ((DataSite) getActivity().getApplication()).setCheck(1);
@@ -98,6 +99,10 @@ public class ProgressFragment extends Fragment {
         }
         if ((gadpoints != 0) && (reflectpoints != 0)){
             ((DataSite) getActivity().getApplication()).setCheck(3);
+        }
+
+        if ((exerisepoints == 30) || (exerisepoints == 1)) {
+            ((DataSite) getActivity().getApplication()).setCheck(4);
         }
 
         //get the logged in user from the auth

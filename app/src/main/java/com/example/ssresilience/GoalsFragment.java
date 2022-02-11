@@ -170,6 +170,7 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setCheck(0);
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
+                    ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     userRef.child("progress").setValue(0);
                 }
                 if(check == 2) {
@@ -179,6 +180,7 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setCheck(0);
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
+                    ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     userRef.child("progress").setValue(0);
                 }
                 if(check == 3) {
@@ -188,6 +190,7 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setCheck(0);
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
+                    ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     userRef.child("progress").setValue(0);
                 }
                 break;

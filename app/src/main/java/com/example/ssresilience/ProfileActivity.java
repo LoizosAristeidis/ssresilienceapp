@@ -56,11 +56,11 @@ public class ProfileActivity extends AppCompatActivity {
                 if(userProfile != null) {
                     String fullNameValue = userProfile.fullName;
                     String emailValue = userProfile.email;
-                    String ageValue = userProfile.age;
+//                    String ageValue = userProfile.age;
 
                     emailAddressTextView.setText(emailValue);
                     fullNameTextView.setText(fullNameValue);
-                    ageTextView.setText(ageValue);
+//                    ageTextView.setText(ageValue);
                 }
             }
 

@@ -84,6 +84,34 @@ public class GadTest extends Fragment {
         info_btn.setOnClickListener(this::onClick);
 
         ToggleButton row1_btn1 = (ToggleButton)rootView.findViewById(R.id.row1_btn1);
+        ToggleButton row1_btn2 = (ToggleButton)rootView.findViewById(R.id.row1_btn2);
+        ToggleButton row1_btn3 = (ToggleButton)rootView.findViewById(R.id.row1_btn3);
+        ToggleButton row1_btn4 = (ToggleButton)rootView.findViewById(R.id.row1_btn4);
+        ToggleButton row2_btn1 = (ToggleButton)rootView.findViewById(R.id.row2_btn1);
+        ToggleButton row2_btn2 = (ToggleButton)rootView.findViewById(R.id.row2_btn2);
+        ToggleButton row2_btn3 = (ToggleButton)rootView.findViewById(R.id.row2_btn3);
+        ToggleButton row2_btn4 = (ToggleButton)rootView.findViewById(R.id.row2_btn4);
+        ToggleButton row3_btn1 = (ToggleButton)rootView.findViewById(R.id.row3_btn1);
+        ToggleButton row3_btn2 = (ToggleButton)rootView.findViewById(R.id.row3_btn2);
+        ToggleButton row3_btn3 = (ToggleButton)rootView.findViewById(R.id.row3_btn3);
+        ToggleButton row3_btn4 = (ToggleButton)rootView.findViewById(R.id.row3_btn4);
+        ToggleButton row4_btn1 = (ToggleButton)rootView.findViewById(R.id.row4_btn1);
+        ToggleButton row4_btn2 = (ToggleButton)rootView.findViewById(R.id.row4_btn2);
+        ToggleButton row4_btn3 = (ToggleButton)rootView.findViewById(R.id.row4_btn3);
+        ToggleButton row4_btn4 = (ToggleButton)rootView.findViewById(R.id.row4_btn4);
+        ToggleButton row5_btn1 = (ToggleButton)rootView.findViewById(R.id.row5_btn1);
+        ToggleButton row5_btn2 = (ToggleButton)rootView.findViewById(R.id.row5_btn2);
+        ToggleButton row5_btn3 = (ToggleButton)rootView.findViewById(R.id.row5_btn3);
+        ToggleButton row5_btn4 = (ToggleButton)rootView.findViewById(R.id.row5_btn4);
+        ToggleButton row6_btn1 = (ToggleButton)rootView.findViewById(R.id.row6_btn1);
+        ToggleButton row6_btn2 = (ToggleButton)rootView.findViewById(R.id.row6_btn2);
+        ToggleButton row6_btn3 = (ToggleButton)rootView.findViewById(R.id.row6_btn3);
+        ToggleButton row6_btn4 = (ToggleButton)rootView.findViewById(R.id.row6_btn4);
+        ToggleButton row7_btn1 = (ToggleButton)rootView.findViewById(R.id.row7_btn1);
+        ToggleButton row7_btn2 = (ToggleButton)rootView.findViewById(R.id.row7_btn2);
+        ToggleButton row7_btn3 = (ToggleButton)rootView.findViewById(R.id.row7_btn3);
+        ToggleButton row7_btn4 = (ToggleButton)rootView.findViewById(R.id.row7_btn4);
+
         row1_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -91,8 +119,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row1_btn2 = (ToggleButton)rootView.findViewById(R.id.row1_btn2);
         row1_btn2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -100,8 +126,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row1_btn3 = (ToggleButton)rootView.findViewById(R.id.row1_btn3);
         row1_btn3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -109,8 +133,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row1_btn4 = (ToggleButton)rootView.findViewById(R.id.row1_btn4);
         row1_btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -119,8 +141,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row2_btn1 = (ToggleButton)rootView.findViewById(R.id.row2_btn1);
         row2_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -129,8 +149,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row2_btn2 = (ToggleButton)rootView.findViewById(R.id.row2_btn2);
         row2_btn2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -139,8 +157,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row2_btn3 = (ToggleButton)rootView.findViewById(R.id.row2_btn3);
         row2_btn3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -149,8 +165,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row2_btn4 = (ToggleButton)rootView.findViewById(R.id.row2_btn4);
         row2_btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -159,8 +173,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row3_btn1 = (ToggleButton)rootView.findViewById(R.id.row3_btn1);
         row3_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -169,8 +181,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row3_btn2 = (ToggleButton)rootView.findViewById(R.id.row3_btn2);
         row3_btn2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -179,8 +189,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row3_btn3 = (ToggleButton)rootView.findViewById(R.id.row3_btn3);
         row3_btn3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -189,8 +197,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row3_btn4 = (ToggleButton)rootView.findViewById(R.id.row3_btn4);
         row3_btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -199,8 +205,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row4_btn1 = (ToggleButton)rootView.findViewById(R.id.row4_btn1);
         row4_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -209,8 +213,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row4_btn2 = (ToggleButton)rootView.findViewById(R.id.row4_btn2);
         row4_btn2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -219,8 +221,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row4_btn3 = (ToggleButton)rootView.findViewById(R.id.row4_btn3);
         row4_btn3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -229,8 +229,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row4_btn4 = (ToggleButton)rootView.findViewById(R.id.row4_btn4);
         row4_btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -239,8 +237,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row5_btn1 = (ToggleButton)rootView.findViewById(R.id.row5_btn1);
         row5_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -249,8 +245,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row5_btn2 = (ToggleButton)rootView.findViewById(R.id.row5_btn2);
         row5_btn2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -259,8 +253,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row5_btn3 = (ToggleButton)rootView.findViewById(R.id.row5_btn3);
         row5_btn3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -269,8 +261,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row5_btn4 = (ToggleButton)rootView.findViewById(R.id.row5_btn4);
         row5_btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -279,8 +269,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row6_btn1 = (ToggleButton)rootView.findViewById(R.id.row6_btn1);
         row6_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -289,8 +277,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row6_btn2 = (ToggleButton)rootView.findViewById(R.id.row6_btn2);
         row6_btn2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -299,8 +285,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row6_btn3 = (ToggleButton)rootView.findViewById(R.id.row6_btn3);
         row6_btn3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -309,8 +293,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row6_btn4 = (ToggleButton)rootView.findViewById(R.id.row6_btn4);
         row6_btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -319,8 +301,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row7_btn1 = (ToggleButton)rootView.findViewById(R.id.row7_btn1);
         row7_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -329,8 +309,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row7_btn2 = (ToggleButton)rootView.findViewById(R.id.row7_btn2);
         row7_btn2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -339,8 +317,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row7_btn3 = (ToggleButton)rootView.findViewById(R.id.row7_btn3);
         row7_btn3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -349,8 +325,6 @@ public class GadTest extends Fragment {
                 }
             }
         });
-
-        ToggleButton row7_btn4 = (ToggleButton)rootView.findViewById(R.id.row7_btn4);
         row7_btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {

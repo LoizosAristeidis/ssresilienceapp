@@ -85,7 +85,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String email = registerEmail.getText().toString().trim();
         String password = registerPassword.getText().toString().trim();
         String fullName = registerFullName.getText().toString().trim();
-        String progress = String.valueOf(progress1).trim();
+        Long progress = (long) progress1;
 
         if(email.isEmpty()) {
             registerEmail.setError("E-mail address is required");

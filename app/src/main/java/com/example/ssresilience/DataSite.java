@@ -5,8 +5,7 @@ import android.app.Application;
 public class DataSite extends Application {
 
     private String goal;
-    private int gadpoints;
-    private int reflectpoints;
+    private int gadpoints, reflectpoints, exercisepoints;
     private int check = 0;
 
     public String getGoal(){
@@ -31,6 +30,14 @@ public class DataSite extends Application {
 
     public void setReflectPoints(int reflectpoints){
         this.reflectpoints = reflectpoints;
+    }
+
+    public int getExercisePoints(){
+        return exercisepoints;
+    }
+
+    public void setExercisePoints(int exercisepoints){
+        this.exercisepoints = exercisepoints;
     }
 
     public int getCheck(){
