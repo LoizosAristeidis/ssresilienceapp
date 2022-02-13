@@ -1,16 +1,20 @@
 package com.example.ssresilience;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.hardware.TriggerEvent;
 import android.hardware.TriggerEventListener;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
@@ -73,6 +77,7 @@ public class HomePageActivity extends AppCompatActivity {
     private TextView fullNameTextView;
     private ClipboardManager myClipboard;
     private ClipData myClip;
+    private MediaRecorder recorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,10 +145,6 @@ public class HomePageActivity extends AppCompatActivity {
         button_proceed = (Button) findViewById(R.id.button_proceed);
         button_proceed.setOnClickListener(v -> {
             startActivity(new Intent(HomePageActivity.this, InitialScreen.class));
-//            SoundMeter sm = new SoundMeter();
-//            sm.start();
-//            double amp = sm.getAmplitude();
-//            System.out.println(amp);
         });
 
         // Drawer layout instance to toggle the menu icon to open
@@ -163,6 +164,12 @@ public class HomePageActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
+
+        AudioRecordTest record = new AudioRecordTest();
+//        Intent intent = new Intent();
+////        startActivity(new Intent(HomePageActivity.this, AudioRecordTest.class));
+        AudioRecordTest ar = new AudioRecordTest();
+
     }
     
     @SuppressLint("WrongConstant")

@@ -117,6 +117,8 @@ public class MeasureFragment extends Fragment {
             case R.id.fg_measure_button_go:
                 if (goal != null) {
                     if (goal.equals("socialize")) {
+                            Intent intent = new Intent(getActivity(), AudioRecordTest.class);
+                            startActivity(intent);
                     }
                     if (goal.equals("study")) {
                         if ((check == 1) || (check == 3)) {
