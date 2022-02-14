@@ -5,8 +5,9 @@ import android.app.Application;
 public class DataSite extends Application {
 
     private String goal;
-    private int gadpoints, reflectpoints, exercisepoints;
+    private int gadpoints, reflectpoints, exercisepoints, noiselevel;
     private int check = 0;
+    private int checkifmeasured = 0;
 
     public String getGoal(){
         return goal;
@@ -48,4 +49,19 @@ public class DataSite extends Application {
         this.check = check;
     }
 
+    public int getCheckIfMeasured(){
+        return checkifmeasured;
+    }
+
+    public void setCheckIfMeasured(int checkifmeasured){
+        this.checkifmeasured = checkifmeasured;
+    }
+
+    public int getNoiseLevel(){
+        return noiselevel;
+    }
+
+    public void setNoiseLevel(int noiselevel){
+        this.noiselevel = noiselevel;
+    }
 }

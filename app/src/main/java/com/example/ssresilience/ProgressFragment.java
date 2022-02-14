@@ -46,7 +46,7 @@ public class ProgressFragment extends Fragment {
     private DatabaseReference dbReference;
     private String userId;
     private Long progressValue;
-    private int gadpoints, gadscore, reflectpoints, progress, exerisepoints;
+    private int gadpoints, gadscore, reflectpoints, progress, exerisepoints, checkifmeasured;
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -90,6 +90,11 @@ public class ProgressFragment extends Fragment {
         gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
         reflectpoints = ((DataSite) getActivity().getApplication()).getReflectPoints();
         exerisepoints = ((DataSite) getActivity().getApplication()).getExercisePoints();
+        checkifmeasured = ((DataSite)getActivity().getApplication()).getCheckIfMeasured();
+
+        if (checkifmeasured == 1) {
+            ((DataSite) getActivity().getApplication()).setCheck(4);
+        }
 
         if ((gadpoints != 0) && (reflectpoints == 0)) {
             ((DataSite) getActivity().getApplication()).setCheck(1);

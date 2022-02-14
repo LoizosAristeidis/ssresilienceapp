@@ -43,6 +43,7 @@ public class MeasureFragment extends Fragment {
     private String goal;
     private Button fg_measure_button_go;
     private MediaRecorder mRecorder = null;
+    private int checkifmeasured;
 
     public MeasureFragment() {
         // Required empty public constructor
@@ -81,6 +82,16 @@ public class MeasureFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_measure, container, false);
 
+//        checkifmeasured = ((DataSite)getActivity().getApplication()).getCheckIfMeasured();
+//        System.out.println(checkifmeasured);
+//        if (checkifmeasured == 1) {
+//            Fragment fr = new ProgressFragment();
+//            FragmentManager fm = getFragmentManager();
+//            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//            fragmentTransaction.replace(R.id.fg_measure_container, fr);
+//            fragmentTransaction.commit();
+//        }
+
         check = ((DataSite)getActivity().getApplication()).getCheck();
 
         // Retrieve the selected Goal from the DataSite Class
@@ -117,8 +128,13 @@ public class MeasureFragment extends Fragment {
             case R.id.fg_measure_button_go:
                 if (goal != null) {
                     if (goal.equals("socialize")) {
+                        if (check == 4) {
+                            Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal or come back again tomorrow!",
+                                    Toast.LENGTH_LONG).show();
+                        } else {
                             Intent intent = new Intent(getActivity(), AudioRecordTest.class);
                             startActivity(intent);
+                        }
                     }
                     if (goal.equals("study")) {
                         if ((check == 1) || (check == 3)) {

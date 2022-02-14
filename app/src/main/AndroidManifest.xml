@@ -15,7 +15,6 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SSResilience">
-        <activity android:name=".SoundMeter" />
         <activity android:name=".AudioRecordTest" />
         <activity android:name=".InitialScreen" />
         <activity

@@ -9,12 +9,4 @@
     android:background="@color/app_purple"
     tools:context=".AudioRecordTest">
 
-    <RecordButton
-        android:id="@+id/record_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Recording"
-        android:background="@drawable/button_border_rect"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
