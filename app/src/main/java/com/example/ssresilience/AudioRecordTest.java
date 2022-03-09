@@ -1,5 +1,6 @@
 package com.example.ssresilience;
 
+import android.content.ActivityNotFoundException;
 import android.content.pm.ActivityInfo;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,6 +22,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -360,12 +362,17 @@ public class AudioRecordTest extends AppCompatActivity {
     }
 
     public void contactus(MenuItem item) {
-        myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        String text = "ssresilienceapp@gmail.com";
+        String mailto = "mailto:ssresilienceapp@gmail.com" +
+                "?cc=" +
+                "&subject=" + Uri.encode("SSResilience App Support") +
+                "&body=" + Uri.encode("");
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse(mailto));
 
-        myClip = ClipData.newPlainText("text", text);
-        myClipboard.setPrimaryClip(myClip);
-
-        Toast.makeText(getApplicationContext(), "Email Address Copied!",Toast.LENGTH_SHORT).show();
+        try {
+            startActivity(emailIntent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getApplicationContext(), "Error to open email app", Toast.LENGTH_SHORT).show();
+        }
     }
 }

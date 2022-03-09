@@ -2,6 +2,12 @@ package com.example.ssresilience;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -31,10 +37,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -57,6 +66,7 @@ import org.jetbrains.annotations.NotNull;
 import org.xmlpull.v1.XmlPullParser;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Handler;
@@ -77,6 +87,8 @@ public class HomePageActivity extends AppCompatActivity {
     private TextView fullNameTextView;
     private ClipboardManager myClipboard;
     private ClipData myClip;
+    private Context context;
+    public static long NOTIFICATION_REMINDER_NIGHT;
     private MediaRecorder recorder;
 
     @Override
@@ -166,12 +178,9 @@ public class HomePageActivity extends AppCompatActivity {
         }
 
         AudioRecordTest record = new AudioRecordTest();
-//        Intent intent = new Intent();
-////        startActivity(new Intent(HomePageActivity.this, AudioRecordTest.class));
         AudioRecordTest ar = new AudioRecordTest();
-
     }
-    
+
     @SuppressLint("WrongConstant")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -251,11 +260,11 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor));
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                 break;
+
             default:
                 break;
         }
     }
-
 
     public void showTimePickerDialog(MenuItem item) {
         DialogFragment newFragment = new TimePickerFragment();
@@ -268,12 +277,17 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     public void contactus(MenuItem item) {
-        myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        String text = "ssresilienceapp@gmail.com";
+        String mailto = "mailto:ssresilienceapp@gmail.com" +
+                "?cc=" +
+                "&subject=" + Uri.encode("SSResilience App Support") +
+                "&body=" + Uri.encode("");
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse(mailto));
 
-        myClip = ClipData.newPlainText("text", text);
-        myClipboard.setPrimaryClip(myClip);
-
-        Toast.makeText(getApplicationContext(), "Email Address Copied!",Toast.LENGTH_SHORT).show();
+        try {
+            startActivity(emailIntent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(context, "Error to open email app", Toast.LENGTH_SHORT).show();
+        }
     }
 }

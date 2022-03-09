@@ -85,7 +85,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String email = registerEmail.getText().toString().trim();
         String password = registerPassword.getText().toString().trim();
         String fullName = registerFullName.getText().toString().trim();
-        Long progress = (long) progress1;
+        Long progress = Long.valueOf(progress1);
 
         if(email.isEmpty()) {
             registerEmail.setError("E-mail address is required");
@@ -131,7 +131,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
                                 Toast.makeText(RegisterUserActivity.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                                 //redirect to login layout (main activity) after signup
-                                FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
+//                                FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
 //                                authUser.sendEmailVerification();
                                 startActivity(new Intent(this, MainActivity.class));
                             } else {

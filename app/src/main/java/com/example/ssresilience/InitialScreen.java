@@ -6,19 +6,29 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -28,11 +38,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Calendar;
+
 public class InitialScreen extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
     private ClipboardManager myClipboard;
     private ClipData myClip;
     private Button button_back;
+    private int hour, minute;
+    private AlarmManager alarmMgr;
+    private PendingIntent alarmIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +95,56 @@ public class InitialScreen extends AppCompatActivity {
         // Put the Navigation drawer icon to the right side of the screen
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
+
+        // Create an explicit intent for an Activity in your app
+        Intent intent = new Intent(this, InitialScreen.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "reflectnotification")
+                .setSmallIcon(R.drawable.app_icon_background)
+                .setContentTitle("Reflect Reminder")
+                .setContentText("Time to Reflect on your selected Goal!")
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText("Time to Reflect on your selected Goal!"))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        createNotificationChannel();
+//        notificationManager.notify(200, builder.build());
+
+        hour = ((DataSite)getApplication()).getHour();
+        minute = ((DataSite)getApplication()).getMinute();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+
+        Toast.makeText(getApplicationContext(),"Picked time: "+ hour +":"+minute, Toast.LENGTH_LONG).show();
+
+        alarmMgr = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        Intent intent2 = new Intent(getApplicationContext(), InitialScreen.class);
+        alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), 200, intent2, 0);
+
+        alarmMgr.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Reflect Reminder";
+            String description = "Time to Reflect on your selected Goal!";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("reflectnotification", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
     }
 
@@ -136,12 +201,17 @@ public class InitialScreen extends AppCompatActivity {
     }
 
     public void contactus(MenuItem item) {
-        myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        String text = "ssresilienceapp@gmail.com";
+        String mailto = "mailto:ssresilienceapp@gmail.com" +
+                "?cc=" +
+                "&subject=" + Uri.encode("SSResilience App Support") +
+                "&body=" + Uri.encode("");
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse(mailto));
 
-        myClip = ClipData.newPlainText("text", text);
-        myClipboard.setPrimaryClip(myClip);
-
-        Toast.makeText(getApplicationContext(), "Email Address Copied!",Toast.LENGTH_SHORT).show();
+        try {
+            startActivity(emailIntent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getApplicationContext(), "Error to open email app", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="16dp"
             android:text="Share your progression"
             android:textAlignment="center"
@@ -30,46 +30,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/fg_social_facebookimage"
+        <Button
+            android:id="@+id/fg_social_facebook"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="32dp"
-            android:src="@drawable/facebook"
+            android:background="@drawable/facebook"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
-        <ImageView
-            android:id="@+id/fg_social_messengerimage"
+        <Button
+            android:id="@+id/fg_social_messenger"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:src="@drawable/messenger"
-            app:layout_constraintStart_toEndOf="@+id/fg_social_facebookimage"
+            android:background="@drawable/messenger"
+            app:layout_constraintStart_toEndOf="@+id/fg_social_facebook"
             app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
-        <ImageView
-            android:id="@+id/fg_social_twitterimage"
+        <Button
+            android:id="@+id/fg_social_instagram"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:src="@drawable/twitter"
-            app:layout_constraintStart_toEndOf="@+id/fg_social_messengerimage"
+            android:background="@drawable/instagram"
+            app:layout_constraintStart_toEndOf="@+id/fg_social_messenger"
             app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
-        <ImageView
-            android:id="@+id/fg_social_whatsappimage"
+        <Button
+            android:id="@+id/fg_social_twitter"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="50dp"
-            android:src="@drawable/whatsapp"
+            android:background="@drawable/twitter"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fg_social_twitterimage"
+            app:layout_constraintStart_toEndOf="@+id/fg_social_instagram"
             app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
 
         <TextView
@@ -86,14 +86,13 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_social_messengerimage" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_instagram" />
 
         <TableLayout
             android:id="@+id/fg_social_leaderboard"
             android:layout_width="match_parent"
             android:layout_height="420dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="23dp"
             app:layout_constraintBottom_toBottomOf="parent"

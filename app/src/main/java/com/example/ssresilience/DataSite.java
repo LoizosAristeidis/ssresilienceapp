@@ -6,6 +6,8 @@ public class DataSite extends Application {
 
     private String goal;
     private int gadpoints, reflectpoints, exercisepoints, noiselevel;
+    private int hour = 0;
+    private int minute = 0;
     private int check = 0;
     private int checkifmeasured = 0;
 
@@ -63,5 +65,19 @@ public class DataSite extends Application {
 
     public void setNoiseLevel(int noiselevel){
         this.noiselevel = noiselevel;
+    }
+
+    public int getHour(){
+        return hour;
+    }
+
+    public void setHour(int hour){ this.hour = hour; }
+
+    public int getMinute(){
+        return minute;
+    }
+
+    public void setMinute(int minute){
+        this.minute = minute;
     }
 }
