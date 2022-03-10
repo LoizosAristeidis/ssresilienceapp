@@ -86,12 +86,9 @@ public class HomePageActivity extends AppCompatActivity {
     private DatabaseReference dbReference;
     private String userId;
     private TextView fullNameTextView;
+    private Context context;
     private ClipboardManager myClipboard;
     private ClipData myClip;
-    private int hour, minute;
-    private Context context;
-    public static long NOTIFICATION_REMINDER_NIGHT;
-    private MediaRecorder recorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,8 +145,6 @@ public class HomePageActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        createNotificationChannel();
-
         // Back button functionality
         button_back = findViewById(R.id.back_button);
         button_back.setOnClickListener(v -> {
@@ -157,24 +152,11 @@ public class HomePageActivity extends AppCompatActivity {
             this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
         });
 
-        hour = ((DataSite)getApplication()).getHour();
-        minute = ((DataSite)getApplication()).getMinute();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
 
         // Proceed button functionality
         button_proceed = (Button) findViewById(R.id.button_proceed);
         button_proceed.setOnClickListener(v -> {
-            Toast.makeText(this, "Reminder Set!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(HomePageActivity.this, ReminderBroadcast.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(HomePageActivity.this, 0, intent, 0);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, pendingIntent);
             startActivity(new Intent(HomePageActivity.this, InitialScreen.class));
         });
 
@@ -198,19 +180,6 @@ public class HomePageActivity extends AppCompatActivity {
 
         AudioRecordTest record = new AudioRecordTest();
         AudioRecordTest ar = new AudioRecordTest();
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            CharSequence name = "ReflectNotification";
-            String description = "Time to Reflect on today's Goal!";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("reflectnotification", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
     }
 
     @SuppressLint("WrongConstant")

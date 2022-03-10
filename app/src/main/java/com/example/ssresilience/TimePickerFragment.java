@@ -29,5 +29,6 @@ public class TimePickerFragment extends DialogFragment
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         ((DataSite) getActivity().getApplication()).setHour(hourOfDay);
         ((DataSite) getActivity().getApplication()).setMinute(minute);
+        ((DataSite) getActivity().getApplication()).reflectNotification();
     }
 }

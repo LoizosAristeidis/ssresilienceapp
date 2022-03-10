@@ -1,6 +1,16 @@
 package com.example.ssresilience;
 
+import android.app.AlarmManager;
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Build;
+import android.provider.ContactsContract;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class DataSite extends Application {
 
@@ -79,5 +89,39 @@ public class DataSite extends Application {
 
     public void setMinute(int minute){
         this.minute = minute;
+    }
+
+    public void reflectNotification() {
+        createNotificationChannel();
+
+        int hour = this.getHour();
+        int minute = this.getMinute();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+
+        Toast.makeText(this, "Reflect Reminder Set!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DataSite.this, ReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(DataSite.this, 0, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntent);
+
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "ReflectNotification";
+            String description = "Time to Reflect on today's Goal!";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("reflectnotification", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }
