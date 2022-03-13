@@ -38,7 +38,7 @@ public class SocialFragment extends Fragment {
     public static String FACEBOOK_URL = "https://www.facebook.com/ssresilienceapp";
     public static String FACEBOOK_PAGE_ID = "SSResilience App";
 
-    private Button facebook, messenger, instagram, twitter;
+    private Button facebook, messenger, instagram, twitter, facebook_ssr, messenger_ssr, instagram_ssr, twitter_ssr;
 
     public SocialFragment() {
         // Required empty public constructor
@@ -85,6 +85,14 @@ public class SocialFragment extends Fragment {
         instagram.setOnClickListener(this::onClick);
         messenger = (Button)rootView.findViewById(R.id.fg_social_messenger);
         messenger.setOnClickListener(this::onClick);
+        facebook_ssr = (Button)rootView.findViewById(R.id.fg_social_facebook_ssr);
+        facebook_ssr.setOnClickListener(this::onClick);
+        twitter_ssr = (Button)rootView.findViewById(R.id.fg_social_twitter_ssr);
+        twitter_ssr.setOnClickListener(this::onClick);
+        instagram_ssr = (Button)rootView.findViewById(R.id.fg_social_instagram_ssr);
+        instagram_ssr.setOnClickListener(this::onClick);
+        messenger_ssr = (Button)rootView.findViewById(R.id.fg_social_messenger_ssr);
+        messenger_ssr.setOnClickListener(this::onClick);
 
         return rootView;
     }
@@ -108,15 +116,12 @@ public class SocialFragment extends Fragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fg_social_facebook:
-                Intent intent5 = null;
                 try {
-                    getActivity().getPackageManager().getPackageInfo("com.faceook.android", 0);
-                    intent5 = new Intent(Intent.ACTION_VIEW, Uri.parse("facebook://"));
-                    intent5.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } catch (Exception e) {
-                    intent5 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com"));
+                    Intent intent5 = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://"));
+                    startActivity(intent5);
+                } catch(Exception e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/")));
                 }
-                this.startActivity(intent5);
                 break;
             case R.id.fg_social_twitter:
                 Intent intent = null;
@@ -156,6 +161,45 @@ public class SocialFragment extends Fragment {
                             "Cannot open Facebook Messenger right now. Please try again later.",
                             Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.fg_social_facebook_ssr:
+                try {
+                    Intent intent7 = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/106751275295791"));
+                    startActivity(intent7);
+                } catch(Exception e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/ssresilienceapp")));
+                }
+                break;
+            case R.id.fg_social_twitter_ssr:
+                Intent intent8 = null;
+                try {
+                    getActivity().getPackageManager().getPackageInfo("com.twitter.android", 0);
+                    intent8 = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=ssresilienceapp"));
+                    intent8.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                } catch (Exception e) {
+                    intent8 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/ssresilienceapp"));
+                }
+                this.startActivity(intent8);
+                break;
+            case R.id.fg_social_instagram_ssr:
+                Uri uri = Uri.parse("http://instagram.com/_u/ssresilience.app");
+                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+                likeIng.setPackage("com.instagram.android");
+
+                try {
+                    startActivity(likeIng);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://instagram.com/ssresilience.app")));
+                }
+                break;
+            case R.id.fg_social_messenger_ssr:
+                Intent intent10 = new Intent();
+                intent10.setAction(Intent.ACTION_VIEW);
+                intent10.setPackage("com.facebook.orca");
+                intent10.setData(Uri.parse("https://m.me/"+"106751275295791"));
+                startActivity(intent10);
                 break;
         }
     }
