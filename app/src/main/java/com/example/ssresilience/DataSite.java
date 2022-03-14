@@ -20,6 +20,7 @@ public class DataSite extends Application {
     private int minute = 0;
     private int check = 0;
     private int checkifmeasured = 0;
+    private int gadcheck = 0;
 
     public String getGoal(){
         return goal;
@@ -59,6 +60,14 @@ public class DataSite extends Application {
 
     public void setCheck(int check){
         this.check = check;
+    }
+
+    public int getGadCheck(){
+        return gadcheck;
+    }
+
+    public void setGadCheck(int gadcheck){
+        this.gadcheck = gadcheck;
     }
 
     public int getCheckIfMeasured(){

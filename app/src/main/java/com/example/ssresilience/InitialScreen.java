@@ -96,40 +96,6 @@ public class InitialScreen extends AppCompatActivity {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
-
-        // Create an explicit intent for an Activity in your app
-//        Intent intent = new Intent(this, InitialScreen.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "reflectnotification")
-//                .setSmallIcon(R.drawable.app_icon_background)
-//                .setContentTitle("Reflect Reminder")
-//                .setContentText("Time to Reflect on your selected Goal!")
-//                .setStyle(new NotificationCompat.BigTextStyle()
-//                        .bigText("Time to Reflect on your selected Goal!"))
-//                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                .setContentIntent(pendingIntent)
-//                .setAutoCancel(true);
-//
-//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-//        createNotificationChannel();
-////        notificationManager.notify(200, builder.build());
-//
-//        hour = ((DataSite)getApplication()).getHour();
-//        minute = ((DataSite)getApplication()).getMinute();
-//
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(System.currentTimeMillis());
-//        calendar.set(Calendar.HOUR_OF_DAY, hour);
-//        calendar.set(Calendar.MINUTE, minute);
-//
-//        Toast.makeText(getApplicationContext(),"Picked time: "+ hour +":"+minute, Toast.LENGTH_LONG).show();
-//
-//        alarmMgr = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-//        Intent intent2 = new Intent(getApplicationContext(), InitialScreen.class);
-//        alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), 200, intent2, 0);
-//
-//        alarmMgr.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
     }
 
     @SuppressLint("WrongConstant")

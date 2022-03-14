@@ -82,16 +82,6 @@ public class MeasureFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_measure, container, false);
 
-//        checkifmeasured = ((DataSite)getActivity().getApplication()).getCheckIfMeasured();
-//        System.out.println(checkifmeasured);
-//        if (checkifmeasured == 1) {
-//            Fragment fr = new ProgressFragment();
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-//            fragmentTransaction.replace(R.id.fg_measure_container, fr);
-//            fragmentTransaction.commit();
-//        }
-
         check = ((DataSite)getActivity().getApplication()).getCheck();
 
         // Retrieve the selected Goal from the DataSite Class
@@ -129,7 +119,7 @@ public class MeasureFragment extends Fragment {
                 if (goal != null) {
                     if (goal.equals("socialize")) {
                         if (check == 4) {
-                            Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal or come back again tomorrow!",
+                            Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal to start over!",
                                     Toast.LENGTH_LONG).show();
                         } else {
                             Intent intent = new Intent(getActivity(), AudioRecordTest.class);
@@ -138,7 +128,7 @@ public class MeasureFragment extends Fragment {
                     }
                     if (goal.equals("study")) {
                         if ((check == 1) || (check == 3)) {
-                                Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal or come back again tomorrow!",
+                                Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal to start over!",
                                         Toast.LENGTH_LONG).show();
                         } else {
                             Fragment fr = new GadTest();
@@ -150,7 +140,7 @@ public class MeasureFragment extends Fragment {
                     }
                     if (goal.equals("exercise")) {
                         if (check == 4) {
-                            Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal or come back again tomorrow!",
+                            Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal to start over!",
                                     Toast.LENGTH_LONG).show();
                         } else {
                             Fragment fr = new PhysicalExercise();

@@ -39,6 +39,7 @@ public class GadTest extends Fragment {
     private String mParam2;
     private Button row1_btn1;
     private int gadpoints = 0;
+    private int gadcheck;
     private int gadscore;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
@@ -82,6 +83,12 @@ public class GadTest extends Fragment {
 
         Button info_btn = (Button)rootView.findViewById(R.id.info_btn);
         info_btn.setOnClickListener(this::onClick);
+
+        gadcheck = ((DataSite)getActivity().getApplication()).getGadCheck();
+        if (gadcheck == 3) {
+            Toast.makeText(getActivity(), "You have already used the Gad Test.\nPlease change your selected Goal to start over!",
+                    Toast.LENGTH_LONG).show();
+        }
 
         ToggleButton row1_btn1 = (ToggleButton)rootView.findViewById(R.id.row1_btn1);
         ToggleButton row1_btn2 = (ToggleButton)rootView.findViewById(R.id.row1_btn2);
@@ -342,13 +349,13 @@ public class GadTest extends Fragment {
         userRef = rootRef.child("Users").child(userId);
 
         if (gadpoints < 7) {
-            gadscore = 30;
+            gadscore = 40;
         }
         if ((gadpoints >= 7) && (gadpoints < 14)) {
-            gadscore = 20;
+            gadscore = 25;
         }
         if (gadpoints >= 14) {
-            gadscore = 10;
+            gadscore = 15;
         }
 
         Button gad_submit = (Button)rootView.findViewById(R.id.gad_submit);
@@ -370,12 +377,19 @@ public class GadTest extends Fragment {
             case R.id.gad_submit:
                     ((DataSite) getActivity().getApplication()).getGadPoints();
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
-                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(gadscore)));
-                    Fragment fr2 = new ProgressFragment();
-                    FragmentManager fm2 = getFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
-                    fragmentTransaction2.replace(R.id.fg_gad_test_container, fr2);
-                    fragmentTransaction2.commit();
+                    ((DataSite) getActivity().getApplication()).getGadCheck();
+                    if (gadcheck == 3) {
+                        Toast.makeText(getActivity(), "You have already used the Gad Test.\nPlease change your selected Goal to start over!",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(gadscore)));
+                        ((DataSite) getActivity().getApplication()).setGadCheck(3);
+                        Fragment fr2 = new ProgressFragment();
+                        FragmentManager fm2 = getFragmentManager();
+                        FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
+                        fragmentTransaction2.replace(R.id.fg_gad_test_container, fr2);
+                        fragmentTransaction2.commit();
+                    }
                 break;
             default:
                 break;

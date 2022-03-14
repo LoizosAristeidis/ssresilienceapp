@@ -149,13 +149,13 @@ public class AudioRecordTest extends AppCompatActivity {
         audiolevelprocessed = recorder.getMaxAmplitude();
         ((DataSite)getApplication()).setNoiseLevel(audiolevelprocessed);
         if (audiolevelprocessed < 10000) {
-            audiolevelprocessed_progress = 10;
+            audiolevelprocessed_progress = 15;
         }
         if ((audiolevelprocessed >= 10000) && (audiolevelprocessed < 20000)) {
-            audiolevelprocessed_progress = 20;
+            audiolevelprocessed_progress = 25;
         }
         if (audiolevelprocessed >= 20000) {
-            audiolevelprocessed_progress = 30;
+            audiolevelprocessed_progress = 40;
         }
         userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(audiolevelprocessed_progress)));
         recorder.stop();

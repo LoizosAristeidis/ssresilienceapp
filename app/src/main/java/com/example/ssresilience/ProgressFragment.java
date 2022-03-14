@@ -174,6 +174,11 @@ public class ProgressFragment extends Fragment {
                         if (goal.equals("exercise")) {
                             fg_progress_header2.setText("Physical Exercise");
                         }
+                    } else {
+                        fg_progress_bar.setProgress(0);
+                        fg_progress_points.setText("0");
+                        fg_progress_award.setText("None yet");
+                        fg_progress_badge.setText("None yet");
                     }
                 }
             }

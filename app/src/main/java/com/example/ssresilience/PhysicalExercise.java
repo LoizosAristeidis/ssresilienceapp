@@ -120,9 +120,9 @@ public class PhysicalExercise extends Fragment {
         switch (v.getId()) {
             case R.id.fg_physical_exercise_button:
                 if (exercisecheck == 1) {
-                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(30)));
+                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(40)));
                     ((DataSite) getActivity().getApplication()).getExercisePoints();
-                    ((DataSite) getActivity().getApplication()).setExercisePoints(30);
+                    ((DataSite) getActivity().getApplication()).setExercisePoints(40);
                     Fragment fr2 = new ProgressFragment();
                     FragmentManager fm2 = getFragmentManager();
                     FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();

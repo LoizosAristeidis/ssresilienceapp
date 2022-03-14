@@ -104,10 +104,20 @@ public class GoalsFragment extends Fragment {
         fg_goals_exercise = (Button)rootView.findViewById(R.id.fg_goals_exercise);
         fg_goals_exercise.setOnClickListener(this::onClick);
         fg_goals_setgoal = (Button)rootView.findViewById(R.id.fg_goals_setgoal);
+        setMargins(fg_goals_setgoal, 0, 0, 0, 450);
         fg_goals_setgoal.setOnClickListener(this::onClick);
+
         fg_goals_placeholder = (TextView)rootView.findViewById(R.id.fg_goals_placeholder);
 
         return rootView;
+    }
+
+    private void setMargins (View view, int left, int top, int right, int bottom) {
+        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+            p.setMargins(left, top, right, bottom);
+            view.requestLayout();
+        }
     }
 
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
@@ -172,6 +182,11 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     userRef.child("progress").setValue(0);
+                    Fragment fr = new MeasureFragment();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.fg_goals_container, fr);
+                    fragmentTransaction.commit();
                 }
                 if(check == 2) {
                     Toast.makeText(getActivity(), "Current Goal: Enhance Study Motives",
@@ -182,6 +197,11 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     userRef.child("progress").setValue(0);
+                    Fragment fr = new MeasureFragment();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.fg_goals_container, fr);
+                    fragmentTransaction.commit();
                 }
                 if(check == 3) {
                     Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
@@ -192,6 +212,11 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     userRef.child("progress").setValue(0);
+                    Fragment fr = new MeasureFragment();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.fg_goals_container, fr);
+                    fragmentTransaction.commit();
                 }
                 break;
             default:

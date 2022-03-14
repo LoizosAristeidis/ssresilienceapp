@@ -68,7 +68,7 @@
                 android:layout_marginTop="200dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="182dp"
-                android:background="@drawable/button_border_rect"
+                android:background="@drawable/button_border"
                 android:text="GO"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"

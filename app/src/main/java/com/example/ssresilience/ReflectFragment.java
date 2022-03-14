@@ -82,6 +82,10 @@ public class ReflectFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_reflect, container, false);
 
         check = ((DataSite)getActivity().getApplication()).getCheck();
+        if (check == 2) {
+            Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal to start over!",
+                    Toast.LENGTH_LONG).show();
+        }
 
         // Retrieve the selected Goal from the DataSite Class
         goal = ((DataSite)getActivity().getApplication()).getGoal();
@@ -151,6 +155,9 @@ public class ReflectFragment extends Fragment {
                 fg_reflect_question3.setText("Achieve your physical exercise-related goal?");
                 fg_reflect_question4.setText("Track your fitness-related progress in any way?");
             }
+        } else {
+            Toast.makeText(getActivity(), "Please select a Goal first!",
+                    Toast.LENGTH_LONG).show();
         }
 
         mAuth = FirebaseAuth.getInstance();
@@ -172,16 +179,21 @@ public class ReflectFragment extends Fragment {
             case R.id.fg_reflect_submit:
                 ((DataSite) getActivity().getApplication()).getReflectPoints();
                 ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
-                userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
-                if (check == 2) {
-                    Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal or come back again tomorrow!",
-                            Toast.LENGTH_LONG).show();
+                if (goal != null) {
+                    if (check == 2) {
+                        Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal to start over!",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
+                        Fragment fr2 = new ProgressFragment();
+                        FragmentManager fm2 = getFragmentManager();
+                        FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
+                        fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
+                        fragmentTransaction2.commit();
+                    }
                 } else {
-                    Fragment fr2 = new ProgressFragment();
-                    FragmentManager fm2 = getFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
-                    fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
-                    fragmentTransaction2.commit();
+                    Toast.makeText(getActivity(), "Please select a Goal first!",
+                            Toast.LENGTH_LONG).show();
                 }
                 break;
             default:
