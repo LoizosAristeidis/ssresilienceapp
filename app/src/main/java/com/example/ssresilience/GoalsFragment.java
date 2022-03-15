@@ -104,7 +104,6 @@ public class GoalsFragment extends Fragment {
         fg_goals_exercise = (Button)rootView.findViewById(R.id.fg_goals_exercise);
         fg_goals_exercise.setOnClickListener(this::onClick);
         fg_goals_setgoal = (Button)rootView.findViewById(R.id.fg_goals_setgoal);
-        setMargins(fg_goals_setgoal, 0, 0, 0, 450);
         fg_goals_setgoal.setOnClickListener(this::onClick);
 
         fg_goals_placeholder = (TextView)rootView.findViewById(R.id.fg_goals_placeholder);

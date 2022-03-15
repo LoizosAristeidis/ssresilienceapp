@@ -279,7 +279,7 @@ public class AudioRecordTest extends AppCompatActivity {
         llparams3.gravity = CENTER_HORIZONTAL;
         noisetitle.setLayoutParams(llparams3);
         recordButton = new RecordButton(this);
-        recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border_rect));
+        recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border));
         recordButton.setTextColor(Color.WHITE);
         recordButton.setPadding(50, 0, 50, 0);
         recordButton.setText("Start Recording");
@@ -290,14 +290,14 @@ public class AudioRecordTest extends AppCompatActivity {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         0));
-        llparams.setMargins(100, 500, 100, 0);
+        llparams.setMargins(100, 450, 100, 0);
         llparams.gravity = CENTER_HORIZONTAL;
         recordButton.setLayoutParams(llparams);
         proceedButton = new Button(this);
         proceedButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border));
         proceedButton.setTextColor(Color.WHITE);
         proceedButton.setTextSize(26);
-        proceedButton.setPadding(100, 50, 100, 50);
+        proceedButton.setPadding(50, 0, 50, 0);
         proceedButton.setId(R.id.proceedButton);
         proceedButton.setText("Proceed");
         proceedButton.setGravity(Gravity.CENTER);
@@ -313,7 +313,7 @@ public class AudioRecordTest extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         0));
-        llparams2.setMargins(100, 800, 100, 0);
+        llparams2.setMargins(100, 520, 100, 0);
         llparams2.gravity = CENTER_HORIZONTAL;
         proceedButton.setLayoutParams(llparams2);
         playButton = new PlayButton(this);

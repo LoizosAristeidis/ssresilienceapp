@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
             android:text="This application interprets, and automatically calculates your test score when you click 'SUBMIT'.\n\nThe Stress Test score counts towards your progress. Points range from 0 (Not at all), to 3 (Nearly every day), according to your choice in each category. The final score determines your stress level as follows:\n\n0-4: Normal Stress Level\n5-9: Mild Stress Level\n10-14: Moderate Stress Level\n
@@ -54,7 +54,7 @@
             android:id="@+id/gad_help_back"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/table_option"
             android:gravity="center"
             android:text="X"

@@ -35,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="70dp"
                 android:layout_marginEnd="24dp"
                 android:text="Please head over to the Goals tab, and select one of the three available Goals. Afterwards, you can come back here to measure your progress!"
                 android:textAlignment="center"
@@ -65,17 +65,15 @@
                 android:layout_width="122dp"
                 android:layout_height="62dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="200dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="182dp"
+                android:layout_marginBottom="70dp"
                 android:background="@drawable/button_border"
                 android:text="GO"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
