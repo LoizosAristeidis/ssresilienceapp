@@ -48,7 +48,8 @@ public class GoalsFragment extends Fragment {
     private Button fg_goals_setgoal;
     private TextView fg_goals_placeholder;
     private FirebaseAuth mAuth;
-    private DatabaseReference userRef;
+    private FirebaseUser user;
+    private DatabaseReference dbReference;
 
     private int gadpoints;
     private int check = 0;
@@ -95,7 +96,7 @@ public class GoalsFragment extends Fragment {
         String userId = user.getUid();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        userRef = rootRef.child("Users").child(userId);
+        dbReference = rootRef.child("Users").child(userId);
 
         fg_goals_socialize = (Button)rootView.findViewById(R.id.fg_goals_socialize);
         fg_goals_socialize.setOnClickListener(this::onClick);
@@ -136,8 +137,8 @@ public class GoalsFragment extends Fragment {
                 check = 1;
                 break;
             case R.id.fg_goals_study:
-                fg_goals_placeholder.setText("• Study for 1 or more hours today.\n\n" +
-                        "• Work for at least 1 hour on your projects.\n\n" +
+                fg_goals_placeholder.setText("• Study for 30 minutes or more hours today.\n\n" +
+                        "• Work for at least 30 minutes on your projects.\n\n" +
                         "• Talk to friends or relatives about your projects.\n\n" +
                         "• Dedicate study time for the course of your liking.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
@@ -149,7 +150,7 @@ public class GoalsFragment extends Fragment {
                 check = 2;
                 break;
             case R.id.fg_goals_exercise:
-                fg_goals_placeholder.setText("• Dedicate more than 1 hour on physical exercise.\n\n" +
+                fg_goals_placeholder.setText("• Dedicate more than 30 minutes on physical exercise.\n\n" +
                         "• Participate in physical exercises with friends or others.\n\n" +
                         "• Achieve your physical exercise-related goal.\n\n" +
                         "• Track your fitness-related progress in any way.");
@@ -180,7 +181,8 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
-                    userRef.child("progress").setValue(0);
+                    dbReference.child("progress").setValue(0);
+                    dbReference.child("goal").setValue("Socialize More");
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -195,7 +197,8 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
-                    userRef.child("progress").setValue(0);
+                    dbReference.child("progress").setValue(0);
+                    dbReference.child("goal").setValue("Enhance Study Motives");
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -210,7 +213,8 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
-                    userRef.child("progress").setValue(0);
+                    dbReference.child("progress").setValue(0);
+                    dbReference.child("goal").setValue("Physical Exercise");
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();

@@ -2,16 +2,16 @@ package com.example.ssresilience.models;
 
 public class User {
 
-    public String fullName, email;
+    public String fullName, email, goal;
     public Long progress;
 
     public User() {
-
     }
 
-    public User(String fullName, String email, Long progress) {
+    public User(String fullName, String email, String goal, Long progress) {
         this.fullName = fullName;
         this.email = email;
+        this.goal = goal;
         this.progress = progress;
     }
 
@@ -23,20 +23,20 @@ public class User {
         this.fullName = fullName;
     }
 
-//    public String getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(String age) {
-//        this.age = age;
-//    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGoal() {
+        return goal;
+    }
+
+    public void setGoals(String goal) {
+        this.goal = goal;
     }
 
     public Long getProgress() {

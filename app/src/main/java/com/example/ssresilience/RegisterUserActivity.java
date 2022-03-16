@@ -31,6 +31,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
     private EditText registerEmail, registerAge, registerFullName, registerPassword;
     private ProgressBar progressBar;
     private Button registerBtn, backToLogin;
+    private String goal;
     private int progress1 = 0;
 
     private FirebaseAuth mAuth;
@@ -76,6 +77,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String email = registerEmail.getText().toString().trim();
         String password = registerPassword.getText().toString().trim();
         String fullName = registerFullName.getText().toString().trim();
+        String goal = "";
         Long progress = Long.valueOf(progress1);
 
         if(email.isEmpty()) {
@@ -109,7 +111,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        User user = new User(fullName, email, progress);
+        User user = new User(fullName, email, goal, progress);
 
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(task -> {

@@ -41,7 +41,7 @@ public class ProgressFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String goal;
+    private String goal, dbgoal;
     private FirebaseUser user;
     private DatabaseReference dbReference;
     private String userId;
@@ -95,7 +95,6 @@ public class ProgressFragment extends Fragment {
         if (checkifmeasured == 1) {
             ((DataSite) getActivity().getApplication()).setCheck(4);
         }
-
         if ((gadpoints != 0) && (reflectpoints == 0)) {
             ((DataSite) getActivity().getApplication()).setCheck(1);
         }
@@ -133,6 +132,7 @@ public class ProgressFragment extends Fragment {
                     TextView fg_progress_badge = (TextView) rootView.findViewById(R.id.fg_progress_badge);
 
                     progressValue = userProfile.progress;
+                    dbgoal = userProfile.goal;
                     progress = progressValue.intValue();
                     fg_progress_bar.setProgress(progress);
                     TextView fg_progress_points = (TextView)rootView.findViewById(R.id.fg_progress_points);
@@ -164,14 +164,14 @@ public class ProgressFragment extends Fragment {
                     }
 
                     // Fill the Fragment's TextViews according to the selected Goal
-                    if (goal != null) {
-                        if (goal.equals("socialize")) {
+                    if (dbgoal != null) {
+                        if (dbgoal.equals("Socialize More")) {
                             fg_progress_header2.setText("Socialize More");
                         }
-                        if (goal.equals("study")) {
+                        if (dbgoal.equals("Enhance Study Motives")) {
                             fg_progress_header2.setText("Enhance Study Motives");
                         }
-                        if (goal.equals("exercise")) {
+                        if (dbgoal.equals("Physical Exercise")) {
                             fg_progress_header2.setText("Physical Exercise");
                         }
                     } else {

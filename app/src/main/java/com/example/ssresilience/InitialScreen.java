@@ -48,6 +48,7 @@ public class InitialScreen extends AppCompatActivity {
     private int hour, minute;
     private AlarmManager alarmMgr;
     private PendingIntent alarmIntent;
+    private String goal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,20 @@ public class InitialScreen extends AppCompatActivity {
 
         // Make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        goal = ((DataSite)getApplication()).getGoal();
+        // Fill the Fragment's TextViews according to the selected Goal
+//        if (goal != null) {
+//            if (goal.equals("socialize")) {
+//                ((DataSite)getApplication()).setGoal("socialize");
+//            }
+//            if (goal.equals("study")) {
+//                ((DataSite)getApplication()).setGoal("study");
+//            }
+//            if (goal.equals("exercise")) {
+//                ((DataSite)getApplication()).setGoal("exercise");
+//            }
+//        }
 
         // Put the Navigation drawer icon to the right side of the screen
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -161,7 +176,7 @@ public class InitialScreen extends AppCompatActivity {
         try {
             startActivity(emailIntent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Error to open email app", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Error opening email app.", Toast.LENGTH_SHORT).show();
         }
     }
 }

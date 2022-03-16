@@ -20,6 +20,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ssresilience.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -40,10 +50,13 @@ public class MeasureFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private int check;
-    private String goal;
+    private String goal, dbgoal;
     private Button fg_measure_button_go;
     private MediaRecorder mRecorder = null;
     private int checkifmeasured;
+    private FirebaseUser user;
+    private FirebaseAuth mAuth;
+    private DatabaseReference userRef, dbReference;
 
     public MeasureFragment() {
         // Required empty public constructor
@@ -93,21 +106,57 @@ public class MeasureFragment extends Fragment {
         Button fg_measure_button_go = (Button)rootView.findViewById(R.id.fg_measure_button_go);
         fg_measure_button_go.setOnClickListener(this::onClick);
 
-        // Fill the Fragment's TextViews according to the selected Goal
-        if (goal != null) {
-            if (goal.equals("socialize")) {
-                fg_measure_title.setText("Socialize More");
-                fg_measure_text.setText("Measure the level of noise of your surrounding environment, in order to let the app know you're socializing with people.");
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        userRef = rootRef.child("Users").child(userId);
+
+        //get the logged in user from the auth
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //users are stored in /Users endpoint of our database so we have to create the database reference
+        //to the database
+        dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        //get the user id from the already created user instance of the firebase
+        userId = user.getUid();
+
+        //now we need to get the details from the realtime database by using the child method
+        dbReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@androidx.annotation.NonNull @NotNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                if (userProfile != null) {
+                    dbgoal = userProfile.goal;
+                    // Fill the Fragment's TextViews according to the selected Goal
+                    if (dbgoal != null) {
+                        if (dbgoal.equals("Socialize More")) {
+                            fg_measure_title.setText("Socialize More");
+                            fg_measure_text.setText("Measure the level of noise of your surrounding environment, in order to let the app know you're socializing with people.");
+                        }
+                        if (dbgoal.equals("Enhance Study Motives")) {
+                            fg_measure_title.setText("Enhance Study Motives");
+                            fg_measure_text.setText("Allow the app to calculate and determine your stress level, by taking the Stress Test. Remember, a higher stress level leads to lower study motives.");
+                        }
+                        if (dbgoal.equals("Physical Exercise")) {
+                            fg_measure_title.setText("Physical Exercise");
+                            fg_measure_text.setText("Check your current physical activity state by utilizing your device's accelerometer sensor.");
+                        }
+                    } else {
+                        Toast.makeText(getActivity(), "Please select a Goal first!",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
             }
-            if (goal.equals("study")) {
-                fg_measure_title.setText("Enhance Study Motives");
-                fg_measure_text.setText("Allow the app to calculate and determine your stress level, by taking the Stress Test. Remember, a higher stress level leads to lower study motives.");
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Cannot retrieve User due to an error.",
+                        Toast.LENGTH_LONG).show();
             }
-            if (goal.equals("exercise")) {
-                fg_measure_title.setText("Physical Exercise");
-                fg_measure_text.setText("Check your current physical activity state by utilizing your device's accelerometer sensor.");
-            }
-        }
+
+        });
 
         return rootView;
     }
@@ -116,8 +165,8 @@ public class MeasureFragment extends Fragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fg_measure_button_go:
-                if (goal != null) {
-                    if (goal.equals("socialize")) {
+                if (dbgoal != null) {
+                    if (dbgoal.equals("Socialize More")) {
                         if (check == 4) {
                             Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal to start over!",
                                     Toast.LENGTH_LONG).show();
@@ -126,7 +175,7 @@ public class MeasureFragment extends Fragment {
                             startActivity(intent);
                         }
                     }
-                    if (goal.equals("study")) {
+                    if (dbgoal.equals("Enhance Study Motives")) {
                         if ((check == 1) || (check == 3)) {
                                 Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal to start over!",
                                         Toast.LENGTH_LONG).show();
@@ -138,7 +187,7 @@ public class MeasureFragment extends Fragment {
                             fragmentTransaction.commit();
                         }
                     }
-                    if (goal.equals("exercise")) {
+                    if (dbgoal.equals("Physical Exercise")) {
                         if (check == 4) {
                             Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal to start over!",
                                     Toast.LENGTH_LONG).show();
