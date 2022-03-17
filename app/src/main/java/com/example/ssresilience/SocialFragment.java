@@ -148,7 +148,7 @@ public class SocialFragment extends Fragment {
             case R.id.fg_social_messenger:
                 Intent intent2 = new Intent();
                 intent2.setAction(Intent.ACTION_SEND);
-                intent2.putExtra(Intent.EXTRA_TEXT, "Hello");
+                intent2.putExtra(Intent.EXTRA_TEXT, "I've made some progress in the SSResilience App!");
                 intent2.setType("text/plain");
                 intent2.setPackage("com.facebook.orca");
                 try

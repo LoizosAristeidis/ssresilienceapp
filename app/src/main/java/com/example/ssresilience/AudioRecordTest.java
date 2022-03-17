@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -229,13 +230,6 @@ public class AudioRecordTest extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        // Back button functionality
-        button_back = findViewById(R.id.back_button);
-        button_back.setOnClickListener(v -> {
-            this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
-            this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
-        });
-
         // Put the Navigation drawer icon to the right side of the screen
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -251,7 +245,6 @@ public class AudioRecordTest extends AppCompatActivity {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         userRef = rootRef.child("Users").child(userId);
-
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
 //        LinearLayout ll = new LinearLayout(this);

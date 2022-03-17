@@ -48,7 +48,7 @@ public class ReflectFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private int check;
-    private String goal, dbgoal;
+    private String goal, dbgoal, dbreflect;
     private FirebaseUser user;
     private int reflectpoints = 0;
     private FirebaseAuth mAuth;
@@ -146,6 +146,8 @@ public class ReflectFragment extends Fragment {
             }
         });
 
+        Button fg_reflect_submit = (Button)rootView.findViewById(R.id.fg_reflect_submit);
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userId = user.getUid();
@@ -162,6 +164,7 @@ public class ReflectFragment extends Fragment {
         userId = user.getUid();
 
         //now we need to get the details from the realtime database by using the child method
+        String finalUserId = userId;
         dbReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -169,6 +172,7 @@ public class ReflectFragment extends Fragment {
                 User userProfile = snapshot.getValue(User.class);
                 if (userProfile != null) {
                     dbgoal = userProfile.goal;
+                    dbreflect = userProfile.reflect;
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
@@ -189,6 +193,25 @@ public class ReflectFragment extends Fragment {
                             fg_reflect_question3.setText("Achieve your physical exercise-related goal?");
                             fg_reflect_question4.setText("Track your fitness-related progress in any way?");
                         }
+                        fg_reflect_submit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ((DataSite) getActivity().getApplication()).getReflectPoints();
+                                ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                                if (dbreflect.equals("yes")) {
+                                    Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal to start over!",
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    dbReference.child(finalUserId).child("reflect").setValue("yes");
+                                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
+                                    Fragment fr2 = new ProgressFragment();
+                                    FragmentManager fm2 = getFragmentManager();
+                                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
+                                    fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
+                                    fragmentTransaction2.commit();
+                                }
+                            }
+                        });
                     } else {
                         Toast.makeText(getActivity(), "Please select a Goal first!",
                                 Toast.LENGTH_LONG).show();
@@ -204,37 +227,6 @@ public class ReflectFragment extends Fragment {
 
         });
 
-        Button fg_reflect_submit = (Button)rootView.findViewById(R.id.fg_reflect_submit);
-        fg_reflect_submit.setOnClickListener(this::onClick);
-
         return rootView;
-    }
-
-    @SuppressLint({"NonConstantResourceId", "UseCompatLoadingForDrawables"})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fg_reflect_submit:
-                ((DataSite) getActivity().getApplication()).getReflectPoints();
-                ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
-                if (goal != null) {
-                    if (check == 2) {
-                        Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal to start over!",
-                                Toast.LENGTH_LONG).show();
-                    } else {
-                        userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
-                        Fragment fr2 = new ProgressFragment();
-                        FragmentManager fm2 = getFragmentManager();
-                        FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
-                        fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
-                        fragmentTransaction2.commit();
-                    }
-                } else {
-                    Toast.makeText(getActivity(), "Please select a Goal first!",
-                            Toast.LENGTH_LONG).show();
-                }
-                break;
-            default:
-                break;
-        }
     }
 }

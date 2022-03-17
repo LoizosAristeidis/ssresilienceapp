@@ -20,6 +20,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -52,13 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Hide the Action Bar for this Activity
         getSupportActionBar().hide();
 
-        try {
-
-            Intent intent = getIntent();
-            String goal2 = intent.getStringExtra("goal2");
-
-        } catch(Exception e) {
-            e.printStackTrace();
+        // If the user is already logged in, redirect to HomePageActivity
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            startActivity(new Intent(MainActivity.this, HomePageActivity.class));
         }
     }
 

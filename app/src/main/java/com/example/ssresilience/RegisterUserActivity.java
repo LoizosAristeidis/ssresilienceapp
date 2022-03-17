@@ -31,7 +31,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
     private EditText registerEmail, registerAge, registerFullName, registerPassword;
     private ProgressBar progressBar;
     private Button registerBtn, backToLogin;
-    private String goal;
+    private String goal, measureme, reflect;
     private int progress1 = 0;
 
     private FirebaseAuth mAuth;
@@ -53,6 +53,10 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         registerFullName = (EditText) findViewById(R.id.register_fullname);
         registerAge = (EditText) findViewById(R.id.register_age);
         registerPassword = (EditText) findViewById(R.id.register_password);
+
+        goal = "";
+        measureme = "no";
+        reflect = "no";
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -79,6 +83,8 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String fullName = registerFullName.getText().toString().trim();
         String goal = "";
         Long progress = Long.valueOf(progress1);
+        String measureme = "no";
+        String reflect = "no";
 
         if(email.isEmpty()) {
             registerEmail.setError("E-mail address is required");
@@ -111,7 +117,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        User user = new User(fullName, email, goal, progress);
+        User user = new User(fullName, email, goal, progress, measureme, reflect);
 
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(task -> {
@@ -123,12 +129,9 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
                             if(task1.isSuccessful()) {
                                 Toast.makeText(RegisterUserActivity.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
-                                //redirect to login layout (main activity) after signup
-//                                FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
-//                                authUser.sendEmailVerification();
                                 startActivity(new Intent(this, MainActivity.class));
                             } else {
-                                Toast.makeText(RegisterUserActivity.this, "Failed to register! Try again", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterUserActivity.this, "Failed to register! Please try again", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                             }
                         });

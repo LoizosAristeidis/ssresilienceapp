@@ -183,6 +183,8 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     dbReference.child("progress").setValue(0);
                     dbReference.child("goal").setValue("Socialize More");
+                    dbReference.child("measureme").setValue("no");
+                    dbReference.child("reflect").setValue("no");
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -199,6 +201,8 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     dbReference.child("progress").setValue(0);
                     dbReference.child("goal").setValue("Enhance Study Motives");
+                    dbReference.child("measureme").setValue("no");
+                    dbReference.child("reflect").setValue("no");
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -215,6 +219,8 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
                     dbReference.child("progress").setValue(0);
                     dbReference.child("goal").setValue("Physical Exercise");
+                    dbReference.child("measureme").setValue("no");
+                    dbReference.child("reflect").setValue("no");
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();

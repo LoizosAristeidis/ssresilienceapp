@@ -134,7 +134,12 @@ public class ProgressFragment extends Fragment {
                     progressValue = userProfile.progress;
                     dbgoal = userProfile.goal;
                     progress = progressValue.intValue();
-                    fg_progress_bar.setProgress(progress);
+                    if (progress <= 100) {
+                        fg_progress_bar.setProgress(progress);
+                    } else {
+                        Toast.makeText(getActivity(), "Congratulations! You have completed your goal to the maximum!",
+                                Toast.LENGTH_LONG).show();
+                    }
                     TextView fg_progress_points = (TextView)rootView.findViewById(R.id.fg_progress_points);
                     fg_progress_points.setText(String.valueOf(progress));
 

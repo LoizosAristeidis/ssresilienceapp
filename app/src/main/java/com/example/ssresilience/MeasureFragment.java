@@ -50,7 +50,7 @@ public class MeasureFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private int check;
-    private String goal, dbgoal;
+    private String goal, dbgoal, dbmeasure;
     private Button fg_measure_button_go;
     private MediaRecorder mRecorder = null;
     private int checkifmeasured;
@@ -104,7 +104,7 @@ public class MeasureFragment extends Fragment {
         TextView fg_measure_title = (TextView)rootView.findViewById(R.id.fg_measure_title);
         TextView fg_measure_text = (TextView)rootView.findViewById(R.id.fg_measure_text);
         Button fg_measure_button_go = (Button)rootView.findViewById(R.id.fg_measure_button_go);
-        fg_measure_button_go.setOnClickListener(this::onClick);
+//        fg_measure_button_go.setOnClickListener(this::onClick);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -122,6 +122,7 @@ public class MeasureFragment extends Fragment {
         userId = user.getUid();
 
         //now we need to get the details from the realtime database by using the child method
+        String finalUserId = userId;
         dbReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -129,6 +130,7 @@ public class MeasureFragment extends Fragment {
                 User userProfile = snapshot.getValue(User.class);
                 if (userProfile != null) {
                     dbgoal = userProfile.goal;
+                    dbmeasure = userProfile.measureme;
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
@@ -143,6 +145,47 @@ public class MeasureFragment extends Fragment {
                             fg_measure_title.setText("Physical Exercise");
                             fg_measure_text.setText("Check your current physical activity state by utilizing your device's accelerometer sensor.");
                         }
+                        fg_measure_button_go.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (dbgoal.equals("Socialize More")) {
+                                    if (dbmeasure.equals("yes")) {
+                                        Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal to start over!",
+                                                Toast.LENGTH_LONG).show();
+                                    } else {
+                                        dbReference.child(finalUserId).child("measureme").setValue("yes");
+                                        Intent intent = new Intent(getActivity(), AudioRecordTest.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                                if (dbgoal.equals("Enhance Study Motives")) {
+                                    if (dbmeasure.equals("yes")) {
+                                        Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal to start over!",
+                                                Toast.LENGTH_LONG).show();
+                                    } else {
+                                        dbReference.child(finalUserId).child("measureme").setValue("yes");
+                                        Fragment fr = new GadTest();
+                                        FragmentManager fm = getFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                                        fragmentTransaction.replace(R.id.fg_measure_container, fr);
+                                        fragmentTransaction.commit();
+                                    }
+                                }
+                                if (dbgoal.equals("Physical Exercise")) {
+                                    if (dbmeasure.equals("yes")) {
+                                        Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal to start over!",
+                                                Toast.LENGTH_LONG).show();
+                                    } else {
+                                        dbReference.child(finalUserId).child("measureme").setValue("yes");
+                                        Fragment fr = new PhysicalExercise();
+                                        FragmentManager fm = getFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                                        fragmentTransaction.replace(R.id.fg_measure_container, fr);
+                                        fragmentTransaction.commit();
+                                    }
+                                }
+                            }
+                        });
                     } else {
                         Toast.makeText(getActivity(), "Please select a Goal first!",
                                 Toast.LENGTH_LONG).show();
@@ -159,52 +202,5 @@ public class MeasureFragment extends Fragment {
         });
 
         return rootView;
-    }
-
-    @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fg_measure_button_go:
-                if (dbgoal != null) {
-                    if (dbgoal.equals("Socialize More")) {
-                        if (check == 4) {
-                            Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal to start over!",
-                                    Toast.LENGTH_LONG).show();
-                        } else {
-                            Intent intent = new Intent(getActivity(), AudioRecordTest.class);
-                            startActivity(intent);
-                        }
-                    }
-                    if (dbgoal.equals("Enhance Study Motives")) {
-                        if ((check == 1) || (check == 3)) {
-                                Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal to start over!",
-                                        Toast.LENGTH_LONG).show();
-                        } else {
-                            Fragment fr = new GadTest();
-                            FragmentManager fm = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                            fragmentTransaction.replace(R.id.fg_measure_container, fr);
-                            fragmentTransaction.commit();
-                        }
-                    }
-                    if (dbgoal.equals("Physical Exercise")) {
-                        if (check == 4) {
-                            Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal to start over!",
-                                    Toast.LENGTH_LONG).show();
-                        } else {
-                            Fragment fr = new PhysicalExercise();
-                            FragmentManager fm = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                            fragmentTransaction.replace(R.id.fg_measure_container, fr);
-                            fragmentTransaction.commit();
-                        }
-                    }
-                }
-                else {
-                    Toast.makeText(getActivity(), "Please select a goal first!",
-                            Toast.LENGTH_LONG).show();
-                }
-                break;
-        }
     }
 }
