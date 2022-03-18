@@ -38,7 +38,7 @@ public class SocialFragment extends Fragment {
     public static String FACEBOOK_URL = "https://www.facebook.com/ssresilienceapp";
     public static String FACEBOOK_PAGE_ID = "SSResilience App";
 
-    private Button facebook, messenger, instagram, twitter, facebook_ssr, messenger_ssr, instagram_ssr, twitter_ssr;
+    private Button fg_social_sharebtn, facebook_ssr, messenger_ssr, instagram_ssr, twitter_ssr;
 
     public SocialFragment() {
         // Required empty public constructor
@@ -77,14 +77,8 @@ public class SocialFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_social, container, false);
 
-        facebook = (Button)rootView.findViewById(R.id.fg_social_facebook);
-        facebook.setOnClickListener(this::onClick);
-        twitter = (Button)rootView.findViewById(R.id.fg_social_twitter);
-        twitter.setOnClickListener(this::onClick);
-        instagram = (Button)rootView.findViewById(R.id.fg_social_instagram);
-        instagram.setOnClickListener(this::onClick);
-        messenger = (Button)rootView.findViewById(R.id.fg_social_messenger);
-        messenger.setOnClickListener(this::onClick);
+        fg_social_sharebtn = (Button)rootView.findViewById(R.id.fg_social_sharebtn);
+        fg_social_sharebtn.setOnClickListener(this::onClick);
         facebook_ssr = (Button)rootView.findViewById(R.id.fg_social_facebook_ssr);
         facebook_ssr.setOnClickListener(this::onClick);
         twitter_ssr = (Button)rootView.findViewById(R.id.fg_social_twitter_ssr);
@@ -115,52 +109,11 @@ public class SocialFragment extends Fragment {
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fg_social_facebook:
-                try {
-                    Intent intent5 = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://"));
-                    startActivity(intent5);
-                } catch(Exception e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/")));
-                }
-                break;
-            case R.id.fg_social_twitter:
-                Intent intent = null;
-                try {
-                    getActivity().getPackageManager().getPackageInfo("com.twitter.android", 0);
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://"));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } catch (Exception e) {
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/"));
-                }
-                this.startActivity(intent);
-                break;
-            case R.id.fg_social_instagram:
-                Intent intent3 = null;
-                try {
-                    getActivity().getPackageManager().getPackageInfo("com.instagram.android", 0);
-                    intent3 = new Intent(Intent.ACTION_VIEW, Uri.parse("instagram://"));
-                    intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } catch (Exception e) {
-                    intent3 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://instagram.com"));
-                }
-                this.startActivity(intent3);
-                break;
-            case R.id.fg_social_messenger:
-                Intent intent2 = new Intent();
-                intent2.setAction(Intent.ACTION_SEND);
-                intent2.putExtra(Intent.EXTRA_TEXT, "I've made some progress in the SSResilience App!");
-                intent2.setType("text/plain");
-                intent2.setPackage("com.facebook.orca");
-                try
-                {
-                    startActivity(intent2);
-                }
-                catch (ActivityNotFoundException ex)
-                {
-                    Toast.makeText(getActivity(),
-                            "Cannot open Facebook Messenger right now. Please try again later.",
-                            Toast.LENGTH_SHORT).show();
-                }
+            case R.id.fg_social_sharebtn:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "This is the text that will be shared.");
+                startActivity(Intent.createChooser(sharingIntent,"Share using"));
                 break;
             case R.id.fg_social_facebook_ssr:
                 try {
