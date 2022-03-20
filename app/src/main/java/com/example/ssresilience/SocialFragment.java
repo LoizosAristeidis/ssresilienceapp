@@ -5,16 +5,35 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ssresilience.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -33,7 +52,12 @@ public class SocialFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String goal;
+    private String goal, dbgoal, dbreflect, dbmeasure;
+    private FirebaseUser user;
+    private int reflectpoints = 0;
+    private FirebaseAuth mAuth;
+    private TextView fg_social_noshare;
+    private DatabaseReference userRef, dbReference;
 
     public static String FACEBOOK_URL = "https://www.facebook.com/ssresilienceapp";
     public static String FACEBOOK_PAGE_ID = "SSResilience App";
@@ -79,6 +103,9 @@ public class SocialFragment extends Fragment {
 
         fg_social_sharebtn = (Button)rootView.findViewById(R.id.fg_social_sharebtn);
         fg_social_sharebtn.setOnClickListener(this::onClick);
+        fg_social_sharebtn.setVisibility(View.INVISIBLE);
+        fg_social_noshare = (TextView) rootView.findViewById(R.id.fg_social_noshare);
+        fg_social_noshare.setVisibility(View.VISIBLE);
         facebook_ssr = (Button)rootView.findViewById(R.id.fg_social_facebook_ssr);
         facebook_ssr.setOnClickListener(this::onClick);
         twitter_ssr = (Button)rootView.findViewById(R.id.fg_social_twitter_ssr);
@@ -88,6 +115,47 @@ public class SocialFragment extends Fragment {
         messenger_ssr = (Button)rootView.findViewById(R.id.fg_social_messenger_ssr);
         messenger_ssr.setOnClickListener(this::onClick);
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        userRef = rootRef.child("Users").child(userId);
+
+        //get the logged in user from the auth
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //users are stored in /Users endpoint of our database so we have to create the database reference
+        //to the database
+        dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        //get the user id from the already created user instance of the firebase
+        userId = user.getUid();
+
+        //now we need to get the details from the realtime database by using the child method
+        String finalUserId = userId;
+        dbReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@androidx.annotation.NonNull @NotNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                if (userProfile != null) {
+                    dbgoal = userProfile.goal;
+                    dbreflect = userProfile.reflect;
+                    dbmeasure = userProfile.measureme;
+                    if ((dbmeasure.equals("yes")) && (dbreflect.equals("yes"))) {
+                        fg_social_sharebtn.setVisibility(View.VISIBLE);
+                        fg_social_noshare.setVisibility(View.INVISIBLE);
+                    } else {
+                        fg_social_sharebtn.setVisibility(View.INVISIBLE);
+                        fg_social_noshare.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Cannot retrieve User due to an error.",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
         return rootView;
     }
 
@@ -112,8 +180,8 @@ public class SocialFragment extends Fragment {
             case R.id.fg_social_sharebtn:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "This is the text that will be shared.");
-                startActivity(Intent.createChooser(sharingIntent,"Share using"));
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I've completed my Goal in the SSResilience app!");
+                startActivity(Intent.createChooser(sharingIntent,"Share your Progress"));
                 break;
             case R.id.fg_social_facebook_ssr:
                 try {

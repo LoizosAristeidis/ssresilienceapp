@@ -120,6 +120,13 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -127,6 +134,13 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -134,6 +148,13 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -142,12 +163,24 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
         row2_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
@@ -158,6 +191,12 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -165,6 +204,12 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
@@ -174,12 +219,24 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
         row3_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
@@ -190,6 +247,12 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -197,6 +260,12 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
@@ -206,12 +275,24 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
         row4_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
@@ -222,6 +303,12 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -229,6 +316,12 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
@@ -238,12 +331,24 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
         row5_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
@@ -254,6 +359,12 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -261,6 +372,12 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
@@ -270,12 +387,24 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
         row6_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
@@ -286,6 +415,12 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -293,6 +428,12 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
@@ -302,12 +443,24 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
         row7_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
@@ -318,6 +471,12 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 1;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -326,6 +485,12 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 2;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }
         });
@@ -333,6 +498,12 @@ public class GadTest extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     gadpoints += 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else if (!isChecked) {
+                    gadpoints -= 3;
+                    ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                } else {
+                    gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
                 }
             }

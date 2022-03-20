@@ -32,6 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ReflectFragment#newInstance} factory method to
@@ -52,8 +55,8 @@ public class ReflectFragment extends Fragment {
     private FirebaseUser user;
     private int reflectpoints = 0;
     private FirebaseAuth mAuth;
+    private String updateD;
     private DatabaseReference userRef, dbReference;
-
 
     public ReflectFragment() {
         // Required empty public constructor
@@ -118,13 +121,27 @@ public class ReflectFragment extends Fragment {
                 if (isChecked) {
                     reflectpoints += 15;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+                else {
+                    reflectpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
         });
         fg_reflect_checkbox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+                if (isChecked ) {
                     reflectpoints += 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+                else {
+                    reflectpoints += 0;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
@@ -134,6 +151,12 @@ public class ReflectFragment extends Fragment {
                 if (isChecked) {
                     reflectpoints += 15;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else {
+                    reflectpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
         });
@@ -141,6 +164,12 @@ public class ReflectFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     reflectpoints += 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else {
+                    reflectpoints += 0;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
@@ -173,6 +202,10 @@ public class ReflectFragment extends Fragment {
                 if (userProfile != null) {
                     dbgoal = userProfile.goal;
                     dbreflect = userProfile.reflect;
+                    Calendar c = Calendar.getInstance();
+                    System.out.println("Current time => "+ c.getTime());
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    updateD = df.format(c.getTime());
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
@@ -203,6 +236,7 @@ public class ReflectFragment extends Fragment {
                                             Toast.LENGTH_LONG).show();
                                 } else {
                                     dbReference.child(finalUserId).child("reflect").setValue("yes");
+                                    dbReference.child(finalUserId).child("updateD").setValue(updateD);
                                     userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
                                     Fragment fr2 = new ProgressFragment();
                                     FragmentManager fm2 = getFragmentManager();

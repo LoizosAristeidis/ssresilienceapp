@@ -357,6 +357,20 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent5" />
 
+                        <TextView
+                            android:id="@+id/fg_progress_100_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:text="Goal Completed! Check the Social tab to Share your Progress!"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_points2" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>

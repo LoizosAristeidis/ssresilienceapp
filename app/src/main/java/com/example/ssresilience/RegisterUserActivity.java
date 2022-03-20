@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class RegisterUserActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,7 +33,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
     private EditText registerEmail, registerAge, registerFullName, registerPassword;
     private ProgressBar progressBar;
     private Button registerBtn, backToLogin;
-    private String goal, measureme, reflect;
+    private String goal, measureme, reflect, createD, updateD;
     private int progress1 = 0;
 
     private FirebaseAuth mAuth;
@@ -85,6 +87,14 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         Long progress = Long.valueOf(progress1);
         String measureme = "no";
         String reflect = "no";
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String createD = df.format(c.getTime());
+        Calendar c2 = Calendar.getInstance();
+        System.out.println("Current time => "+ c2.getTime());
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String updateD = df2.format(c2.getTime());
 
         if(email.isEmpty()) {
             registerEmail.setError("E-mail address is required");
@@ -117,7 +127,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        User user = new User(fullName, email, goal, progress, measureme, reflect);
+        User user = new User(fullName, email, goal, progress, measureme, reflect, createD, updateD);
 
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(task -> {

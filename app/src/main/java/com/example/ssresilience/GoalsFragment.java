@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,9 +52,11 @@ public class GoalsFragment extends Fragment {
     private Button fg_goals_exercise;
     private Button fg_goals_setgoal;
     private TextView fg_goals_placeholder;
-    private FirebaseAuth mAuth;
     private FirebaseUser user;
-    private DatabaseReference dbReference;
+    private int reflectpoints = 0;
+    private String updateD;
+    private FirebaseAuth mAuth;
+    private DatabaseReference userRef, dbReference;
 
     private int gadpoints;
     private int check = 0;
@@ -97,7 +104,6 @@ public class GoalsFragment extends Fragment {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         dbReference = rootRef.child("Users").child(userId);
-
         fg_goals_socialize = (Button)rootView.findViewById(R.id.fg_goals_socialize);
         fg_goals_socialize.setOnClickListener(this::onClick);
         fg_goals_study = (Button)rootView.findViewById(R.id.fg_goals_study);
@@ -108,6 +114,11 @@ public class GoalsFragment extends Fragment {
         fg_goals_setgoal.setOnClickListener(this::onClick);
 
         fg_goals_placeholder = (TextView)rootView.findViewById(R.id.fg_goals_placeholder);
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        updateD = df.format(c.getTime());
 
         return rootView;
     }
@@ -185,6 +196,7 @@ public class GoalsFragment extends Fragment {
                     dbReference.child("goal").setValue("Socialize More");
                     dbReference.child("measureme").setValue("no");
                     dbReference.child("reflect").setValue("no");
+                    dbReference.child("updateD").setValue(updateD);
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -203,6 +215,7 @@ public class GoalsFragment extends Fragment {
                     dbReference.child("goal").setValue("Enhance Study Motives");
                     dbReference.child("measureme").setValue("no");
                     dbReference.child("reflect").setValue("no");
+                    dbReference.child("updateD").setValue(updateD);
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -221,6 +234,7 @@ public class GoalsFragment extends Fragment {
                     dbReference.child("goal").setValue("Physical Exercise");
                     dbReference.child("measureme").setValue("no");
                     dbReference.child("reflect").setValue("no");
+                    dbReference.child("updateD").setValue(updateD);
                     Fragment fr = new MeasureFragment();
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();

@@ -33,6 +33,8 @@ import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +55,7 @@ public class MeasureFragment extends Fragment {
     private String goal, dbgoal, dbmeasure;
     private Button fg_measure_button_go;
     private MediaRecorder mRecorder = null;
+    private String updateD;
     private int checkifmeasured;
     private FirebaseUser user;
     private FirebaseAuth mAuth;
@@ -131,6 +134,10 @@ public class MeasureFragment extends Fragment {
                 if (userProfile != null) {
                     dbgoal = userProfile.goal;
                     dbmeasure = userProfile.measureme;
+                    Calendar c = Calendar.getInstance();
+                    System.out.println("Current time => "+ c.getTime());
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    updateD = df.format(c.getTime());
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
@@ -153,6 +160,7 @@ public class MeasureFragment extends Fragment {
                                         Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal to start over!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
+                                        dbReference.child(finalUserId).child("updateD").setValue(updateD);
                                         dbReference.child(finalUserId).child("measureme").setValue("yes");
                                         Intent intent = new Intent(getActivity(), AudioRecordTest.class);
                                         startActivity(intent);
@@ -163,6 +171,7 @@ public class MeasureFragment extends Fragment {
                                         Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal to start over!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
+                                        dbReference.child(finalUserId).child("updateD").setValue(updateD);
                                         dbReference.child(finalUserId).child("measureme").setValue("yes");
                                         Fragment fr = new GadTest();
                                         FragmentManager fm = getFragmentManager();
@@ -176,6 +185,7 @@ public class MeasureFragment extends Fragment {
                                         Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal to start over!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
+                                        dbReference.child(finalUserId).child("updateD").setValue(updateD);
                                         dbReference.child(finalUserId).child("measureme").setValue("yes");
                                         Fragment fr = new PhysicalExercise();
                                         FragmentManager fm = getFragmentManager();
