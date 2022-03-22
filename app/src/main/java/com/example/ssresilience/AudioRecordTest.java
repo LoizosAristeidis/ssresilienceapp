@@ -1,5 +1,6 @@
 package com.example.ssresilience;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.pm.ActivityInfo;
 import androidx.appcompat.app.ActionBar;
@@ -13,10 +14,10 @@ import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
@@ -51,6 +52,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.CENTER_HORIZONTAL;
@@ -67,6 +70,7 @@ public class AudioRecordTest extends AppCompatActivity {
     private PlayButton playButton = null;
     private Button button_back;
     private MediaPlayer player = null;
+    private String updateD;
 
     private TextView noisetitle;
 
@@ -247,7 +251,11 @@ public class AudioRecordTest extends AppCompatActivity {
         userRef = rootRef.child("Users").child(userId);
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-//        LinearLayout ll = new LinearLayout(this);
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        updateD = df.format(c.getTime());
+
         LinearLayout.LayoutParams llparams;
         LinearLayout.LayoutParams llparams2;
         LinearLayout.LayoutParams llparams3;
@@ -296,6 +304,8 @@ public class AudioRecordTest extends AppCompatActivity {
         proceedButton.setGravity(Gravity.CENTER);
         proceedButton.setOnClickListener(v -> {
             if (checkifmeasured == 1 ) {
+                userRef.child("measureme").setValue("yes");
+                userRef.child("updateD").setValue(updateD);
                 finish();
             } else {
                 Toast.makeText(getApplicationContext(), "Please finish the measurement before proceeding!",Toast.LENGTH_SHORT).show();

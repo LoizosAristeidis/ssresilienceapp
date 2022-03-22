@@ -22,6 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GadTest#newInstance} factory method to
@@ -39,9 +42,8 @@ public class GadTest extends Fragment {
     private String mParam2;
     private Button row1_btn1;
     private int gadpoints = 0;
-    private int gadcheck;
     private int gadscore;
-    private String gadresult;
+    private String updateD;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
 
@@ -85,7 +87,10 @@ public class GadTest extends Fragment {
         Button info_btn = (Button)rootView.findViewById(R.id.info_btn);
         info_btn.setOnClickListener(this::onClick);
 
-        gadcheck = ((DataSite)getActivity().getApplication()).getGadCheck();
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        updateD = df.format(c.getTime());
 
         ToggleButton row1_btn1 = (ToggleButton)rootView.findViewById(R.id.row1_btn1);
         ToggleButton row1_btn2 = (ToggleButton)rootView.findViewById(R.id.row1_btn2);
@@ -115,6 +120,15 @@ public class GadTest extends Fragment {
         ToggleButton row7_btn2 = (ToggleButton)rootView.findViewById(R.id.row7_btn2);
         ToggleButton row7_btn3 = (ToggleButton)rootView.findViewById(R.id.row7_btn3);
         ToggleButton row7_btn4 = (ToggleButton)rootView.findViewById(R.id.row7_btn4);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        userRef = rootRef.child("Users").child(userId);
+
+        userRef.child("progress").setValue(Long.valueOf(0));
 
         row1_btn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -509,21 +523,14 @@ public class GadTest extends Fragment {
             }
         });
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userId = user.getUid();
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        userRef = rootRef.child("Users").child(userId);
-
         if (gadpoints < 7) {
-            gadscore = 40;
+            gadscore = 30;
         }
         if ((gadpoints >= 7) && (gadpoints < 14)) {
-            gadscore = 25;
+            gadscore = 20;
         }
         if (gadpoints >= 14) {
-            gadscore = 15;
+            gadscore = 10;
         }
 
         Button gad_submit = (Button)rootView.findViewById(R.id.gad_submit);
@@ -545,25 +552,17 @@ public class GadTest extends Fragment {
             case R.id.gad_submit:
                 ((DataSite) getActivity().getApplication()).getGadPoints();
                 ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
-                ((DataSite) getActivity().getApplication()).getGadCheck();
-                userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(gadscore)));
-                ((DataSite) getActivity().getApplication()).setGadCheck(3);
-                if (gadpoints <= 4) {
-                    Toast.makeText(getActivity(), "Gad Test Result:\n\nNormal Stress Level",
-                            Toast.LENGTH_LONG).show();
+                if (gadpoints < 7) {
+                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(40)));
                 }
-                if ((gadpoints > 4) && (gadpoints <= 9)) {
-                    Toast.makeText(getActivity(), "Gad Test Result:\n\nMild Stress Level",
-                            Toast.LENGTH_LONG).show();
+                if ((gadpoints >= 7) && (gadpoints < 14)) {
+                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(30)));
                 }
-                if ((gadpoints > 9) && (gadpoints <= 14)) {
-                    Toast.makeText(getActivity(), "Gad Test Result:\n\nModerate Stress Level",
-                            Toast.LENGTH_LONG).show();
+                if (gadpoints >= 14) {
+                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(15)));
                 }
-                if (gadpoints > 14) {
-                    Toast.makeText(getActivity(), "Gad Test Result:\n\nSevere Stress Level",
-                            Toast.LENGTH_LONG).show();
-                }
+                userRef.child("measureme").setValue("yes");
+                userRef.child("updateD").setValue(updateD);
                 Fragment fr2 = new ProgressFragment();
                 FragmentManager fm2 = getFragmentManager();
                 FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();

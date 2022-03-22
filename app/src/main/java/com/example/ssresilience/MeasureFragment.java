@@ -60,6 +60,7 @@ public class MeasureFragment extends Fragment {
     private FirebaseUser user;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef, dbReference;
+    private boolean allowRefresh = false;
 
     public MeasureFragment() {
         // Required empty public constructor
@@ -81,6 +82,27 @@ public class MeasureFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Initialize();
+        if(allowRefresh){
+            allowRefresh=false;
+            Fragment fr = new ProgressFragment();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fg_measure_container, fr);
+            fragmentTransaction.commit();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (!allowRefresh)
+            allowRefresh = true;
     }
 
     @Override
@@ -160,8 +182,6 @@ public class MeasureFragment extends Fragment {
                                         Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal to start over!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
-                                        dbReference.child(finalUserId).child("updateD").setValue(updateD);
-                                        dbReference.child(finalUserId).child("measureme").setValue("yes");
                                         Intent intent = new Intent(getActivity(), AudioRecordTest.class);
                                         startActivity(intent);
                                     }
@@ -171,8 +191,6 @@ public class MeasureFragment extends Fragment {
                                         Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal to start over!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
-                                        dbReference.child(finalUserId).child("updateD").setValue(updateD);
-                                        dbReference.child(finalUserId).child("measureme").setValue("yes");
                                         Fragment fr = new GadTest();
                                         FragmentManager fm = getFragmentManager();
                                         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -185,8 +203,6 @@ public class MeasureFragment extends Fragment {
                                         Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal to start over!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
-                                        dbReference.child(finalUserId).child("updateD").setValue(updateD);
-                                        dbReference.child(finalUserId).child("measureme").setValue("yes");
                                         Fragment fr = new PhysicalExercise();
                                         FragmentManager fm = getFragmentManager();
                                         FragmentTransaction fragmentTransaction = fm.beginTransaction();

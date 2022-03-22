@@ -34,9 +34,7 @@ public class DataSite extends Application {
         return gadpoints;
     }
 
-    public void setGadPoints(int gadpoints){
-        this.gadpoints = gadpoints;
-    }
+    public void setGadPoints(int gadpoints){ this.gadpoints = gadpoints; }
 
     public int getReflectPoints(){
         return reflectpoints;
