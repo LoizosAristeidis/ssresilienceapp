@@ -42,7 +42,7 @@ public class GadTest extends Fragment {
     private String mParam2;
     private Button row1_btn1;
     private int gadpoints = 0;
-    private int gadscore;
+    private int gadscore, scorecheck = 0;
     private String updateD;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
@@ -135,12 +135,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -149,12 +152,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -163,12 +169,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -177,12 +186,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -191,12 +203,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -205,12 +220,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -219,12 +237,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -233,12 +254,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -247,12 +271,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -261,12 +288,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -275,12 +305,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -289,12 +322,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -303,12 +339,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -317,12 +356,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -331,12 +373,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -345,12 +390,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -359,12 +407,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -373,12 +424,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -387,12 +441,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -401,12 +458,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -415,12 +475,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -429,12 +492,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -443,12 +509,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -457,12 +526,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -471,12 +543,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -485,12 +560,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 1;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -499,12 +577,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 2;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -513,12 +594,15 @@ public class GadTest extends Fragment {
                 if (isChecked) {
                     gadpoints += 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=1;
                 } else if (!isChecked) {
                     gadpoints -= 3;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck -=1;
                 } else {
                     gadpoints += 0;
                     ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
+                    scorecheck +=0;
                 }
             }
         });
@@ -552,38 +636,43 @@ public class GadTest extends Fragment {
             case R.id.gad_submit:
                 ((DataSite) getActivity().getApplication()).getGadPoints();
                 ((DataSite) getActivity().getApplication()).setGadPoints(gadpoints);
-                if (gadpoints < 7) {
-                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(40)));
-                }
-                if ((gadpoints >= 7) && (gadpoints < 14)) {
-                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(30)));
-                }
-                if (gadpoints >= 14) {
-                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(15)));
-                }
-                if (gadpoints <= 4) {
-                    Toast.makeText(getActivity(), "GAD Test Results:\nNormal Stress Level",
+                if (scorecheck == 7) {
+                    if (gadpoints < 7) {
+                        userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(40)));
+                    }
+                    if ((gadpoints >= 7) && (gadpoints < 14)) {
+                        userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(30)));
+                    }
+                    if (gadpoints >= 14) {
+                        userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(15)));
+                    }
+                    if (gadpoints <= 4) {
+                        Toast.makeText(getActivity(), "GAD Test Results:\nNormal Stress Level",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    if ((gadpoints > 4) && (gadpoints <= 9)) {
+                        Toast.makeText(getActivity(), "GAD Test Results:\nMild Stress Level",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    if ((gadpoints > 9) && (gadpoints <= 14)) {
+                        Toast.makeText(getActivity(), "GAD Test Results:\nModerate Stress Level",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    if (gadpoints > 14) {
+                        Toast.makeText(getActivity(), "GAD Test Results:\nSevere Stress Level",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    userRef.child("measureme").setValue("yes");
+                    userRef.child("updateD").setValue(updateD);
+                    Fragment fr2 = new ProgressFragment();
+                    FragmentManager fm2 = getFragmentManager();
+                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
+                    fragmentTransaction2.replace(R.id.fg_gad_test_container, fr2);
+                    fragmentTransaction2.commit();
+                } else {
+                    Toast.makeText(getActivity(), "Something went wrong.\nPlease check your answers and try again!",
                             Toast.LENGTH_LONG).show();
                 }
-                if ((gadpoints > 4) && (gadpoints <= 9)) {
-                    Toast.makeText(getActivity(), "GAD Test Results:\nMild Stress Level",
-                            Toast.LENGTH_LONG).show();
-                }
-                if ((gadpoints > 9) && (gadpoints <= 14)) {
-                    Toast.makeText(getActivity(), "GAD Test Results:\nModerate Stress Level",
-                            Toast.LENGTH_LONG).show();
-                }
-                if (gadpoints > 14) {
-                    Toast.makeText(getActivity(), "GAD Test Results:\nSevere Stress Level",
-                            Toast.LENGTH_LONG).show();
-                }
-                userRef.child("measureme").setValue("yes");
-                userRef.child("updateD").setValue(updateD);
-                Fragment fr2 = new ProgressFragment();
-                FragmentManager fm2 = getFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
-                fragmentTransaction2.replace(R.id.fg_gad_test_container, fr2);
-                fragmentTransaction2.commit();
                 break;
             default:
                 break;
