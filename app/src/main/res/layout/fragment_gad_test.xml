@@ -21,28 +21,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
             android:text="Over the last 7 days, how often have you been bothered by the following problems?"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
             app:layout_constraintEnd_toStartOf="@id/tableLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="65dp"
+            android:layout_height="470dp"
             android:stretchColumns="*"
-            app:layout_constraintBottom_toTopOf="@+id/gad_submit"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gad_test_heading">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TableRow
                 android:id="@+id/row1"
@@ -710,14 +708,14 @@
             android:id="@+id/gad_submit"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="70dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/button_border"
             android:text="SUBMIT"
             android:textColor="#fff"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
