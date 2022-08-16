@@ -120,9 +120,8 @@
                     app:cornerRadius="8dp"
                     app:strokeColor="#FFFFFF" />
 
-
                 <Button
-                    android:id="@+id/info_share"
+                    android:id="@+id/info_reflect"
                     style="@android:style/Widget.DeviceDefault.Button"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -130,7 +129,7 @@
                     android:layout_marginTop="350dp"
                     android:layout_marginRight="70dp"
                     android:background="@drawable/button_border"
-                    android:text="Share your Progress"
+                    android:text="Reflect"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -141,7 +140,7 @@
                     app:strokeColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/info_reflect"
+                    android:id="@+id/info_share"
                     style="@android:style/Widget.DeviceDefault.Button"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -149,7 +148,7 @@
                     android:layout_marginTop="420dp"
                     android:layout_marginRight="70dp"
                     android:background="@drawable/button_border"
-                    android:text="Reflect"
+                    android:text="Share your Progress"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

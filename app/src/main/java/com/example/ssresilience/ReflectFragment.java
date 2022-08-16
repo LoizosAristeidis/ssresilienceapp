@@ -221,7 +221,7 @@ public class ReflectFragment extends Fragment {
                             fg_reflect_question4.setText("Dedicate study time for the course of your interest?");
                         }
                         if (dbgoal.equals("Physical Exercise")) {
-                            fg_reflect_question1.setText("Dedicate more than 1 hour on physical exercise?");
+                            fg_reflect_question1.setText("Dedicate more than 30 minutes on physical exercise?");
                             fg_reflect_question2.setText("Participate in physical exercises with friends or others?");
                             fg_reflect_question3.setText("Achieve your physical exercise-related goal?");
                             fg_reflect_question4.setText("Track your fitness-related progress in any way?");

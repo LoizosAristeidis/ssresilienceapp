@@ -180,7 +180,7 @@ public class SocialFragment extends Fragment {
             case R.id.fg_social_sharebtn:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I've completed my Goal in the SSResilience app!");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I've completed my Goal '" + dbgoal + "'  in the SSResilience app!");
                 startActivity(Intent.createChooser(sharingIntent,"Share your Progress"));
                 break;
             case R.id.fg_social_facebook_ssr:

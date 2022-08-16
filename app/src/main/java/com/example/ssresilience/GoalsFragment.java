@@ -135,10 +135,10 @@ public class GoalsFragment extends Fragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fg_goals_socialize:
-                fg_goals_placeholder.setText("• Talk to 3 or more people, other than your family.\n\n" +
-                        "• Engage in phone or video calls from any device.\n\n" +
-                        "• Exit your house for more than 2 hours.\n\n" +
-                        "• Meet new people online or via your phone.");
+                fg_goals_placeholder.setText("• Talk to 3 people other than the ones you live with (family/roommates).\n\n" +
+                        "• Meet with a friend or family for lunch or dinner.\n\n" +
+                        "• Go for a coffee or drink with company.\n\n" +
+                        "• Interact in any shape or form with a person you've never met before.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
                 fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                 fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));

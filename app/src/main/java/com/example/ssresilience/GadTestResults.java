@@ -11,13 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link GadTestInfo#newInstance} factory method to
+ * Use the {@link GadTestResults#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GadTestInfo extends Fragment {
+public class GadTestResults extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,8 +28,9 @@ public class GadTestInfo extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int gadpoints;
 
-    public GadTestInfo() {
+    public GadTestResults() {
         // Required empty public constructor
     }
 
@@ -38,11 +40,11 @@ public class GadTestInfo extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment GadTestInfo.
+     * @return A new instance of fragment GadTestResults.
      */
     // TODO: Rename and change types and number of parameters
-    public static GadTestInfo newInstance(String param1, String param2) {
-        GadTestInfo fragment = new GadTestInfo();
+    public static GadTestResults newInstance(String param1, String param2) {
+        GadTestResults fragment = new GadTestResults();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,10 +64,20 @@ public class GadTestInfo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_gad_test_info, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_gad_test_results, container, false);
 
-        Button gad_help_back = (Button)rootView.findViewById(R.id.gad_info_back);
-        gad_help_back.setOnClickListener(this::onClick);
+        gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
+
+        Button gad_result_back = (Button)rootView.findViewById(R.id.gad_result_back);
+        TextView gad_result_text = (TextView)rootView.findViewById(R.id.gad_result_text);
+        gad_result_back.setOnClickListener(this::onClick);
+
+        if (gadpoints <= 9) {
+            gad_result_text.setText("You have a low level of anxiety which wouldn't interfere with your studying.\n\nKeep it up!");
+        }
+        if ((gadpoints > 9)) {
+            gad_result_text.setText("You may be experiencing some anxiety at the moment.\n\nTry a breathing exercise to relax before you study.");
+        }
 
         return rootView;
     }
@@ -73,11 +85,11 @@ public class GadTestInfo extends Fragment {
     @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.gad_info_back:
-                Fragment fr = new GadTest();
+            case R.id.gad_result_back:
+                Fragment fr = new ProgressFragment();
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fg_gad_test_info_container, fr);
+                fragmentTransaction.replace(R.id.fg_gad_test_result_container, fr);
                 fragmentTransaction.commit();
                 break;
         }

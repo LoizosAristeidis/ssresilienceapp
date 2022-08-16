@@ -169,4 +169,21 @@
         app:layout_constraintTop_toBottomOf="@+id/register_button_layout"
         app:layout_constraintVertical_bias="0.133" />
 
+    <TextView
+        android:id="@+id/gdpr_consent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="By using this app, you consent to providing your data solely for research purposes."
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_to_login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

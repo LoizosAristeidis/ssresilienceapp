@@ -167,23 +167,23 @@ public class ProgressFragment extends Fragment {
                         fg_progress_badge.setText("");
                     }
                     if ((progress > 0) && (progress < 25)) {
-                        fg_progress_award.setText("• Getting there. Keep on trying to reach your Goal!");
+                        fg_progress_award.setText("Getting there. Keep on trying to reach your Goal!");
                         fg_progress_badge.setText("• First Steps");
                     }
                     if ((progress >= 25) && (progress < 50)) {
-                        fg_progress_award.setText("• Almost half-way through. Nice effort!");
+                        fg_progress_award.setText("Almost half-way through. Nice effort!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress");
                     }
                     if ((progress >= 50) && (progress < 75)) {
-                        fg_progress_award.setText("• Well Done! You've' made significant progress on your Goal today!");
+                        fg_progress_award.setText("Well Done! You've' made significant progress on your Goal today!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n");
                     }
                     if ((progress >= 75) && (progress < 100)) {
-                        fg_progress_award.setText("• Impressive! Good Job in achieving today's Goal!");
+                        fg_progress_award.setText("Impressive! Good Job in achieving today's Goal!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n• Can't Stop me Now!");
                     }
                     if (progress == 100) {
-                        fg_progress_award.setText("• Congratulations! You have 100% achieved today's Goal!");
+                        fg_progress_award.setText("Congratulations! You have 100% achieved today's Goal!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n• Can't Stop me Now!\n\n• Unbeatable!\n\n• Goal? What Goal?");
                     }
 

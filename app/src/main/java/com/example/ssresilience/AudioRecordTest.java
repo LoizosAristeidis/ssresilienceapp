@@ -180,9 +180,9 @@ public class AudioRecordTest extends AppCompatActivity {
                 } else {
                     onRecord(mStartRecording);
                     if (mStartRecording) {
-                        setText("Stop recording");
+                        setText("Stop measuring noise");
                     } else {
-                        setText("Start recording");
+                        setText("Start measuring noise");
                     }
                     mStartRecording = !mStartRecording;
                 }
@@ -268,7 +268,7 @@ public class AudioRecordTest extends AppCompatActivity {
         noisetitle.setPadding(50, 0, 50, 0);
         noisetitle.setTextSize(32);
         noisetitle.setTypeface(null, Typeface.BOLD);
-        noisetitle.setText("Record the noise level in your surrounding environment");
+        noisetitle.setText("Measure the noise level in your surrounding environment");
         noisetitle.setPadding(50, 0, 50, 0);
         noisetitle.setGravity(CENTER);
         ll.addView(noisetitle,
@@ -283,7 +283,7 @@ public class AudioRecordTest extends AppCompatActivity {
         recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border));
         recordButton.setTextColor(Color.WHITE);
         recordButton.setPadding(50, 0, 50, 0);
-        recordButton.setText("Start Recording");
+        recordButton.setText("Start measuring noise");
         recordButton.setId(R.id.recordButton);
         recordButton.setGravity(CENTER);
         ll.addView(recordButton,
@@ -375,7 +375,7 @@ public class AudioRecordTest extends AppCompatActivity {
         try {
             startActivity(emailIntent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Error to open email app", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Error openning email app", Toast.LENGTH_SHORT).show();
         }
     }
 }

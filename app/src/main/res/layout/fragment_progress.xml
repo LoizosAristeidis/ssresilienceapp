@@ -121,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="50dp"
-                            android:text="Awards Unlocked"
+                            android:text=""
                             android:textAlignment="viewStart"
                             android:textColor="#FFFFFF"
                             android:textSize="20sp"
@@ -176,7 +176,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:layout_marginTop="50dp"
+                            android:layout_marginTop="40dp"
                             android:text="The World Health Organization Recommends:"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
@@ -192,153 +192,69 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="24dp"
                             android:layout_marginEnd="24dp"
-                            android:text="Know that it is okay to feel how you are feeling."
+                            android:text="Know that it is okay to feel how you are feeling, it is normal to experience feelings of sadness, frustration, or stress sometimes."
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/fg_progress_whotitle" />
-
-                        <TextView
-                            android:id="@+id/fg_progress_whocontent1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="24dp"
-                            android:text="It is normal during this crazy time to experience feelings of sadness, anger frustration, stress, or all of the above. You are allowed to feel this way and to communicate with others how you are feeling."
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/fg_progress_whoheader2"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader1" />
 
                         <TextView
                             android:id="@+id/fg_progress_whoheader2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:layout_marginTop="24dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="24dp"
-                            android:text="Maintain a routine."
+                            android:text="Maintain a routine: start your day at about the same time each day."
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent1" />
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader1" />
 
-                        <TextView
-                            android:id="@+id/fg_progress_whocontent2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="24dp"
-                            android:text="Start your day at about the same time each day. Set a goal for coursework to be completed for each morning and afternoon. Maintain adequate nutrition by eating three healthy meals per day. Try to get in at least one physical activity each day."
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/fg_progress_whoheader3"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader2" />
 
                         <TextView
                             android:id="@+id/fg_progress_whoheader3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:layout_marginTop="24dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="24dp"
-                            android:text="Practice good sleep hygiene."
+                            android:text="Connect with others by engaging in regular meetings with friends and family."
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent2" />
-
-                        <TextView
-                            android:id="@+id/fg_progress_whocontent3"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="25dp"
-                            android:text="Maintain a consistent sleep schedule. The goal should be 7-9 hours per night. Limit screen time in the evening, and avoid caffeine starting in the afternoon."
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/fg_progress_whoheader4"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader3" />
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader2" />
 
                         <TextView
                             android:id="@+id/fg_progress_whoheader4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:layout_marginTop="24dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="24dp"
-                            android:text="Connect with others."
+                            android:text="Exercise regularly."
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent3" />
-
-                        <TextView
-                            android:id="@+id/fg_progress_whocontent4"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="24dp"
-                            android:text="It is easy to quickly feel lonely and secluded from others during this stay-at-home period. Make an effort to stay socially connected by engaging in regular video or phone calls with friends and family."
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/fg_progress_whoheader5"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader4" />
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader3" />
 
                         <TextView
                             android:id="@+id/fg_progress_whoheader5"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:layout_marginTop="24dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="24dp"
-                            android:text="Take a break."
+                            android:text="Practice good sleep hygiene of 7–9 hours per night."
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent4" />
-
-                        <TextView
-                            android:id="@+id/fg_progress_whocontent5"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="24dp"
-                            android:text="Take time for yourself each day. Step away from the news and from your coursework to do something you enjoy and that you find relaxing or rejuvenating."
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/fg_progress_fblink"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader5" />
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader4" />
 
                         <TextView
                             android:id="@+id/fg_progress_fblink"
@@ -347,15 +263,15 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="24dp"
                             android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="32dp"
+                            android:layout_marginBottom="100dp"
                             android:text="(https://www.facebook.com/coronavirus_info/core_tips)"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
-                            android:textSize="10sp"
+                            android:textSize="11sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whocontent5" />
+                            app:layout_constraintTop_toBottomOf="@+id/fg_progress_whoheader5" />
 
                         <TextView
                             android:id="@+id/fg_progress_100_check"

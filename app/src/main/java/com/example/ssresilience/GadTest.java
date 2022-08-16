@@ -647,24 +647,20 @@ public class GadTest extends Fragment {
                         userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(15)));
                     }
                     if (gadpoints <= 4) {
-                        Toast.makeText(getActivity(), "GAD Test Results:\nNormal Stress Level",
-                                Toast.LENGTH_LONG).show();
+
                     }
                     if ((gadpoints > 4) && (gadpoints <= 9)) {
-                        Toast.makeText(getActivity(), "GAD Test Results:\nMild Stress Level",
-                                Toast.LENGTH_LONG).show();
+
                     }
                     if ((gadpoints > 9) && (gadpoints <= 14)) {
-                        Toast.makeText(getActivity(), "GAD Test Results:\nModerate Stress Level",
-                                Toast.LENGTH_LONG).show();
+
                     }
                     if (gadpoints > 14) {
-                        Toast.makeText(getActivity(), "GAD Test Results:\nSevere Stress Level",
-                                Toast.LENGTH_LONG).show();
+
                     }
                     userRef.child("measureme").setValue("yes");
                     userRef.child("updateD").setValue(updateD);
-                    Fragment fr2 = new ProgressFragment();
+                    Fragment fr2 = new GadTestResults();
                     FragmentManager fm2 = getFragmentManager();
                     FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
                     fragmentTransaction2.replace(R.id.fg_gad_test_container, fr2);
