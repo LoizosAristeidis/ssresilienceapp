@@ -1,36 +1,29 @@
 package com.example.ssresilience;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Patterns;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.ssresilience.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Objects;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class RegisterUserActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText registerEmail, registerAge, registerFullName, registerPassword;
     private ProgressBar progressBar;
     private Button registerBtn, backToLogin;
+    private String goal, measureme, reflect, createD, updateD;
     private int progress1 = 0;
 
     private FirebaseAuth mAuth;
@@ -53,19 +46,14 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         registerAge = (EditText) findViewById(R.id.register_age);
         registerPassword = (EditText) findViewById(R.id.register_password);
 
+        goal = "";
+        measureme = "no";
+        reflect = "no";
+
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         // Hide the Action Bar for this Activity
         getSupportActionBar().hide();
-    }
-
-    // Hide keyboard when user taps outside the Edittext box
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
-                INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -85,10 +73,21 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String email = registerEmail.getText().toString().trim();
         String password = registerPassword.getText().toString().trim();
         String fullName = registerFullName.getText().toString().trim();
+        String goal = "";
         Long progress = Long.valueOf(progress1);
+        String measureme = "no";
+        String reflect = "no";
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String createD = df.format(c.getTime());
+        Calendar c2 = Calendar.getInstance();
+        System.out.println("Current time => "+ c2.getTime());
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String updateD = df2.format(c2.getTime());
 
         if(email.isEmpty()) {
-            registerEmail.setError("E-mail address is required");
+            registerEmail.setError("6 digit number is required");
             registerEmail.requestFocus();
             return;
         }
@@ -118,7 +117,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        User user = new User(fullName, email, progress);
+        User user = new User(fullName, email, goal, progress, measureme, reflect, createD, updateD);
 
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(task -> {
@@ -130,12 +129,9 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
                             if(task1.isSuccessful()) {
                                 Toast.makeText(RegisterUserActivity.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
-                                //redirect to login layout (main activity) after signup
-//                                FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
-//                                authUser.sendEmailVerification();
                                 startActivity(new Intent(this, MainActivity.class));
                             } else {
-                                Toast.makeText(RegisterUserActivity.this, "Failed to register! Try again", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterUserActivity.this, "Failed to register! Please try again", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                             }
                         });

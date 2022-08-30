@@ -21,12 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="24dp"
             android:text="What's your Goal today?"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="34sp"
+            android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,12 +36,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:text="Select a Goal from the available ones below\n\nTap on the options for more information"
+            android:text="Select a Goal from the available ones below\nTap on the options for more information"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_goals_header" />
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/button_border_rect"
             android:capitalize="none"
@@ -62,14 +62,13 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_goals_header" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_goals_header2" />
 
         <Button
             android:id="@+id/fg_goals_study"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="195dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/button_border_rect"
             android:text="Enhance Study Motives"
@@ -79,14 +78,13 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_goals_header" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_goals_socialize" />
 
         <Button
             android:id="@+id/fg_goals_exercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="240dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/button_border_rect"
             android:text="Physical Exercise"
@@ -96,37 +94,36 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_goals_header" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_goals_study" />
 
         <TextView
             android:id="@+id/fg_goals_placeholder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
             android:text=""
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/fg_goals_setgoal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fg_goals_exercise" />
 
         <Button
             android:id="@+id/fg_goals_setgoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginEnd="120dp"
-            android:layout_marginBottom="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="70dp"
             android:background="@drawable/button_border"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:text="SET GOAL!"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
 

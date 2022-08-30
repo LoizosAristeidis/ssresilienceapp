@@ -14,63 +14,25 @@
         android:fillViewport="true"
         android:layoutDirection="ltr">
 
-        <TextView
-            android:id="@+id/fg_social_title"
+        <Button
+            android:id="@+id/fg_social_sharebtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="16dp"
-            android:text="Share your progression"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/button_border"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Share"
             android:textAlignment="center"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="34sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/fg_social_facebook"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/facebook"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
-
-        <Button
-            android:id="@+id/fg_social_messenger"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/messenger"
-            app:layout_constraintStart_toEndOf="@+id/fg_social_facebook"
-            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
-
-        <Button
-            android:id="@+id/fg_social_instagram"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/instagram"
-            app:layout_constraintStart_toEndOf="@+id/fg_social_messenger"
-            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
-
-        <Button
-            android:id="@+id/fg_social_twitter"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="50dp"
-            android:background="@drawable/twitter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fg_social_instagram"
-            app:layout_constraintTop_toBottomOf="@+id/fg_social_title" />
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_share" />
 
         <TextView
             android:id="@+id/fg_social_leaderboard_header"
@@ -86,7 +48,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fg_social_instagram" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/fg_social_facebook_ssr"
@@ -118,6 +80,22 @@
             app:layout_constraintStart_toEndOf="@+id/fg_social_messenger_ssr"
             app:layout_constraintTop_toBottomOf="@+id/fg_social_leaderboard_header" />
 
+        <TextView
+            android:id="@+id/fg_social_share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="32dp"
+            android:text="Share your Progress"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_facebook_ssr" />
+
         <Button
             android:id="@+id/fg_social_twitter_ssr"
             android:layout_width="50sp"
@@ -130,7 +108,20 @@
             app:layout_constraintStart_toEndOf="@+id/fg_social_instagram_ssr"
             app:layout_constraintTop_toBottomOf="@+id/fg_social_leaderboard_header" />
 
-
+        <TextView
+            android:id="@+id/fg_social_noshare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="Please complete both the Measurement and the Reflect tabs first.\n\nAfterwards, come back here to Share your Progress!"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fg_social_share" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.ssresilience;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.pm.ActivityInfo;
 import androidx.appcompat.app.ActionBar;
@@ -9,13 +10,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
@@ -50,6 +52,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.CENTER_HORIZONTAL;
@@ -66,6 +70,7 @@ public class AudioRecordTest extends AppCompatActivity {
     private PlayButton playButton = null;
     private Button button_back;
     private MediaPlayer player = null;
+    private String updateD;
 
     private TextView noisetitle;
 
@@ -149,13 +154,13 @@ public class AudioRecordTest extends AppCompatActivity {
         audiolevelprocessed = recorder.getMaxAmplitude();
         ((DataSite)getApplication()).setNoiseLevel(audiolevelprocessed);
         if (audiolevelprocessed < 10000) {
-            audiolevelprocessed_progress = 10;
+            audiolevelprocessed_progress = 15;
         }
         if ((audiolevelprocessed >= 10000) && (audiolevelprocessed < 20000)) {
-            audiolevelprocessed_progress = 20;
+            audiolevelprocessed_progress = 25;
         }
         if (audiolevelprocessed >= 20000) {
-            audiolevelprocessed_progress = 30;
+            audiolevelprocessed_progress = 40;
         }
         userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(audiolevelprocessed_progress)));
         recorder.stop();
@@ -175,9 +180,9 @@ public class AudioRecordTest extends AppCompatActivity {
                 } else {
                     onRecord(mStartRecording);
                     if (mStartRecording) {
-                        setText("Stop recording");
+                        setText("Stop measuring noise");
                     } else {
-                        setText("Start recording");
+                        setText("Start measuring noise");
                     }
                     mStartRecording = !mStartRecording;
                 }
@@ -229,13 +234,6 @@ public class AudioRecordTest extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        // Back button functionality
-        button_back = findViewById(R.id.back_button);
-        button_back.setOnClickListener(v -> {
-            this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
-            this.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
-        });
-
         // Put the Navigation drawer icon to the right side of the screen
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -251,10 +249,13 @@ public class AudioRecordTest extends AppCompatActivity {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         userRef = rootRef.child("Users").child(userId);
-
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-//        LinearLayout ll = new LinearLayout(this);
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        updateD = df.format(c.getTime());
+
         LinearLayout.LayoutParams llparams;
         LinearLayout.LayoutParams llparams2;
         LinearLayout.LayoutParams llparams3;
@@ -267,7 +268,7 @@ public class AudioRecordTest extends AppCompatActivity {
         noisetitle.setPadding(50, 0, 50, 0);
         noisetitle.setTextSize(32);
         noisetitle.setTypeface(null, Typeface.BOLD);
-        noisetitle.setText("Record the noise level in your surrounding environment");
+        noisetitle.setText("Measure the noise level in your surrounding environment");
         noisetitle.setPadding(50, 0, 50, 0);
         noisetitle.setGravity(CENTER);
         ll.addView(noisetitle,
@@ -279,10 +280,10 @@ public class AudioRecordTest extends AppCompatActivity {
         llparams3.gravity = CENTER_HORIZONTAL;
         noisetitle.setLayoutParams(llparams3);
         recordButton = new RecordButton(this);
-        recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border_rect));
+        recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border));
         recordButton.setTextColor(Color.WHITE);
         recordButton.setPadding(50, 0, 50, 0);
-        recordButton.setText("Start Recording");
+        recordButton.setText("Start measuring noise");
         recordButton.setId(R.id.recordButton);
         recordButton.setGravity(CENTER);
         ll.addView(recordButton,
@@ -290,19 +291,21 @@ public class AudioRecordTest extends AppCompatActivity {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         0));
-        llparams.setMargins(100, 500, 100, 0);
+        llparams.setMargins(100, 450, 100, 0);
         llparams.gravity = CENTER_HORIZONTAL;
         recordButton.setLayoutParams(llparams);
         proceedButton = new Button(this);
         proceedButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border));
         proceedButton.setTextColor(Color.WHITE);
         proceedButton.setTextSize(26);
-        proceedButton.setPadding(100, 50, 100, 50);
+        proceedButton.setPadding(50, 0, 50, 0);
         proceedButton.setId(R.id.proceedButton);
         proceedButton.setText("Proceed");
         proceedButton.setGravity(Gravity.CENTER);
         proceedButton.setOnClickListener(v -> {
             if (checkifmeasured == 1 ) {
+                userRef.child("measureme").setValue("yes");
+                userRef.child("updateD").setValue(updateD);
                 finish();
             } else {
                 Toast.makeText(getApplicationContext(), "Please finish the measurement before proceeding!",Toast.LENGTH_SHORT).show();
@@ -313,7 +316,7 @@ public class AudioRecordTest extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         0));
-        llparams2.setMargins(100, 800, 100, 0);
+        llparams2.setMargins(100, 520, 100, 0);
         llparams2.gravity = CENTER_HORIZONTAL;
         proceedButton.setLayoutParams(llparams2);
         playButton = new PlayButton(this);
@@ -372,7 +375,7 @@ public class AudioRecordTest extends AppCompatActivity {
         try {
             startActivity(emailIntent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Error to open email app", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Error openning email app", Toast.LENGTH_SHORT).show();
         }
     }
 }

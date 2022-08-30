@@ -20,12 +20,15 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button register, login_btn, login_forgot_password;
+    private Button register, login_btn;
     private EditText login_email, login_password;
     private ProgressBar progressBar;
     private String test;
@@ -42,9 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login_btn = (Button) findViewById(R.id.login_btn);
         login_btn.setOnClickListener(this);
 
-        login_forgot_password = (Button) findViewById(R.id.login_forgot_password);
-        login_forgot_password.setOnClickListener(this);
-
         login_email = (EditText) findViewById(R.id.login_email);
         login_password = (EditText) findViewById(R.id.login_password);
 
@@ -55,13 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Hide the Action Bar for this Activity
         getSupportActionBar().hide();
 
-        try {
-
-            Intent intent = getIntent();
-            String goal2 = intent.getStringExtra("goal2");
-
-        } catch(Exception e) {
-            e.printStackTrace();
+        // If the user is already logged in, redirect to HomePageActivity
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            startActivity(new Intent(MainActivity.this, HomePageActivity.class));
         }
     }
 
@@ -74,10 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.login_btn:
                 userLogin();
-                break;
-            case R.id.login_forgot_password:
-                Toast.makeText(MainActivity.this,"Coming Soon!",
-                        Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -108,21 +101,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if(task.isSuccessful()) {
-                //redirect to userprofile or wherever we want to redirect.. (main page / goal page)
-
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                if(user.isEmailVerified()) {
-//                    startActivity(new Intent(this, ProfileActivity.class));
-                    startActivity(new Intent(MainActivity.this, HomePageActivity.class));
-
-                } else {
-                    user.sendEmailVerification();
-                    Toast.makeText(MainActivity.this, "Check your email address in order to verify your account", Toast.LENGTH_LONG);
-                    progressBar.setVisibility(View.GONE);
-                }
+                startActivity(new Intent(MainActivity.this, HomePageActivity.class));
             } else {
-                Toast.makeText(MainActivity.this, "FAILED TO LOGIN! PLEASE CHECK YOUR CREDENTIALS", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Failed to Log In! Please check your credentials.", Toast.LENGTH_LONG).show();
             }
         });
     }

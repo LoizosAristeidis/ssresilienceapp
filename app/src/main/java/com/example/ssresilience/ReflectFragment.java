@@ -1,8 +1,11 @@
 package com.example.ssresilience;
 
 import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,15 +15,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.ssresilience.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,11 +51,12 @@ public class ReflectFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private int check;
-    private String goal;
+    private String goal, dbgoal, dbreflect;
+    private FirebaseUser user;
     private int reflectpoints = 0;
     private FirebaseAuth mAuth;
-    private DatabaseReference userRef;
-
+    private String updateD;
+    private DatabaseReference userRef, dbReference;
 
     public ReflectFragment() {
         // Required empty public constructor
@@ -82,6 +96,10 @@ public class ReflectFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_reflect, container, false);
 
         check = ((DataSite)getActivity().getApplication()).getCheck();
+        if (check == 2) {
+            Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal to start over!",
+                    Toast.LENGTH_LONG).show();
+        }
 
         // Retrieve the selected Goal from the DataSite Class
         goal = ((DataSite)getActivity().getApplication()).getGoal();
@@ -103,13 +121,27 @@ public class ReflectFragment extends Fragment {
                 if (isChecked) {
                     reflectpoints += 15;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+                else {
+                    reflectpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
         });
         fg_reflect_checkbox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+                if (isChecked ) {
                     reflectpoints += 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                }
+                else {
+                    reflectpoints += 0;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
@@ -119,6 +151,12 @@ public class ReflectFragment extends Fragment {
                 if (isChecked) {
                     reflectpoints += 15;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else {
+                    reflectpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
         });
@@ -127,31 +165,17 @@ public class ReflectFragment extends Fragment {
                 if (isChecked) {
                     reflectpoints += 15;
                     ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else if (!isChecked) {
+                    reflectpoints -= 15;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                } else {
+                    reflectpoints += 0;
+                    ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                 }
             }
         });
 
-        // Fill the Fragment's TextViews according to the selected Goal
-        if (goal != null) {
-            if (goal.equals("socialize")) {
-                fg_reflect_question1.setText("Talk to 3 or more people other than your family?");
-                fg_reflect_question2.setText("Engage in phone or video calls from any device?");
-                fg_reflect_question3.setText("Exit your house for more than 2 hours?");
-                fg_reflect_question4.setText("Meet any new people online or via your phone?");
-            }
-            if (goal.equals("study")) {
-                fg_reflect_question1.setText("Study for 1 or more hours today?");
-                fg_reflect_question2.setText("Work for at least 1 hour on your projects?");
-                fg_reflect_question3.setText("Talk to friends or relatives about your projects?");
-                fg_reflect_question4.setText("Dedicate study time for the course of your interest?");
-            }
-            if (goal.equals("exercise")) {
-                fg_reflect_question1.setText("Dedicate more than 1 hour on physical exercise?");
-                fg_reflect_question2.setText("Participate in physical exercises with friends or others?");
-                fg_reflect_question3.setText("Achieve your physical exercise-related goal?");
-                fg_reflect_question4.setText("Track your fitness-related progress in any way?");
-            }
-        }
+        Button fg_reflect_submit = (Button)rootView.findViewById(R.id.fg_reflect_submit);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -160,32 +184,83 @@ public class ReflectFragment extends Fragment {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         userRef = rootRef.child("Users").child(userId);
 
-        Button fg_reflect_submit = (Button)rootView.findViewById(R.id.fg_reflect_submit);
-        fg_reflect_submit.setOnClickListener(this::onClick);
+        //get the logged in user from the auth
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //users are stored in /Users endpoint of our database so we have to create the database reference
+        //to the database
+        dbReference = FirebaseDatabase.getInstance().getReference("Users");
+        //get the user id from the already created user instance of the firebase
+        userId = user.getUid();
+
+        //now we need to get the details from the realtime database by using the child method
+        String finalUserId = userId;
+        dbReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@androidx.annotation.NonNull @NotNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                if (userProfile != null) {
+                    dbgoal = userProfile.goal;
+                    dbreflect = userProfile.reflect;
+                    Calendar c = Calendar.getInstance();
+                    System.out.println("Current time => "+ c.getTime());
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    updateD = df.format(c.getTime());
+                    // Fill the Fragment's TextViews according to the selected Goal
+                    if (dbgoal != null) {
+                        if (dbgoal.equals("Socialize More")) {
+                            fg_reflect_question1.setText("Talk to 3 or more people other than your family?");
+                            fg_reflect_question2.setText("Engage in phone or video calls from any device?");
+                            fg_reflect_question3.setText("Exit your house for more than 2 hours?");
+                            fg_reflect_question4.setText("Meet any new people online or via your phone?");
+                        }
+                        if (dbgoal.equals("Enhance Study Motives")) {
+                            fg_reflect_question1.setText("Study for 1 or more hours today?");
+                            fg_reflect_question2.setText("Work for at least 1 hour on your projects?");
+                            fg_reflect_question3.setText("Talk to friends or relatives about your projects?");
+                            fg_reflect_question4.setText("Dedicate study time for the course of your interest?");
+                        }
+                        if (dbgoal.equals("Physical Exercise")) {
+                            fg_reflect_question1.setText("Dedicate more than 30 minutes on physical exercise?");
+                            fg_reflect_question2.setText("Participate in physical exercises with friends or others?");
+                            fg_reflect_question3.setText("Achieve your physical exercise-related goal?");
+                            fg_reflect_question4.setText("Track your fitness-related progress in any way?");
+                        }
+                        fg_reflect_submit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ((DataSite) getActivity().getApplication()).getReflectPoints();
+                                ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
+                                if (dbreflect.equals("yes")) {
+                                    Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal to start over!",
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    dbReference.child(finalUserId).child("reflect").setValue("yes");
+                                    dbReference.child(finalUserId).child("updateD").setValue(updateD);
+                                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
+                                    Fragment fr2 = new ProgressFragment();
+                                    FragmentManager fm2 = getFragmentManager();
+                                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
+                                    fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
+                                    fragmentTransaction2.commit();
+                                }
+                            }
+                        });
+                    } else {
+                        Toast.makeText(getActivity(), "Please select a Goal first!",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Cannot retrieve User due to an error.",
+                        Toast.LENGTH_LONG).show();
+            }
+
+        });
 
         return rootView;
-    }
-
-    @SuppressLint({"NonConstantResourceId", "UseCompatLoadingForDrawables"})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fg_reflect_submit:
-                ((DataSite) getActivity().getApplication()).getReflectPoints();
-                ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
-                userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(reflectpoints)));
-                if (check == 2) {
-                    Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal or come back again tomorrow!",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    Fragment fr2 = new ProgressFragment();
-                    FragmentManager fm2 = getFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
-                    fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
-                    fragmentTransaction2.commit();
-                }
-                break;
-            default:
-                break;
-        }
     }
 }

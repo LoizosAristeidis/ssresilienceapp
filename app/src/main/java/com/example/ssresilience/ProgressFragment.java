@@ -22,9 +22,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,12 +45,14 @@ public class ProgressFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String goal;
+    private String goal, dbgoal, dbreflect, dbmeasure;
     private FirebaseUser user;
     private DatabaseReference dbReference;
+    private TextView fg_progress_100_check;
     private String userId;
     private Long progressValue;
     private int gadpoints, gadscore, reflectpoints, progress, exerisepoints, checkifmeasured;
+
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -85,31 +91,6 @@ public class ProgressFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_progress, container, false);
 
-        // Retrieve the selected Goal from the DataSite Class
-        goal = ((DataSite)getActivity().getApplication()).getGoal();
-        gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
-        reflectpoints = ((DataSite) getActivity().getApplication()).getReflectPoints();
-        exerisepoints = ((DataSite) getActivity().getApplication()).getExercisePoints();
-        checkifmeasured = ((DataSite)getActivity().getApplication()).getCheckIfMeasured();
-
-        if (checkifmeasured == 1) {
-            ((DataSite) getActivity().getApplication()).setCheck(4);
-        }
-
-        if ((gadpoints != 0) && (reflectpoints == 0)) {
-            ((DataSite) getActivity().getApplication()).setCheck(1);
-        }
-        if ((gadpoints == 0) && (reflectpoints != 0)) {
-            ((DataSite) getActivity().getApplication()).setCheck(2);
-        }
-        if ((gadpoints != 0) && (reflectpoints != 0)){
-            ((DataSite) getActivity().getApplication()).setCheck(3);
-        }
-
-        if ((exerisepoints == 30) || (exerisepoints == 1)) {
-            ((DataSite) getActivity().getApplication()).setCheck(4);
-        }
-
         //get the logged in user from the auth
         user = FirebaseAuth.getInstance().getCurrentUser();
         //users are stored in /Users endpoint of our database so we have to create the database reference
@@ -124,17 +105,60 @@ public class ProgressFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
+                dbreflect = userProfile.reflect;
+                dbmeasure = userProfile.measureme;
                 if(userProfile != null) {
+                    // Retrieve the selected Goal from the DataSite Class
+                    goal = ((DataSite)getActivity().getApplication()).getGoal();
+                    gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
+                    reflectpoints = ((DataSite) getActivity().getApplication()).getReflectPoints();
+                    exerisepoints = ((DataSite) getActivity().getApplication()).getExercisePoints();
+                    checkifmeasured = ((DataSite)getActivity().getApplication()).getCheckIfMeasured();
+
+                    if (checkifmeasured == 1) {
+                        ((DataSite) getActivity().getApplication()).setCheck(4);
+                    }
+                    if ((gadpoints != 0) && (reflectpoints == 0)) {
+                        ((DataSite) getActivity().getApplication()).setCheck(1);
+                    }
+                    if ((gadpoints == 0) && (reflectpoints != 0)) {
+                        ((DataSite) getActivity().getApplication()).setCheck(2);
+                    }
+                    if ((gadpoints != 0) && (reflectpoints != 0)){
+                        ((DataSite) getActivity().getApplication()).setCheck(3);
+                    }
+
+                    if ((exerisepoints == 30) || (exerisepoints == 1)) {
+                        ((DataSite) getActivity().getApplication()).setCheck(4);
+                    }
+
                     // Initialize the Fragment's TextViews
                     TextView fg_progress_header2 = (TextView) rootView.findViewById(R.id.fg_progress_header2);
                     ProgressBar fg_progress_bar = (ProgressBar)rootView.findViewById(R.id.fg_progress_bar);
+                    fg_progress_bar.setVisibility(View.VISIBLE);
                     fg_progress_bar.setProgressTintList(ColorStateList.valueOf(Color.WHITE));
                     TextView fg_progress_award = (TextView) rootView.findViewById(R.id.fg_progress_award);
                     TextView fg_progress_badge = (TextView) rootView.findViewById(R.id.fg_progress_badge);
+                    fg_progress_100_check = (TextView) rootView.findViewById(R.id.fg_progress_100_check);
+                    fg_progress_100_check.setVisibility(View.INVISIBLE);
+
+                    if ((dbmeasure.equals("yes")) && (dbreflect.equals("yes"))) {
+                        fg_progress_bar.setVisibility(View.INVISIBLE);
+                        fg_progress_100_check.setVisibility(View.VISIBLE);
+                    } else {
+                        fg_progress_bar.setVisibility(View.VISIBLE);
+                        fg_progress_100_check.setVisibility(View.INVISIBLE);
+                    }
 
                     progressValue = userProfile.progress;
+                    dbgoal = userProfile.goal;
                     progress = progressValue.intValue();
-                    fg_progress_bar.setProgress(progress);
+                    if (progress <= 100) {
+                        fg_progress_bar.setProgress(progress);
+                    } else {
+                        Toast.makeText(getActivity(), "Congratulations! You have completed your goal to the maximum!",
+                                Toast.LENGTH_LONG).show();
+                    }
                     TextView fg_progress_points = (TextView)rootView.findViewById(R.id.fg_progress_points);
                     fg_progress_points.setText(String.valueOf(progress));
 
@@ -143,37 +167,42 @@ public class ProgressFragment extends Fragment {
                         fg_progress_badge.setText("");
                     }
                     if ((progress > 0) && (progress < 25)) {
-                        fg_progress_award.setText("• Getting there. Keep on trying to reach your Goal!");
+                        fg_progress_award.setText("Getting there. Keep on trying to reach your Goal!");
                         fg_progress_badge.setText("• First Steps");
                     }
                     if ((progress >= 25) && (progress < 50)) {
-                        fg_progress_award.setText("• Almost half-way through. Nice effort!");
+                        fg_progress_award.setText("Almost half-way through. Nice effort!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress");
                     }
                     if ((progress >= 50) && (progress < 75)) {
-                        fg_progress_award.setText("• Well Done! You've' made significant progress on your Goal today!");
+                        fg_progress_award.setText("Well Done! You've' made significant progress on your Goal today!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n");
                     }
                     if ((progress >= 75) && (progress < 100)) {
-                        fg_progress_award.setText("• Impressive! Good Job in achieving today's Goal!");
+                        fg_progress_award.setText("Impressive! Good Job in achieving today's Goal!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n• Can't Stop me Now!");
                     }
                     if (progress == 100) {
-                        fg_progress_award.setText("• Congratulations! You have 100% achieved today's Goal!");
+                        fg_progress_award.setText("Congratulations! You have 100% achieved today's Goal!");
                         fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n• Can't Stop me Now!\n\n• Unbeatable!\n\n• Goal? What Goal?");
                     }
 
                     // Fill the Fragment's TextViews according to the selected Goal
-                    if (goal != null) {
-                        if (goal.equals("socialize")) {
+                    if (dbgoal != null) {
+                        if (dbgoal.equals("Socialize More")) {
                             fg_progress_header2.setText("Socialize More");
                         }
-                        if (goal.equals("study")) {
+                        if (dbgoal.equals("Enhance Study Motives")) {
                             fg_progress_header2.setText("Enhance Study Motives");
                         }
-                        if (goal.equals("exercise")) {
+                        if (dbgoal.equals("Physical Exercise")) {
                             fg_progress_header2.setText("Physical Exercise");
                         }
+                    } else {
+                        fg_progress_bar.setProgress(0);
+                        fg_progress_points.setText("0");
+                        fg_progress_award.setText("None yet");
+                        fg_progress_badge.setText("None yet");
                     }
                 }
             }

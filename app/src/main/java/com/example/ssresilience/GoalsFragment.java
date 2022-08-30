@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,8 +52,11 @@ public class GoalsFragment extends Fragment {
     private Button fg_goals_exercise;
     private Button fg_goals_setgoal;
     private TextView fg_goals_placeholder;
+    private FirebaseUser user;
+    private int reflectpoints = 0;
+    private String updateD;
     private FirebaseAuth mAuth;
-    private DatabaseReference userRef;
+    private DatabaseReference userRef, dbReference;
 
     private int gadpoints;
     private int check = 0;
@@ -95,8 +103,7 @@ public class GoalsFragment extends Fragment {
         String userId = user.getUid();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        userRef = rootRef.child("Users").child(userId);
-
+        dbReference = rootRef.child("Users").child(userId);
         fg_goals_socialize = (Button)rootView.findViewById(R.id.fg_goals_socialize);
         fg_goals_socialize.setOnClickListener(this::onClick);
         fg_goals_study = (Button)rootView.findViewById(R.id.fg_goals_study);
@@ -105,19 +112,33 @@ public class GoalsFragment extends Fragment {
         fg_goals_exercise.setOnClickListener(this::onClick);
         fg_goals_setgoal = (Button)rootView.findViewById(R.id.fg_goals_setgoal);
         fg_goals_setgoal.setOnClickListener(this::onClick);
+
         fg_goals_placeholder = (TextView)rootView.findViewById(R.id.fg_goals_placeholder);
 
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        updateD = df.format(c.getTime());
+
         return rootView;
+    }
+
+    private void setMargins (View view, int left, int top, int right, int bottom) {
+        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+            p.setMargins(left, top, right, bottom);
+            view.requestLayout();
+        }
     }
 
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fg_goals_socialize:
-                fg_goals_placeholder.setText("• Talk to 3 or more people, other than your family.\n\n" +
-                        "• Engage in phone or video calls from any device.\n\n" +
-                        "• Exit your house for more than 2 hours.\n\n" +
-                        "• Meet new people online or via your phone.");
+                fg_goals_placeholder.setText("• Talk to 3 people other than the ones you live with (family/roommates).\n\n" +
+                        "• Meet with a friend or family for lunch or dinner.\n\n" +
+                        "• Go for a coffee or drink with company.\n\n" +
+                        "• Interact in any shape or form with a person you've never met before.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
                 fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                 fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
@@ -127,8 +148,8 @@ public class GoalsFragment extends Fragment {
                 check = 1;
                 break;
             case R.id.fg_goals_study:
-                fg_goals_placeholder.setText("• Study for 1 or more hours today.\n\n" +
-                        "• Work for at least 1 hour on your projects.\n\n" +
+                fg_goals_placeholder.setText("• Study for 30 minutes or more hours today.\n\n" +
+                        "• Work for at least 30 minutes on your projects.\n\n" +
                         "• Talk to friends or relatives about your projects.\n\n" +
                         "• Dedicate study time for the course of your liking.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
@@ -140,7 +161,7 @@ public class GoalsFragment extends Fragment {
                 check = 2;
                 break;
             case R.id.fg_goals_exercise:
-                fg_goals_placeholder.setText("• Dedicate more than 1 hour on physical exercise.\n\n" +
+                fg_goals_placeholder.setText("• Dedicate more than 30 minutes on physical exercise.\n\n" +
                         "• Participate in physical exercises with friends or others.\n\n" +
                         "• Achieve your physical exercise-related goal.\n\n" +
                         "• Track your fitness-related progress in any way.");
@@ -171,7 +192,16 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
-                    userRef.child("progress").setValue(0);
+                    dbReference.child("progress").setValue(0);
+                    dbReference.child("goal").setValue("Socialize More");
+                    dbReference.child("measureme").setValue("no");
+                    dbReference.child("reflect").setValue("no");
+                    dbReference.child("updateD").setValue(updateD);
+                    Fragment fr = new MeasureFragment();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.fg_goals_container, fr);
+                    fragmentTransaction.commit();
                 }
                 if(check == 2) {
                     Toast.makeText(getActivity(), "Current Goal: Enhance Study Motives",
@@ -181,7 +211,16 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
-                    userRef.child("progress").setValue(0);
+                    dbReference.child("progress").setValue(0);
+                    dbReference.child("goal").setValue("Enhance Study Motives");
+                    dbReference.child("measureme").setValue("no");
+                    dbReference.child("reflect").setValue("no");
+                    dbReference.child("updateD").setValue(updateD);
+                    Fragment fr = new MeasureFragment();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.fg_goals_container, fr);
+                    fragmentTransaction.commit();
                 }
                 if(check == 3) {
                     Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
@@ -191,7 +230,16 @@ public class GoalsFragment extends Fragment {
                     ((DataSite) getActivity().getApplication()).setGadPoints(0);
                     ((DataSite) getActivity().getApplication()).setReflectPoints(0);
                     ((DataSite) getActivity().getApplication()).setExercisePoints(0);
-                    userRef.child("progress").setValue(0);
+                    dbReference.child("progress").setValue(0);
+                    dbReference.child("goal").setValue("Physical Exercise");
+                    dbReference.child("measureme").setValue("no");
+                    dbReference.child("reflect").setValue("no");
+                    dbReference.child("updateD").setValue(updateD);
+                    Fragment fr = new MeasureFragment();
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.fg_goals_container, fr);
+                    fragmentTransaction.commit();
                 }
                 break;
             default:

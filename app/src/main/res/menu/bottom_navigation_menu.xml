@@ -14,12 +14,12 @@
         android:title="Progress" />
 
     <item
-        android:id="@+id/navigation_social"
-        android:icon="@drawable/social"
-        android:title="Social" />
-
-    <item
         android:id="@+id/navigation_reflect"
         android:icon="@drawable/reflect"
         android:title="Reflect" />
+
+    <item
+        android:id="@+id/navigation_social"
+        android:icon="@drawable/social"
+        android:title="Social" />
 </menu>

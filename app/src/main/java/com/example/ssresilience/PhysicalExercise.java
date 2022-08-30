@@ -25,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link PhysicalExercise#newInstance} factory method to
@@ -40,10 +43,11 @@ public class PhysicalExercise extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String updateD;
     private SensorManager sensorManager;
     private Sensor sensor;
     private TriggerEventListener triggerEventListener;
-    private int exercisecheck;
+    private int exercisecheck = 0;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
 
@@ -85,6 +89,11 @@ public class PhysicalExercise extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_physical_exercise, container, false);
 
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+ c.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        updateD = df.format(c.getTime());
+
         TextView fg_physical_exercise_title = (TextView)rootView.findViewById(R.id.fg_physical_exercise_title);
         TextView fg_physical_exercise_text = (TextView)rootView.findViewById(R.id.fg_physical_exercise_text);
         TextView fg_physical_exercise_result_title = (TextView)rootView.findViewById(R.id.fg_physical_exercise_result_title);
@@ -120,22 +129,27 @@ public class PhysicalExercise extends Fragment {
         switch (v.getId()) {
             case R.id.fg_physical_exercise_button:
                 if (exercisecheck == 1) {
-                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(30)));
+                    userRef.child("updateD").setValue(updateD);
+                    userRef.child("measureme").setValue("yes");
+                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(40)));
                     ((DataSite) getActivity().getApplication()).getExercisePoints();
-                    ((DataSite) getActivity().getApplication()).setExercisePoints(30);
+                    ((DataSite) getActivity().getApplication()).setExercisePoints(40);
                     Fragment fr2 = new ProgressFragment();
                     FragmentManager fm2 = getFragmentManager();
                     FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
                     fragmentTransaction2.replace(R.id.fg_physical_exercise_container, fr2);
                     fragmentTransaction2.commit();
-                } else {
+                } else if (exercisecheck == 0){
+                    userRef.child("measureme").setValue("yes");
+                    userRef.child("updateD").setValue(updateD);
+                    userRef.child("progress").setValue(ServerValue.increment(Long.valueOf(0)));
                     ((DataSite) getActivity().getApplication()).getExercisePoints();
-                    ((DataSite) getActivity().getApplication()).setExercisePoints(1);
-                    Fragment fr2 = new ProgressFragment();
-                    FragmentManager fm2 = getFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
-                    fragmentTransaction2.replace(R.id.fg_physical_exercise_container, fr2);
-                    fragmentTransaction2.commit();
+                    ((DataSite) getActivity().getApplication()).setExercisePoints(0);
+                    Fragment fr3 = new ProgressFragment();
+                    FragmentManager fm3 = getFragmentManager();
+                    FragmentTransaction fragmentTransaction3 = fm3.beginTransaction();
+                    fragmentTransaction3.replace(R.id.fg_physical_exercise_container, fr3);
+                    fragmentTransaction3.commit();
                 }
                 break;
         }
