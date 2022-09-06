@@ -202,6 +202,7 @@ public class GoalsFragment extends Fragment {
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
                     fragmentTransaction.replace(R.id.fg_goals_container, fr);
                     fragmentTransaction.commit();
+                    ((InitialScreen)getActivity()).setNavItem2();
                 }
                 if(check == 2) {
                     Toast.makeText(getActivity(), "Current Goal: Enhance Study Motives",
@@ -221,6 +222,7 @@ public class GoalsFragment extends Fragment {
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
                     fragmentTransaction.replace(R.id.fg_goals_container, fr);
                     fragmentTransaction.commit();
+                    ((InitialScreen)getActivity()).setNavItem2();
                 }
                 if(check == 3) {
                     Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
@@ -240,6 +242,7 @@ public class GoalsFragment extends Fragment {
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
                     fragmentTransaction.replace(R.id.fg_goals_container, fr);
                     fragmentTransaction.commit();
+                    ((InitialScreen)getActivity()).setNavItem2();
                 }
                 break;
             default:

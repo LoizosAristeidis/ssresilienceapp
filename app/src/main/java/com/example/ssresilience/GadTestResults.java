@@ -91,6 +91,7 @@ public class GadTestResults extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 fragmentTransaction.replace(R.id.fg_gad_test_result_container, fr);
                 fragmentTransaction.commit();
+                ((InitialScreen)getActivity()).setNavItem();
                 break;
         }
     }
