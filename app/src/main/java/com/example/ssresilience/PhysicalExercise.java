@@ -139,6 +139,7 @@ public class PhysicalExercise extends Fragment {
                     FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
                     fragmentTransaction2.replace(R.id.fg_physical_exercise_container, fr2);
                     fragmentTransaction2.commit();
+                    ((InitialScreen)getActivity()).setNavItem();
                 } else if (exercisecheck == 0){
                     userRef.child("measureme").setValue("yes");
                     userRef.child("updateD").setValue(updateD);
@@ -150,6 +151,7 @@ public class PhysicalExercise extends Fragment {
                     FragmentTransaction fragmentTransaction3 = fm3.beginTransaction();
                     fragmentTransaction3.replace(R.id.fg_physical_exercise_container, fr3);
                     fragmentTransaction3.commit();
+                    ((InitialScreen)getActivity()).setNavItem();
                 }
                 break;
         }

@@ -108,12 +108,17 @@ public class ProgressFragment extends Fragment {
                 dbreflect = userProfile.reflect;
                 dbmeasure = userProfile.measureme;
                 if(userProfile != null) {
-                    // Retrieve the selected Goal from the DataSite Class
-                    goal = ((DataSite)getActivity().getApplication()).getGoal();
-                    gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
-                    reflectpoints = ((DataSite) getActivity().getApplication()).getReflectPoints();
-                    exerisepoints = ((DataSite) getActivity().getApplication()).getExercisePoints();
-                    checkifmeasured = ((DataSite)getActivity().getApplication()).getCheckIfMeasured();
+                    if (getActivity() == null) {
+                        return;
+                    }
+                    else {
+                        // Retrieve the selected Goal from the DataSite Class
+                        goal = ((DataSite) getActivity().getApplication()).getGoal();
+                        gadpoints = ((DataSite) getActivity().getApplication()).getGadPoints();
+                        reflectpoints = ((DataSite) getActivity().getApplication()).getReflectPoints();
+                        exerisepoints = ((DataSite) getActivity().getApplication()).getExercisePoints();
+                        checkifmeasured = ((DataSite) getActivity().getApplication()).getCheckIfMeasured();
+                    }
 
                     if (checkifmeasured == 1) {
                         ((DataSite) getActivity().getApplication()).setCheck(4);

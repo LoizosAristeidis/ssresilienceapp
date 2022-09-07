@@ -124,6 +124,18 @@ public class InitialScreen extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void setNavItem() {
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        bottomNavigation.setSelectedItemId(R.id.navigation_progress);
+    }
+
+    public void setNavItem2() {
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        bottomNavigation.setSelectedItemId(R.id.navigation_measure);
+    }
+
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);

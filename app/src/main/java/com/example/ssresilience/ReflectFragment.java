@@ -209,10 +209,10 @@ public class ReflectFragment extends Fragment {
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
-                            fg_reflect_question1.setText("Talk to 3 or more people other than your family?");
-                            fg_reflect_question2.setText("Engage in phone or video calls from any device?");
-                            fg_reflect_question3.setText("Exit your house for more than 2 hours?");
-                            fg_reflect_question4.setText("Meet any new people online or via your phone?");
+                            fg_reflect_question1.setText("Talk to 3 people other than the ones you live with (family/roommates).");
+                            fg_reflect_question2.setText("Meet with a friend or family for lunch or dinner");
+                            fg_reflect_question3.setText("Go for a coffee or drink with company.");
+                            fg_reflect_question4.setText("Interact in any shape or form with a person you've never met before.");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
                             fg_reflect_question1.setText("Study for 1 or more hours today?");
@@ -243,6 +243,7 @@ public class ReflectFragment extends Fragment {
                                     FragmentTransaction fragmentTransaction2 = fm2.beginTransaction();
                                     fragmentTransaction2.replace(R.id.fg_reflect_container, fr2);
                                     fragmentTransaction2.commit();
+                                    ((InitialScreen)getActivity()).setNavItem();
                                 }
                             }
                         });
