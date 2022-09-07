@@ -125,13 +125,13 @@ public class HomePageActivity extends AppCompatActivity {
                 User userProfile = snapshot.getValue(User.class);
                 if(userProfile != null) {
                     String fullNameValue = userProfile.fullName;
-                    fullNameTextView.setText("Welcome " + fullNameValue);
+                    fullNameTextView.setText("Γεια σας " + fullNameValue);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(HomePageActivity.this, "Could not retrieve the username.", Toast.LENGTH_LONG).show();
+                Toast.makeText(HomePageActivity.this, "Σφάλμα κατά την λήψη ονόματος χρήστη.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -197,7 +197,7 @@ public class HomePageActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.info_goals:
-                    info_placeholder.setText("You can set a different goal each day");
+                    info_placeholder.setText("Μπορείτε να θέσετε διαφορετικό Στόχο κάθε μέρα.");
                     info_goals.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor));
                     info_goals.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                     info_measure_monitor.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
@@ -210,7 +210,7 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 break;
             case R.id.info_measure_monitor:
-                    info_placeholder.setText("Use your device's sensors or the stress test to self-report your emotions");
+                    info_placeholder.setText("Χρησιμοποιήστε τους αισθητήρες της συσκευής σας ή το stress test για να καταγράψετε τα συναισθήματά σας");
                     info_goals.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
                     info_goals.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                     info_measure_monitor.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor));
@@ -223,7 +223,7 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 break;
             case R.id.info_progress_rewards:
-                    info_placeholder.setText("These are based on your progress within the app");
+                    info_placeholder.setText("Αυτά βασίζονται στην πρόοδό που σημειώνετε στην εφαρμογή");
                     info_goals.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
                     info_goals.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                     info_measure_monitor.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
@@ -236,7 +236,7 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 break;
             case R.id.info_reflect:
-                info_placeholder.setText("Be your own judge at the end of each day");
+                info_placeholder.setText("Γίνετε ο κριτής του εαυτού σας στο τέλος κάθε μέρας");
                 info_goals.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
                 info_goals.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 info_measure_monitor.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
@@ -249,7 +249,7 @@ public class HomePageActivity extends AppCompatActivity {
                 info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                 break;
             case R.id.info_share:
-                    info_placeholder.setText("Compete or Collaborate with other users");
+                    info_placeholder.setText("Ανταγωνιστείτε ή συνεργαστείτε με άλλους χρήστες");
                     info_goals.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
                     info_goals.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                     info_measure_monitor.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
@@ -279,7 +279,7 @@ public class HomePageActivity extends AppCompatActivity {
     public void contactus(MenuItem item) {
         String mailto = "mailto:ssresilienceapp@gmail.com" +
                 "?cc=" +
-                "&subject=" + Uri.encode("SSResilience App Support") +
+                "&subject=" + Uri.encode("Βοήθεια για την εφαρμογή SSResilience") +
                 "&body=" + Uri.encode("");
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse(mailto));
@@ -287,7 +287,7 @@ public class HomePageActivity extends AppCompatActivity {
         try {
             startActivity(emailIntent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(context, "Error to open email app", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Κάτι πήγε στραβά", Toast.LENGTH_SHORT).show();
         }
     }
 }

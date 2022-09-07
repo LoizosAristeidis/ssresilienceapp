@@ -114,7 +114,7 @@ public class PhysicalExercise extends Fragment {
         triggerEventListener = new TriggerEventListener() {
             @Override
             public void onTrigger(TriggerEvent event) {
-                fg_physical_exercise_result_text.setText("Exercising!");
+                fg_physical_exercise_result_text.setText("Ασκείστε!");
                 exercisecheck = 1;
             }
         };

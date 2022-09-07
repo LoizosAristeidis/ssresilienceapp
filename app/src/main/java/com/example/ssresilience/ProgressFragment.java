@@ -161,7 +161,7 @@ public class ProgressFragment extends Fragment {
                     if (progress <= 100) {
                         fg_progress_bar.setProgress(progress);
                     } else {
-                        Toast.makeText(getActivity(), "Congratulations! You have completed your goal to the maximum!",
+                        Toast.makeText(getActivity(), "Συγχαρητήρια! Έχετε ολοκληρώσει εντελώς τον Στόχο σας!",
                                 Toast.LENGTH_LONG).show();
                     }
                     TextView fg_progress_points = (TextView)rootView.findViewById(R.id.fg_progress_points);
@@ -172,49 +172,49 @@ public class ProgressFragment extends Fragment {
                         fg_progress_badge.setText("");
                     }
                     if ((progress > 0) && (progress < 25)) {
-                        fg_progress_award.setText("Getting there. Keep on trying to reach your Goal!");
-                        fg_progress_badge.setText("• First Steps");
+                        fg_progress_award.setText("Είστε κοντά. Συνεχίστε να προσπαθείτε να πετύχετε τον στόχο σας!");
+                        fg_progress_badge.setText("• Πρώτα Βήματα");
                     }
                     if ((progress >= 25) && (progress < 50)) {
-                        fg_progress_award.setText("Almost half-way through. Nice effort!");
-                        fg_progress_badge.setText("• First Steps\n\n• Making Progress");
+                        fg_progress_award.setText("Σχεδόν στα μισά του δρόμου. Ωραία προσπάθεια!");
+                        fg_progress_badge.setText("• Πρώτα Βήματα\n\n• Κάνοντας Πρόοδο");
                     }
                     if ((progress >= 50) && (progress < 75)) {
-                        fg_progress_award.setText("Well Done! You've' made significant progress on your Goal today!");
-                        fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n");
+                        fg_progress_award.setText("Μπράβο! Έχετε κάνει σημαντική πρόοδο στον στόχο σας σήμερα!");
+                        fg_progress_badge.setText("• Πρώτα Βήματα\n\n• Κάνοντας Πρόοδο\n\n");
                     }
                     if ((progress >= 75) && (progress < 100)) {
-                        fg_progress_award.setText("Impressive! Good Job in achieving today's Goal!");
-                        fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n• Can't Stop me Now!");
+                        fg_progress_award.setText("Εντυπωσιακό! Καλή δουλειά στην επίτευξη του σημερινού στόχου!");
+                        fg_progress_badge.setText("• Πρώτα Βήματα\n\n• Κάνοντας Πρόοδο\n\n• Ασταμάτητος!");
                     }
                     if (progress == 100) {
-                        fg_progress_award.setText("Congratulations! You have 100% achieved today's Goal!");
-                        fg_progress_badge.setText("• First Steps\n\n• Making Progress\n\n• Can't Stop me Now!\n\n• Unbeatable!\n\n• Goal? What Goal?");
+                        fg_progress_award.setText("Συγχαρητήρια! Έχετε ολοκληρώσει εντελώς τον Στόχο σας!");
+                        fg_progress_badge.setText("• Πρώτα Βήματα\n\n• Κάνοντας Πρόοδο\n\n• Ασταμάτητος!\n\n• Ανίκητος!\n\n• Στόχος; Ποιός Στόχος;");
                     }
 
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
-                            fg_progress_header2.setText("Socialize More");
+                            fg_progress_header2.setText("Κοινωνικοποίηση");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
-                            fg_progress_header2.setText("Enhance Study Motives");
+                            fg_progress_header2.setText("Κίνητρα για Μελέτη");
                         }
                         if (dbgoal.equals("Physical Exercise")) {
-                            fg_progress_header2.setText("Physical Exercise");
+                            fg_progress_header2.setText("Φυσική Άσκηση");
                         }
                     } else {
                         fg_progress_bar.setProgress(0);
                         fg_progress_points.setText("0");
-                        fg_progress_award.setText("None yet");
-                        fg_progress_badge.setText("None yet");
+                        fg_progress_award.setText("Κανένα ακόμη");
+                        fg_progress_badge.setText("Κανένα ακόμη");
                     }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Cannot retrieve User score due to an error.",
+                Toast.makeText(getActivity(), "Σφάλμα κατά τη λήψη στοιχείων χρήστη.",
                         Toast.LENGTH_LONG).show();
             }
         });

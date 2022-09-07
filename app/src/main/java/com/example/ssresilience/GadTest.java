@@ -666,7 +666,7 @@ public class GadTest extends Fragment {
                     fragmentTransaction2.replace(R.id.fg_gad_test_container, fr2);
                     fragmentTransaction2.commit();
                 } else {
-                    Toast.makeText(getActivity(), "Something went wrong.\nPlease check your answers and try again!",
+                    Toast.makeText(getActivity(), "Παρακαλώ ελέγξτε τις απαντήσεις σας και δοκιμάστε ξανά.",
                             Toast.LENGTH_LONG).show();
                 }
                 break;

@@ -180,7 +180,7 @@ public class InitialScreen extends AppCompatActivity {
     public void contactus(MenuItem item) {
         String mailto = "mailto:ssresilienceapp@gmail.com" +
                 "?cc=" +
-                "&subject=" + Uri.encode("SSResilience App Support") +
+                "&subject=" + Uri.encode("Βοήθεια για την εφαρμογή SSResilience") +
                 "&body=" + Uri.encode("");
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse(mailto));
@@ -188,7 +188,7 @@ public class InitialScreen extends AppCompatActivity {
         try {
             startActivity(emailIntent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Error opening email app.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Κάτι πήγε στραβά.", Toast.LENGTH_SHORT).show();
         }
     }
 }

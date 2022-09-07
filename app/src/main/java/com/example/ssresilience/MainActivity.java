@@ -80,19 +80,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = login_password.getText().toString().trim();
 
         if(email.isEmpty()) {
-            login_email.setError("Email cannot be blank");
+            login_email.setError("Το Email δεν μπορεί να είναι κενό");
             login_email.requestFocus();
             return;
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            login_email.setError("Please enter a valid email");
+            login_email.setError("Παρακαλώ εισάγετε το Email σας σωστά");
             login_email.requestFocus();
             return;
         }
 
         if(password.isEmpty()) {
-            login_password.setError("Password is required");
+            login_password.setError("Ο Κωδικός είναι αναγκαίος");
             login_password.requestFocus();
             return;
         }
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 startActivity(new Intent(MainActivity.this, HomePageActivity.class));
             } else {
-                Toast.makeText(MainActivity.this, "Failed to Log In! Please check your credentials.", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Σφάλμα κατά τη σύνδεση. Παρακαλώ ελέγξτε τα στοιχεία σας.", Toast.LENGTH_LONG).show();
             }
         });
     }

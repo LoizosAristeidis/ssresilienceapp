@@ -176,13 +176,13 @@ public class AudioRecordTest extends AppCompatActivity {
         OnClickListener clicker = new OnClickListener() {
             public void onClick(View v) {
                 if (checkifmeasured == 1) {
-                    Toast.makeText(getApplicationContext(), "You have already finished the measurement! Please Proceed.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Έχετε ήδη τελειώσει τη μέτρηση. Παρακαλώ προχωρήστε.",Toast.LENGTH_SHORT).show();
                 } else {
                     onRecord(mStartRecording);
                     if (mStartRecording) {
-                        setText("Stop measuring noise");
+                        setText("ΤΕΛΟΣ ΜΕΤΡΗΣΗΣ");
                     } else {
-                        setText("Start measuring noise");
+                        setText("ΕΝΑΡΞΗ ΜΕΤΡΗΣΗΣ");
                     }
                     mStartRecording = !mStartRecording;
                 }
@@ -191,7 +191,7 @@ public class AudioRecordTest extends AppCompatActivity {
 
         public RecordButton(Context ctx) {
             super(ctx);
-            setText("Start recording");
+            setText("ΕΝΑΡΞΗ ΜΕΤΡΗΣΗΣ");
             setOnClickListener(clicker);
         }
     }
@@ -203,9 +203,9 @@ public class AudioRecordTest extends AppCompatActivity {
             public void onClick(View v) {
                 onPlay(mStartPlaying);
                 if (mStartPlaying) {
-                    setText("Stop playing");
+                    setText("Παίξτε");
                 } else {
-                    setText("Start playing");
+                    setText("Σταματήστε");
                 }
                 mStartPlaying = !mStartPlaying;
             }
@@ -213,7 +213,7 @@ public class AudioRecordTest extends AppCompatActivity {
 
         public PlayButton(Context ctx) {
             super(ctx);
-            setText("Start playing");
+            setText("Παίξτε");
             setOnClickListener(clicker);
         }
     }
@@ -268,7 +268,7 @@ public class AudioRecordTest extends AppCompatActivity {
         noisetitle.setPadding(50, 0, 50, 0);
         noisetitle.setTextSize(32);
         noisetitle.setTypeface(null, Typeface.BOLD);
-        noisetitle.setText("Measure the noise level in your surrounding environment");
+        noisetitle.setText("Μετρήστε το επίπεδο θορύβου στο περιβάλλον σας.");
         noisetitle.setPadding(50, 0, 50, 0);
         noisetitle.setGravity(CENTER);
         ll.addView(noisetitle,
@@ -283,7 +283,7 @@ public class AudioRecordTest extends AppCompatActivity {
         recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_border));
         recordButton.setTextColor(Color.WHITE);
         recordButton.setPadding(50, 0, 50, 0);
-        recordButton.setText("Start measuring noise");
+        recordButton.setText("ΕΝΑΡΞΗ ΜΕΤΡΗΣΗΣ");
         recordButton.setId(R.id.recordButton);
         recordButton.setGravity(CENTER);
         ll.addView(recordButton,
@@ -300,7 +300,7 @@ public class AudioRecordTest extends AppCompatActivity {
         proceedButton.setTextSize(26);
         proceedButton.setPadding(50, 0, 50, 0);
         proceedButton.setId(R.id.proceedButton);
-        proceedButton.setText("Proceed");
+        proceedButton.setText("ΣΥΝΕΧΕΙΑ");
         proceedButton.setGravity(Gravity.CENTER);
         proceedButton.setOnClickListener(v -> {
             if (checkifmeasured == 1 ) {
@@ -308,7 +308,7 @@ public class AudioRecordTest extends AppCompatActivity {
                 userRef.child("updateD").setValue(updateD);
                 finish();
             } else {
-                Toast.makeText(getApplicationContext(), "Please finish the measurement before proceeding!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Παρακαλώ τελειώστε τη μέτρηση πριν προχωρήσετε.",Toast.LENGTH_SHORT).show();
             }
         });
         ll.addView(proceedButton,
@@ -367,7 +367,7 @@ public class AudioRecordTest extends AppCompatActivity {
     public void contactus(MenuItem item) {
         String mailto = "mailto:ssresilienceapp@gmail.com" +
                 "?cc=" +
-                "&subject=" + Uri.encode("SSResilience App Support") +
+                "&subject=" + Uri.encode("Βοήθεια για την εφαρμογή SSResilience") +
                 "&body=" + Uri.encode("");
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse(mailto));
@@ -375,7 +375,7 @@ public class AudioRecordTest extends AppCompatActivity {
         try {
             startActivity(emailIntent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(), "Error openning email app", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Κάτι πήγε στραβά", Toast.LENGTH_SHORT).show();
         }
     }
 }

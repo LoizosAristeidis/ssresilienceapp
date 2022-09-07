@@ -163,23 +163,23 @@ public class MeasureFragment extends Fragment {
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
-                            fg_measure_title.setText("Socialize More");
-                            fg_measure_text.setText("Measure the level of noise of your surrounding environment, in order to let the app know you're socializing with people.");
+                            fg_measure_title.setText("Κοινωνικοποίηση");
+                            fg_measure_text.setText("Μετρήστε το επίπεδο θορύβου του περιβάλλοντός σας, για να ενημερώσετε την εφαρμογή ότι συναναστρέφεστε με ανθρώπους.");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
-                            fg_measure_title.setText("Enhance Study Motives");
-                            fg_measure_text.setText("Allow the app to calculate and determine your stress level, by taking the Stress Test. Remember, a higher stress level leads to lower study motives.");
+                            fg_measure_title.setText("Κίνητρα για Μελέτη");
+                            fg_measure_text.setText("Επιτρέψτε στην εφαρμογή να υπολογίσει το επίπεδο άγχους σας, κάνοντας το τεστ. Θυμηθείτε, ένα υψηλότερο επίπεδο άγχους οδηγεί σε χαμηλότερα κίνητρα μελέτης.");
                         }
                         if (dbgoal.equals("Physical Exercise")) {
-                            fg_measure_title.setText("Physical Exercise");
-                            fg_measure_text.setText("Check your current physical activity state by utilizing your device's accelerometer sensor.");
+                            fg_measure_title.setText("Φυσική Άσκηση");
+                            fg_measure_text.setText("Ελέγξτε την τρέχουσα κατάσταση φυσικής δραστηριότητας χρησιμοποιώντας τον αισθητήρα επιταχυνσιόμετρου της συσκευής σας.");
                         }
                         fg_measure_button_go.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 if (dbgoal.equals("Socialize More")) {
                                     if (dbmeasure.equals("yes")) {
-                                        Toast.makeText(getActivity(), "You have already measured the Noise Level.\n\nPlease change your selected Goal to start over!",
+                                        Toast.makeText(getActivity(), "Έχετε ήδη μετρήσει το επίπεδο θορύβου.\n\nΠαρακαλώ προσδιορίστε διαφορετικό Στόχο και δοκιμάστε ξανά!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
                                         Intent intent = new Intent(getActivity(), AudioRecordTest.class);
@@ -188,7 +188,7 @@ public class MeasureFragment extends Fragment {
                                 }
                                 if (dbgoal.equals("Enhance Study Motives")) {
                                     if (dbmeasure.equals("yes")) {
-                                        Toast.makeText(getActivity(), "You have already used the GAD Test.\n\nPlease change your selected Goal to start over!",
+                                        Toast.makeText(getActivity(), "Έχετε ήδη κάνει το τεστ μέτρησης άγχους.\n\nΠαρακαλώ προσδιορίστε διαφορετικό Στόχο και δοκιμάστε ξανά!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
                                         Fragment fr = new GadTest();
@@ -200,7 +200,7 @@ public class MeasureFragment extends Fragment {
                                 }
                                 if (dbgoal.equals("Physical Exercise")) {
                                     if (dbmeasure.equals("yes")) {
-                                        Toast.makeText(getActivity(), "You have already checked your Physical Exercise state.\n\nPlease change your selected Goal to start over!",
+                                        Toast.makeText(getActivity(), "Έχετε ήδη ελέγξε την κατάσταση φυσικής δραστηριότητάς σας.\n\nΠαρακαλώ προσδιορίστε διαφορετικό Στόχο και δοκιμάστε ξανά!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
                                         Fragment fr = new PhysicalExercise();
@@ -213,7 +213,7 @@ public class MeasureFragment extends Fragment {
                             }
                         });
                     } else {
-                        Toast.makeText(getActivity(), "Please select a Goal first!",
+                        Toast.makeText(getActivity(), "Παρακαλώ επιλέγξτε έναν Στόχο πρώτα.",
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -221,7 +221,7 @@ public class MeasureFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Cannot retrieve User due to an error.",
+                Toast.makeText(getActivity(), "Σφάλμα κατά τη λήψη στοιχείων χρήστη.",
                         Toast.LENGTH_LONG).show();
             }
 

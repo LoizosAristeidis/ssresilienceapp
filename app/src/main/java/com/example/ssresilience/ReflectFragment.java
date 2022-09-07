@@ -209,22 +209,22 @@ public class ReflectFragment extends Fragment {
                     // Fill the Fragment's TextViews according to the selected Goal
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
-                            fg_reflect_question1.setText("Talk to 3 people other than the ones you live with (family/roommates).");
-                            fg_reflect_question2.setText("Meet with a friend or family for lunch or dinner");
-                            fg_reflect_question3.setText("Go for a coffee or drink with company.");
-                            fg_reflect_question4.setText("Interact in any shape or form with a person you've never met before.");
+                            fg_reflect_question1.setText("Μιλήσατε με 3 άτομα εκτός από αυτά με τα οποία ζείτε (οικογένεια/συγκάτοικοι);");
+                            fg_reflect_question2.setText("Συναντηθήκατε με έναν φίλο ή την οικογένειά σας για μεσημεριανό γεύμα ή δείπνο;");
+                            fg_reflect_question3.setText("Πήγατε για καφέ ή για ποτό με παρέα;");
+                            fg_reflect_question4.setText("Αλληλεπιδράσατε με ένα άτομο που δεν έχετε ξανασυναντήσει;");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
-                            fg_reflect_question1.setText("Study for 1 or more hours today?");
-                            fg_reflect_question2.setText("Work for at least 1 hour on your projects?");
-                            fg_reflect_question3.setText("Talk to friends or relatives about your projects?");
-                            fg_reflect_question4.setText("Dedicate study time for the course of your interest?");
+                            fg_reflect_question1.setText("Μελετήσατε για 1 ή περισσότερες ώρες σήμερα;");
+                            fg_reflect_question2.setText("Μιλήσατε με φίλους ή συγγενείς για τις μαθησιακές ενασχολήσεις σας;");
+                            fg_reflect_question3.setText("Εργαστήκατε για τουλάχιστον 1 ώρα στις μαθησιακές ενασχολήσεις σας;");
+                            fg_reflect_question4.setText("Αφιερώσατε χρόνο μελέτης για το μάθημα που σας ενδιαφέρει περισσότερο;");
                         }
                         if (dbgoal.equals("Physical Exercise")) {
-                            fg_reflect_question1.setText("Dedicate more than 30 minutes on physical exercise?");
-                            fg_reflect_question2.setText("Participate in physical exercises with friends or others?");
-                            fg_reflect_question3.setText("Achieve your physical exercise-related goal?");
-                            fg_reflect_question4.setText("Track your fitness-related progress in any way?");
+                            fg_reflect_question1.setText("Αφιερώσατε περισσότερα από 30 λεπτά στη φυσική άσκηση;");
+                            fg_reflect_question2.setText("Συμμετείχατε σε φυσικές ασκήσεις με φίλους ή άλλους;");
+                            fg_reflect_question3.setText("Πετύχατε τον στόχο σας που σχετίζεται με τη σωματική άσκηση;");
+                            fg_reflect_question4.setText("Παρακολουθήσατε την πρόοδό σας που σχετίζεται με τη φυσική σας κατάσταση με οποιονδήποτε τρόπο;");
                         }
                         fg_reflect_submit.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -232,7 +232,7 @@ public class ReflectFragment extends Fragment {
                                 ((DataSite) getActivity().getApplication()).getReflectPoints();
                                 ((DataSite) getActivity().getApplication()).setReflectPoints(reflectpoints);
                                 if (dbreflect.equals("yes")) {
-                                    Toast.makeText(getActivity(), "You have already used the Reflect Tab.\nPlease change your selected Goal to start over!",
+                                    Toast.makeText(getActivity(), "Έχετε ήδη χρησιμοποιήσει την καρτέλα Αναστοχασμού.\nΠαρακαλώ προσδιορίστε διαφορετικό Στόχο και δοκιμάστε ξανά!",
                                             Toast.LENGTH_LONG).show();
                                 } else {
                                     dbReference.child(finalUserId).child("reflect").setValue("yes");
@@ -248,7 +248,7 @@ public class ReflectFragment extends Fragment {
                             }
                         });
                     } else {
-                        Toast.makeText(getActivity(), "Please select a Goal first!",
+                        Toast.makeText(getActivity(), "Παρακαλώ επιλέγξτε έναν Στόχο πρώτα.",
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -256,7 +256,7 @@ public class ReflectFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Cannot retrieve User due to an error.",
+                Toast.makeText(getActivity(), "Σφάλμα κατά τη λήψη στοιχείων χρήστη.",
                         Toast.LENGTH_LONG).show();
             }
 

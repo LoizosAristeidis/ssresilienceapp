@@ -3,23 +3,23 @@
     <item
         android:id="@+id/navigation_goals"
         android:icon="@drawable/goals"
-        android:title="Goals" />
+        android:title="Στόχοι" />
     <item
         android:id="@+id/navigation_measure"
         android:icon="@drawable/measure"
-        android:title="Measure" />
+        android:title="Μέτρηση" />
     <item
         android:id="@+id/navigation_progress"
         android:icon="@drawable/progress"
-        android:title="Progress" />
+        android:title="Πρόοδος" />
 
     <item
         android:id="@+id/navigation_reflect"
         android:icon="@drawable/reflect"
-        android:title="Reflect" />
+        android:title="Αναστοχασμός" />
 
     <item
         android:id="@+id/navigation_social"
         android:icon="@drawable/social"
-        android:title="Social" />
+        android:title="Κοινωνικά" />
 </menu>

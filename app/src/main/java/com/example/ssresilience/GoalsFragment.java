@@ -135,10 +135,10 @@ public class GoalsFragment extends Fragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fg_goals_socialize:
-                fg_goals_placeholder.setText("• Talk to 3 people other than the ones you live with (family/roommates).\n\n" +
-                        "• Meet with a friend or family for lunch or dinner.\n\n" +
-                        "• Go for a coffee or drink with company.\n\n" +
-                        "• Interact in any shape or form with a person you've never met before.");
+                fg_goals_placeholder.setText("• Μιλήστε με 3 άτομα εκτός από αυτά με τα οποία ζείτε (οικογένεια/συγκάτοικοι).\n\n" +
+                        "• Συναντηθείτε με έναν φίλο ή την οικογένειά σας για μεσημεριανό γεύμα ή δείπνο.\n\n" +
+                        "• Πήγαίνετε για καφέ ή για ποτό με παρέα.\n\n" +
+                        "• Αλληλεπιδράστε με ένα άτομο που δεν έχετε ξανασυναντήσει.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
                 fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text));
                 fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
@@ -148,10 +148,10 @@ public class GoalsFragment extends Fragment {
                 check = 1;
                 break;
             case R.id.fg_goals_study:
-                fg_goals_placeholder.setText("• Study for 30 minutes or more hours today.\n\n" +
-                        "• Work for at least 30 minutes on your projects.\n\n" +
-                        "• Talk to friends or relatives about your projects.\n\n" +
-                        "• Dedicate study time for the course of your liking.");
+                fg_goals_placeholder.setText("• Μελετήστε για 1 ή περισσότερες ώρες σήμερα.\n\n" +
+                        "• Εργαστείτε για τουλάχιστον 1 ώρα στις μαθησιακές ενασχολήσεις σας.\n\n" +
+                        "• Μιλήστε με φίλους ή συγγενείς για τις μαθησιακές ενασχολήσεις σας.\n\n" +
+                        "• Αφιερώστε χρόνο μελέτης για το μάθημα που σας ενδιαφέρει περισσότερο.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
                 fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
@@ -161,10 +161,10 @@ public class GoalsFragment extends Fragment {
                 check = 2;
                 break;
             case R.id.fg_goals_exercise:
-                fg_goals_placeholder.setText("• Dedicate more than 30 minutes on physical exercise.\n\n" +
-                        "• Participate in physical exercises with friends or others.\n\n" +
-                        "• Achieve your physical exercise-related goal.\n\n" +
-                        "• Track your fitness-related progress in any way.");
+                fg_goals_placeholder.setText("• Αφιερώστε περισσότερα από 30 λεπτά στη φυσική άσκηση.\n\n" +
+                        "• Συμμετέχετε σε φυσικές ασκήσεις με φίλους ή άλλους.\n\n" +
+                        "• Πετύχετε τον στόχο σας που σχετίζεται με τη σωματική άσκηση.\n\n" +
+                        "• Παρακολουθήστε την πρόοδό σας που σχετίζεται με τη φυσική σας κατάσταση με οποιονδήποτε τρόπο.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
                 fg_goals_socialize.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 fg_goals_study.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
@@ -181,11 +181,11 @@ public class GoalsFragment extends Fragment {
         switch (v.getId()) {
             case R.id.fg_goals_setgoal:
                 if(check == 0) {
-                    Toast.makeText(getActivity(), "Please select one of the 3 Goals!",
+                    Toast.makeText(getActivity(), "Παρακαλώ επιλέξτε έναν από τους 3 Στόχους!",
                             Toast.LENGTH_LONG).show();
                 }
                 if(check == 1) {
-                    Toast.makeText(getActivity(), "Current Goal: Socialize More",
+                    Toast.makeText(getActivity(), "Στόχος: Κοινωνικοποίηση",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("socialize");
                     ((DataSite) getActivity().getApplication()).setCheck(0);
@@ -205,7 +205,7 @@ public class GoalsFragment extends Fragment {
                     ((InitialScreen)getActivity()).setNavItem2();
                 }
                 if(check == 2) {
-                    Toast.makeText(getActivity(), "Current Goal: Enhance Study Motives",
+                    Toast.makeText(getActivity(), "Στόχος: Κίνητρα για Μελέτη",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("study");
                     ((DataSite) getActivity().getApplication()).setCheck(0);
@@ -225,7 +225,7 @@ public class GoalsFragment extends Fragment {
                     ((InitialScreen)getActivity()).setNavItem2();
                 }
                 if(check == 3) {
-                    Toast.makeText(getActivity(), "Current Goal: Physical Exercise",
+                    Toast.makeText(getActivity(), "Στόχος: Φυσική Άσκηση",
                             Toast.LENGTH_LONG).show();
                     ((DataSite) getActivity().getApplication()).setGoal("exercise");
                     ((DataSite) getActivity().getApplication()).setCheck(0);

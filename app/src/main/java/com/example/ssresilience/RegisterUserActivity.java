@@ -87,31 +87,31 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         String updateD = df2.format(c2.getTime());
 
         if(email.isEmpty()) {
-            registerEmail.setError("6 digit number is required");
+            registerEmail.setError("Η διεύθυνση Email είναι αναγκαία.");
             registerEmail.requestFocus();
             return;
         }
 
         if(fullName.isEmpty()) {
-            registerFullName.setError("Full Name is required");
+            registerFullName.setError("Το όνομα είναι αναγκαίο.");
             registerFullName.requestFocus();
             return;
         }
 
         if(password.isEmpty()) {
-            registerPassword.setError("Password is required");
+            registerPassword.setError("Ο κωδικός είναι αναγκαίος.");
             registerPassword.requestFocus();
             return;
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            registerEmail.setError("Please provide a valid email address");
+            registerEmail.setError("Παρακαλώ εισάγετε το Email σας σωστά.");
             registerEmail.requestFocus();
             return;
         }
 
         if(password.length() < 6) {
-            registerPassword.setError("Password must be BIGGER than 6 characters");
+            registerPassword.setError("Ο κωδικός πρέπει να είναι 6 ή περισσότερους χαρακτήρες.");
             registerPassword.requestFocus();
             return;
         }
@@ -127,11 +127,11 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .setValue(user).addOnCompleteListener(task1 -> {
                             if(task1.isSuccessful()) {
-                                Toast.makeText(RegisterUserActivity.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterUserActivity.this, "Ο χρήστης δημιουργήθηκε επιτυχώς.", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                                 startActivity(new Intent(this, MainActivity.class));
                             } else {
-                                Toast.makeText(RegisterUserActivity.this, "Failed to register! Please try again", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterUserActivity.this, "Κάτι πήγε στραβά, παρακαλώ δοκιμάστε ξανά.", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                             }
                         });

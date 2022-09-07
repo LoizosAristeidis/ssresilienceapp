@@ -12,8 +12,8 @@ public class ReminderBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "reflectnotification")
                 .setSmallIcon(R.drawable.ic_stat_name)
-                .setContentTitle("Reflect Reminder")
-                .setContentText("Time to Reflect on your selected Goal!")
+                .setContentTitle("Υπενθύμιση Αναστοχασμού")
+                .setContentText("Ήρθε η ώρα για Αναστοχασμό του Στόχου σας!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);

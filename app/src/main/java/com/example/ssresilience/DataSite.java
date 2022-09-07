@@ -109,7 +109,7 @@ public class DataSite extends Application {
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
 
-        Toast.makeText(this, "Reflect Reminder Set!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Η υπενθύμιση ορίστηκε!", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(DataSite.this, ReminderBroadcast.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(DataSite.this, 0, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -121,7 +121,7 @@ public class DataSite extends Application {
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "ReflectNotification";
-            String description = "Time to Reflect on today's Goal!";
+            String description = "Ήρθε η ώρα για αναστοχασμό του στόχου σας!";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("reflectnotification", name, importance);
             channel.setDescription(description);

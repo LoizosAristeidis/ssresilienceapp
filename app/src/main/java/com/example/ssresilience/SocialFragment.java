@@ -152,7 +152,7 @@ public class SocialFragment extends Fragment {
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Cannot retrieve User due to an error.",
+                Toast.makeText(getActivity(), "Σφάλμα κατά τη λήψη στοιχείων χρήστη.",
                         Toast.LENGTH_LONG).show();
             }
         });

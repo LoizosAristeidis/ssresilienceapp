@@ -7,19 +7,19 @@
 
     <item
         android:id="@+id/contact_us"
-        android:title="Contact Us"
+        android:title="Επικοινωνία"
         android:onClick="contactus" />
 
     <item
-        android:title="Reflect Reminder Time"
+        android:title="Υπενθύμιση Αναστοχασμού"
         android:id="@+id/pick_time_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PICK TIME"
+        android:text="ΕΠΙΛΟΓΗ ΩΡΑΣ"
         android:onClick="showTimePickerDialog" />
 
     <item
         android:id="@+id/logout"
-        android:title="Log Out"
+        android:title="Αποσύνδεση"
         android:onClick="logout" />
 </menu>

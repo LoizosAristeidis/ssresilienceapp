@@ -73,10 +73,10 @@ public class GadTestResults extends Fragment {
         gad_result_back.setOnClickListener(this::onClick);
 
         if (gadpoints <= 9) {
-            gad_result_text.setText("You have a low level of anxiety which wouldn't interfere with your studying.\n\nKeep it up!");
+            gad_result_text.setText("Έχετε χαμηλό επίπεδο άγχους που δεν θα παρεμπόδιζε τη μελέτη σας.\n\nΣυνεχίστε έτσι!");
         }
         if ((gadpoints > 9)) {
-            gad_result_text.setText("You may be experiencing some anxiety at the moment.\n\nTry a breathing exercise to relax before you study.");
+            gad_result_text.setText("Μπορεί να νιώθετε ένα επίπεδο άγχους αυτή τη στιγμή.\n\nΔοκιμάστε μια άσκηση αναπνοής για να χαλαρώσετε πριν μελετήσετε.");
         }
 
         return rootView;
