@@ -52,7 +52,7 @@ public class SocialFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String goal, dbgoal, dbreflect, dbmeasure;
+    private String goal, dbgoal, dbreflect, dbmeasure, dbgoal2;
     private FirebaseUser user;
     private int reflectpoints = 0;
     private FirebaseAuth mAuth;
@@ -176,12 +176,21 @@ public class SocialFragment extends Fragment {
 
     @SuppressLint({"UseCompatLoadingForDrawables", "ResourceAsColor", "UseCompatLoadingForColorStateLists", "NonConstantResourceId", "SetTextI18n"})
     public void onClick(View v) {
+        if (dbgoal.equals("Socialize More")) {
+            dbgoal2 = "Κοινωνικοποίηση";
+        }
+        if (dbgoal.equals("Enhance Study Motives")) {
+            dbgoal2 = "Μελέτη";
+        }
+        if (dbgoal.equals("Physical Exercise")) {
+            dbgoal2 = "Φυσική Άσκηση";
+        }
         switch (v.getId()) {
             case R.id.fg_social_sharebtn:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I've completed my Goal '" + dbgoal + "'  in the SSResilience app!");
-                startActivity(Intent.createChooser(sharingIntent,"Share your Progress"));
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Ολοκλήρωσα τον στόχο μου για " + dbgoal2 + " στην εφαρμογή SSResilience!");
+                startActivity(Intent.createChooser(sharingIntent,"Μοιραστείτε την πρόοδό σας"));
                 break;
             case R.id.fg_social_facebook_ssr:
                 try {

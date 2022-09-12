@@ -198,7 +198,7 @@ public class ProgressFragment extends Fragment {
                             fg_progress_header2.setText("Κοινωνικοποίηση");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
-                            fg_progress_header2.setText("Κίνητρα για Μελέτη");
+                            fg_progress_header2.setText("Μελέτη");
                         }
                         if (dbgoal.equals("Physical Exercise")) {
                             fg_progress_header2.setText("Φυσική Άσκηση");

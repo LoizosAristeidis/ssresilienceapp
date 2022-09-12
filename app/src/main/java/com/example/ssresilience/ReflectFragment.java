@@ -210,19 +210,19 @@ public class ReflectFragment extends Fragment {
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
                             fg_reflect_question1.setText("Μιλήσατε με 3 άτομα εκτός από αυτά με τα οποία ζείτε (οικογένεια/συγκάτοικοι);");
-                            fg_reflect_question2.setText("Συναντηθήκατε με έναν φίλο ή την οικογένειά σας για μεσημεριανό γεύμα ή δείπνο;");
+                            fg_reflect_question2.setText("Συναντηθήκατε με έναν φίλο ή την οικογένειά σας για γεύμα ή δείπνο;");
                             fg_reflect_question3.setText("Πήγατε για καφέ ή για ποτό με παρέα;");
                             fg_reflect_question4.setText("Αλληλεπιδράσατε με ένα άτομο που δεν έχετε ξανασυναντήσει;");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
                             fg_reflect_question1.setText("Μελετήσατε για 1 ή περισσότερες ώρες σήμερα;");
-                            fg_reflect_question2.setText("Μιλήσατε με φίλους ή συγγενείς για τις μαθησιακές ενασχολήσεις σας;");
-                            fg_reflect_question3.setText("Εργαστήκατε για τουλάχιστον 1 ώρα στις μαθησιακές ενασχολήσεις σας;");
+                            fg_reflect_question2.setText("Μιλήσατε με φίλους ή συγγενείς για τα projects σας;");
+                            fg_reflect_question3.setText("Εργαστήκατε για τουλάχιστον 1 ώρα στα projects σας;");
                             fg_reflect_question4.setText("Αφιερώσατε χρόνο μελέτης για το μάθημα που σας ενδιαφέρει περισσότερο;");
                         }
                         if (dbgoal.equals("Physical Exercise")) {
                             fg_reflect_question1.setText("Αφιερώσατε περισσότερα από 30 λεπτά στη φυσική άσκηση;");
-                            fg_reflect_question2.setText("Συμμετείχατε σε φυσικές ασκήσεις με φίλους ή άλλους;");
+                            fg_reflect_question2.setText("Συμμετείχατε σε φυσική άσκηση με φίλους ή άλλους;");
                             fg_reflect_question3.setText("Πετύχατε τον στόχο σας που σχετίζεται με τη σωματική άσκηση;");
                             fg_reflect_question4.setText("Παρακολουθήσατε την πρόοδό σας που σχετίζεται με τη φυσική σας κατάσταση με οποιονδήποτε τρόπο;");
                         }

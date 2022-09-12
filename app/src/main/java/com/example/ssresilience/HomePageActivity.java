@@ -210,7 +210,7 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 break;
             case R.id.info_measure_monitor:
-                    info_placeholder.setText("Χρησιμοποιήστε τους αισθητήρες της συσκευής σας ή το stress test για να καταγράψετε τα συναισθήματά σας");
+                    info_placeholder.setText("Χρησιμοποιήστε τους αισθητήρες της συσκευής σας ή το stress test για να μετρήσετε την πρόοδό σας");
                     info_goals.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
                     info_goals.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                     info_measure_monitor.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor));
@@ -223,7 +223,7 @@ public class HomePageActivity extends AppCompatActivity {
                     info_reflect.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                 break;
             case R.id.info_progress_rewards:
-                    info_placeholder.setText("Αυτά βασίζονται στην πρόοδό που σημειώνετε στην εφαρμογή");
+                    info_placeholder.setText("Αυτά βασίζονται στην πρόοδό σας όπως καταγράφεται στην εφαρμογή");
                     info_goals.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));
                     info_goals.setTextColor(getResources().getColorStateList(R.color.buttoncolor_text_reset));
                     info_measure_monitor.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_reset));

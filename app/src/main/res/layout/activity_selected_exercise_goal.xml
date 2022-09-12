@@ -59,7 +59,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
-        android:text="• Συμμετέχετε σε φυσικές ασκήσεις με φίλους ή άλλους."
+        android:text="• Συμμετέχετε σε φυσική άσκηση με φίλους ή άλλους."
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

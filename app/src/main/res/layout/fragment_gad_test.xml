@@ -93,7 +93,7 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Περισσότερο από τις μισές μέρες"
+                    android:text="Περισσότερες από τις μισές μέρες"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
 
@@ -105,7 +105,7 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Σχεδόν Καθημερινά"
+                    android:text="Σχεδόν Κάθε Μέρα"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
             </TableRow>
@@ -124,9 +124,9 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Νιώθετε νευρικότητα, άγχος ή στα άκρα;"
+                    android:text="Αισθανόμουν νευρικός ή ανήσυχος"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
 
                 <ToggleButton
                     android:id="@+id/row1_btn1"
@@ -208,9 +208,9 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Δεν μπορείτε να ελέγξετε την ανησυχία;"
+                    android:text="Δεν μπορούσα να σταματήσω ή να ελέγξω την ανησυχία μου"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
 
                 <ToggleButton
                     android:id="@+id/row2_btn1"
@@ -293,9 +293,9 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Ανησυχείτε πολύ για διαφορετικά πράγματα;"
+                    android:text="Ανησυχούσα υπερβολικά για διάφορα θέματα"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
 
                 <ToggleButton
                     android:id="@+id/row3_btn1"
@@ -378,9 +378,9 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Δυσκολεύεστε να χαλαρώσετε;"
+                    android:text="Είχα δυσκολία να χαλαρώσω"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
 
                 <ToggleButton
                     android:id="@+id/row4_btn1"
@@ -463,9 +463,9 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Είστε τόσο ανήσυχοι που είναι δύσκολο να καθίσετε;"
+                    android:text="Ήμουν τόσο ανήσυχος που δυσκολευόμουν να καθίσω ακίνητος"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
 
                 <ToggleButton
                     android:id="@+id/row5_btn1"
@@ -548,9 +548,9 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Γίνεστε εύκολα ενοχλημένοι ή οξύθυμοι;"
+                    android:text="Με ενοχλούσαν πράγματα έυκολα ή ήμουν ευερέθιστος"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
 
                 <ToggleButton
                     android:id="@+id/row6_btn1"
@@ -633,9 +633,9 @@
                     android:gravity="center"
                     android:paddingStart="10px"
                     android:paddingEnd="10px"
-                    android:text="Νιώθετε φόβο σαν να συμβεί κάτι απαίσιο;"
+                    android:text="Φοβόμουν ότι κάτι κακό μπορεί να συμβεί"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
 
                 <ToggleButton
                     android:id="@+id/row7_btn1"

@@ -164,10 +164,10 @@ public class MeasureFragment extends Fragment {
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
                             fg_measure_title.setText("Κοινωνικοποίηση");
-                            fg_measure_text.setText("Μετρήστε το επίπεδο θορύβου του περιβάλλοντός σας, για να ενημερώσετε την εφαρμογή ότι συναναστρέφεστε με ανθρώπους.");
+                            fg_measure_text.setText("Μετρήστε το επίπεδο θορύβου του περιβάλλοντός σας, για να ενημερώσετε την εφαρμογή ότι κοινωνικοποιήστε με ανθρώπους.");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
-                            fg_measure_title.setText("Κίνητρα για Μελέτη");
+                            fg_measure_title.setText("Μελέτη");
                             fg_measure_text.setText("Επιτρέψτε στην εφαρμογή να υπολογίσει το επίπεδο άγχους σας, κάνοντας το τεστ. Θυμηθείτε, ένα υψηλότερο επίπεδο άγχους οδηγεί σε χαμηλότερα κίνητρα μελέτης.");
                         }
                         if (dbgoal.equals("Physical Exercise")) {
@@ -200,7 +200,7 @@ public class MeasureFragment extends Fragment {
                                 }
                                 if (dbgoal.equals("Physical Exercise")) {
                                     if (dbmeasure.equals("yes")) {
-                                        Toast.makeText(getActivity(), "Έχετε ήδη ελέγξε την κατάσταση φυσικής δραστηριότητάς σας.\n\nΠαρακαλώ προσδιορίστε διαφορετικό Στόχο και δοκιμάστε ξανά!",
+                                        Toast.makeText(getActivity(), "Έχετε ήδη ελέγξει την κατάσταση φυσικής δραστηριότητάς σας.\n\nΠαρακαλώ προσδιορίστε διαφορετικό Στόχο και δοκιμάστε ξανά!",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
                                         Fragment fr = new PhysicalExercise();
