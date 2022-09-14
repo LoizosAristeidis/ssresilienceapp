@@ -59,7 +59,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
-        android:text="• Εργαστείτε για τουλάχιστον 1 ώρα στα projects σας."
+        android:text="• Εργαστείτε για τουλάχιστον 30 λεπτά στα projects σας."
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

@@ -59,7 +59,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
-        android:text="• Συναντηθείτε με έναν φίλο ή την οικογένειά σας γεύμα ή δείπνο."
+        android:text="• Συναντηθείτε με έναν φίλο ή την οικογένειά σας για γεύμα ή δείπνο."
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

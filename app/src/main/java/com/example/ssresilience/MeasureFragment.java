@@ -164,7 +164,7 @@ public class MeasureFragment extends Fragment {
                     if (dbgoal != null) {
                         if (dbgoal.equals("Socialize More")) {
                             fg_measure_title.setText("Κοινωνικοποίηση");
-                            fg_measure_text.setText("Μετρήστε το επίπεδο θορύβου του περιβάλλοντός σας, για να ενημερώσετε την εφαρμογή ότι κοινωνικοποιήστε με ανθρώπους.");
+                            fg_measure_text.setText("Μετρήστε το επίπεδο θορύβου του περιβάλλοντός σας, για να ενημερώσετε την εφαρμογή ότι κοινωνικοποιήστε.");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
                             fg_measure_title.setText("Μελέτη");

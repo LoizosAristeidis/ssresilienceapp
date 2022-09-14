@@ -215,9 +215,9 @@ public class ReflectFragment extends Fragment {
                             fg_reflect_question4.setText("Αλληλεπιδράσατε με ένα άτομο που δεν έχετε ξανασυναντήσει;");
                         }
                         if (dbgoal.equals("Enhance Study Motives")) {
-                            fg_reflect_question1.setText("Μελετήσατε για 1 ή περισσότερες ώρες σήμερα;");
+                            fg_reflect_question1.setText("Μελετήσατε για 30 λεπτά ή περισσότερο σήμερα;");
                             fg_reflect_question2.setText("Μιλήσατε με φίλους ή συγγενείς για τα projects σας;");
-                            fg_reflect_question3.setText("Εργαστήκατε για τουλάχιστον 1 ώρα στα projects σας;");
+                            fg_reflect_question3.setText("Εργαστήκατε για τουλάχιστον 30 λεπτά στα projects σας;");
                             fg_reflect_question4.setText("Αφιερώσατε χρόνο μελέτης για το μάθημα που σας ενδιαφέρει περισσότερο;");
                         }
                         if (dbgoal.equals("Physical Exercise")) {

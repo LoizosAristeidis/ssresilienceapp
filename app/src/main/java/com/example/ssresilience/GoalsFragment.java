@@ -136,7 +136,7 @@ public class GoalsFragment extends Fragment {
         switch (v.getId()) {
             case R.id.fg_goals_socialize:
                 fg_goals_placeholder.setText("• Μιλήστε με 3 άτομα εκτός από αυτά με τα οποία ζείτε (οικογένεια/συγκάτοικοι).\n\n" +
-                        "• Συναντηθείτε με έναν φίλο ή την οικογένειά σας γεύμα ή δείπνο.\n\n" +
+                        "• Συναντηθείτε με έναν φίλο ή την οικογένειά σας για γεύμα ή δείπνο.\n\n" +
                         "• Πηγαίνετε για καφέ ή για ποτό με παρέα.\n\n" +
                         "• Αλληλεπιδράστε με ένα άτομο που δεν έχετε ξανασυναντήσει.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect));
@@ -148,8 +148,8 @@ public class GoalsFragment extends Fragment {
                 check = 1;
                 break;
             case R.id.fg_goals_study:
-                fg_goals_placeholder.setText("• Μελετήστε για 1 ή περισσότερες ώρες σήμερα.\n\n" +
-                        "• Εργαστείτε για τουλάχιστον 1 ώρα στα projects σας.\n\n" +
+                fg_goals_placeholder.setText("• Μελετήστε για 30 λεπτά ή περισσότερο σήμερα.\n\n" +
+                        "• Εργαστείτε για τουλάχιστον 30 λεπτά στα projects σας.\n\n" +
                         "• Μιλήστε με φίλους ή συγγενείς για τα projects σας.\n\n" +
                         "• Αφιερώστε χρόνο μελέτης για το μάθημα που σας ενδιαφέρει περισσότερο.");
                 fg_goals_socialize.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttoncolor_rect_reset));
